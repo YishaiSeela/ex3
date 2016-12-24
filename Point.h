@@ -13,20 +13,17 @@ class Point
 
 public:
     Point ();
-    int x; // X coordinate
-    int y; // Y coordinate
     Point(int x, int y); // Constructor
     int getXCoordinate(); // X coordinate getter
     int getYCoordinate(); // Y coordinate getter
-    bool operator==(const Point &otherPt) const;
+    bool operator==(Point &otherPt);
     bool operator!=(Point &otherPt);
-    float distance(Point);
-
 
 protected:
+    int x; // X coordinate
+    int y; // Y coordinate
 
-
-friend ostream &operator<<(ostream &outStream, Point &pt); // Operator overload
+    friend ostream &operator<<(ostream &outStream, Point &pt); // Operator overload
 
 };
 

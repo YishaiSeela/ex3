@@ -14,10 +14,12 @@ public:
     Point *downNode; // Down node of the point
     Point *rightNode; // Right node of the point
     Point *parentNode; // Parent node of the point
+    Node *sonNode; // Parent node of the point
     int distance; // Distance from the end point
     bool isVisited;
     bool isObstacle;
     Point *coordinate;
+    string toString();
     Node(); // Ctor
     Node(Point *initPt); // Ctor
     ~Node(); // Dtor

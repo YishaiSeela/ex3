@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <stdlib.h>
@@ -139,4 +138,27 @@ void Grid::createGrid(int gridWidth, int gridHeight)
         cerr << "Bad allocation" << endl;
         exit(EXIT_FAILURE);
     }
+}
+
+void Grid::printGrid() {
+    for(int i=0;i<gridHeight;i++){
+        for(int j=0;j<gridWidth;j++){
+            cout<<"("<<grid[i][j].coordinate->getXCoordinate()<<","<<grid[i][j].coordinate->getYCoordinate()<<")";
+        }
+        cout<<endl;
+    }
+}
+
+Node* Grid::getNode(int x,int y){
+    for(int i=0;i<gridHeight;i++){
+        for(int j=0;j<gridWidth;j++){
+            if((grid[i][j].coordinate->getXCoordinate()==x)&&(grid[i][j].coordinate->getYCoordinate()==y)){
+                return &grid[i][j];
+            }
+        }
+    }
+}
+
+Node*Grid::getNode(Point *p){
+    return getNode(p->getXCoordinate(),p->getYCoordinate());
 }

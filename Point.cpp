@@ -1,7 +1,6 @@
 
 #include <iostream>
 #include "Point.h"
-#include <math.h>
 
 using namespace std;
 
@@ -31,7 +30,7 @@ ostream &operator<<(ostream outStream, Point &pt)
  */
 {
     outStream << "(" << pt.getXCoordinate() <<
-                                            "," << pt.getYCoordinate() << ")";
+              "," << pt.getYCoordinate() << ")";
 }
 
 int Point::getXCoordinate()
@@ -52,19 +51,18 @@ int Point::getYCoordinate()
     return this->y;
 }
 
-bool Point::operator==(const Point &otherPt)
+bool Point::operator==(Point &otherPt)
 /**
  * Overload the "==" operator to check that x and
  * y coordinates are equal
  * @param otherPt: The other point to compare
  * @return: True if the points are equal otherwise false
  */
-const {
+{
 
     // If the points are equal
-    return (otherPt.x==x) && (otherPt.y==y);
-   // return (this->getXCoordinate() == otherPt.getXCoordinate()
-    //       && this->getYCoordinate() == otherPt.getYCoordinate());
+    return (this->getXCoordinate() == otherPt.getXCoordinate()
+            && this->getYCoordinate() == otherPt.getYCoordinate());
 }
 
 bool Point::operator!=(Point &otherPt)
@@ -76,7 +74,7 @@ bool Point::operator!=(Point &otherPt)
  */
 {
     return (this->getXCoordinate() != otherPt.getXCoordinate()
-           || this->getYCoordinate() != otherPt.getYCoordinate());
+            || this->getYCoordinate() != otherPt.getYCoordinate());
 }
 
 ostream &operator<<(ostream &outStream, Point &pt)
@@ -88,13 +86,5 @@ ostream &operator<<(ostream &outStream, Point &pt)
  */
 {
     return outStream << "(" << pt.getXCoordinate()
-                     << "," << pt.getYCoordinate() << ")" << endl;
-}
-
-float Point::distance(Point p){
-    int distancex = (p.getXCoordinate() - this->getXCoordinate())^2;
-    int distancey = (p.getYCoordinate() - this->getYCoordinate())^2;
-    float dis=sqrt(distancex - distancey);
-
-    return dis;
+                     << "," << pt.getYCoordinate() << ")";
 }

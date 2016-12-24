@@ -17,13 +17,11 @@ public:
     //BfsSearch(Grid &grid); // Ctor
     BfsSearch(Grid *grid); // Ctor
     void runBfs(); // Run the algorithm
-
-    void calculatePath();
-    std::vector<Node*> getPath();
-
-private:
-    // Calculates the shortest path
+    void visitNode(Node* parent, Node *vistingNode);
     void printPath(); // Prints the shortest path
+
+
+
 
 };
 

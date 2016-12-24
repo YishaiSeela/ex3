@@ -1,4 +1,3 @@
-
 #ifndef EXERCISE1_GRID_H
 #define EXERCISE1_GRID_H
 
@@ -28,6 +27,10 @@ public:
     void setStartAndEnd(Point* startPt, Point* endPt);
     void dummyConstructor(int width, int height);
     bool inBoundary(Point p);
+
+    Node*getNode(int x,int y);
+    Node*getNode(Point *p);
+    void printGrid();
 
 };
 

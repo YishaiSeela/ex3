@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
                         g1->endPt = om->listOfRides[0]->getEndPoint();
                         endPoint = Point(g1->endPt->getXCoordinate(), g1->endPt->getYCoordinate());
                         bfs = new BfsSearch(g1);
-                        //bfs->runBfs();
+                        bfs->runBfs();
                         om->listOfDrivers[i]->setLocation(endPoint);
                         om->listOfRides.erase(om->listOfRides.begin());
 
@@ -141,22 +141,7 @@ int main(int argc, char *argv[])
             }
             case 7: {
                 //task 7 - delete all elemnts and exit the program
-                //for (int i = 0; i < (om->listOfDrivers.size()); i++) {
-                //    delete om->listOfDrivers[i];
-                //}
-                //for (int i = 0; i < (om->listOfCabs.size()); i++) {
-                //    delete om->listOfCabs[i];
-                //}
-                //for (int i = 0; i < (om->listOfRides.size()); i++) {
-                //    delete om->listOfRides[i];
-                //}
-                //while (obstaclePoints.size() > 0) {
-                //    obstaclePoints.erase(obstaclePoints.begin());
-                //}
-                g1->destroyGrid();
-                //delete driver;
-                //delete cabDecorator;
-                //delete ride;
+                //g1->destroyGrid(); //- FIX IT!!!
 
                 delete g1;
                 delete om;
