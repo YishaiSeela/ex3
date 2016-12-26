@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     BfsSearch *bfs;
     Driver *driver;
     Ride *ride;
-    CabDecorator *cabDecorator;
+    Vehicle *vehicle;
     std::vector<Point> obstaclePoints;
     //insert sizes of grid
     cin >> width >> height;
@@ -110,8 +110,8 @@ int main(int argc, char *argv[])
                 int taxiType = atoi(prs3->inputVector.at(1).c_str());
                 char manufacturer = prs3->inputVector.at(2)[0];
                 char color = prs3->inputVector.at(3)[0];
-                cabDecorator = new CabDecorator(manufacturer, taxiType, id, color);
-                om->addCab(cabDecorator);
+                vehicle = new Vehicle(manufacturer, taxiType, id, color);
+                om->addCab(vehicle);
                 delete prs3;
                 cin >> task;
 

@@ -2,14 +2,23 @@
 #include "Point.h"
 
 
-Vehicle::Vehicle(char manufactore,int id,char color)
+Vehicle::Vehicle(char manufacturer,int taxiType,int id,char color)
 /**
 * Ctor
 */
 {
-	enum  manufacture {HONDA='H',SUBARU='S',TESLA='T',FIAT='F'};
+	this->manufacturer=manufacturer;// {HONDA='H',SUBARU='S',TESLA='T',FIAT='F'};
+    this->taxiType=taxiType;
 	this->id=id;
-	enum color {RED='R',BLUE='B',GREEN='G',PINK='p',WHITE='W'};
+    this->color=color;
+	enum color : char {RED='R',BLUE='B',GREEN='G',PINK='p',WHITE='W'};
+
+    enum manufacturer : char {
+        HONDA='H',
+        SUBARU = 'S',
+        TESLA = 'T',
+        FIAT = 'F',
+    };
 }
 
 void Vehicle::startDrive(Point point)

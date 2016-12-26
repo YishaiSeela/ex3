@@ -2,8 +2,8 @@
 #include "RegularCab.h"
 
 
-RegularCab::RegularCab(char manufactore, int taxiType, int id,char color, double tariff, double km)
-:CabDecorator(manufactore,  taxiType,  id, color)
+RegularCab::RegularCab(char manufacturer, int taxiType, int id,char color, double tariff, double km)
+:CabDecorator(manufacturer,  taxiType,  id, color)
 /**
  * Ctor
  */

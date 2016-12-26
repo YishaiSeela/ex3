@@ -13,7 +13,7 @@ protected:
     double km;
     double tariff;
 public:
-    RegularCab(char manufactore, int taxiType, int id,char color, double tariff, double km);
+    RegularCab(char manufacturer, int taxiType, int id,char color, double tariff, double km);
     ~RegularCab();
 };
 

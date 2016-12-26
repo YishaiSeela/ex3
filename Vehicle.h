@@ -10,14 +10,16 @@ using namespace std;
 class Vehicle
 {
 
-	enum  manufacture {HONDA='H',SUBARU='S',TESLA='T',FIAT='F'};
-	int id;
-	enum color {RED='R',BLUE='B',GREEN='G',PINK='p',WHITE='W'};
+	char manufacturer;// {HONDA='H',SUBARU='S',TESLA='T',FIAT='F'};
+	int taxiType;
+    int id;
+    char color;
+	//enum color {RED='R',BLUE='B',GREEN='G',PINK='p',WHITE='W'};
 
 
 public:
 	void startDrive(Point point);
-	Vehicle(char manufactore,int id,char color);
+	Vehicle(char manufacturer,int taxiType,int id,char color);
 	~Vehicle();
 
 	bool turnRight(bool value);

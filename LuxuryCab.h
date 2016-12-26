@@ -13,7 +13,7 @@ protected:
     double km;
     double tariff;
 public:
-    LuxuryCab(char manufactore, int taxiType, int id,char color,double tarif, double km);
+    LuxuryCab(char manufacturer, int taxiType, int id,char color,double tarif, double km);
     ~LuxuryCab();
 };
 

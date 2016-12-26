@@ -108,10 +108,10 @@ void OrderManager::addRide(Ride *ride)
     OrderManager::listOfRides.push_back(ride);
 }
 
-void OrderManager::addCab(CabDecorator *cabDecorator)
+void OrderManager::addCab(Vehicle *vehicle)
 /*
  * add cab to list of cabs
  */
  {
-    OrderManager::listOfCabs.push_back(cabDecorator);
+    OrderManager::listOfCabs.push_back(vehicle);
 }

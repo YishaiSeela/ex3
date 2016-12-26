@@ -2,8 +2,8 @@
 #include "LuxuryCab.h"
 
 
-LuxuryCab::LuxuryCab(char manufactore, int taxiType, int id,char color,double tariff, double km)
-      :CabDecorator (manufactore, taxiType, id,color)
+LuxuryCab::LuxuryCab(char manufacturer, int taxiType, int id,char color,double tariff, double km)
+      :CabDecorator (manufacturer, taxiType, id,color)
 
 /**
 /**

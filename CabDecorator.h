@@ -12,7 +12,7 @@ protected:
 	double tariff;
 	double km;
 public:
-	CabDecorator(char manufactore,int taxiType,int id,char color);
+	CabDecorator(char manufacturer,int taxiType,int id,char color);
 	~CabDecorator();
 };
 

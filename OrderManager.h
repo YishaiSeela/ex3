@@ -15,7 +15,7 @@ class OrderManager
 public:
 	std::vector<Driver*> listOfDrivers;
 	std::vector<Ride*> listOfRides;
-	std::vector<CabDecorator*> listOfCabs;
+	std::vector<Vehicle*> listOfCabs;
 	//list driverListUnOccupaid;
 //	list ride;
 
@@ -32,7 +32,7 @@ public:
 
 	void addRide(Ride *ride);
 
-	void addCab(CabDecorator *cabDecorator);
+	void addCab(Vehicle *vehicle);
 
 	~OrderManager();
 };

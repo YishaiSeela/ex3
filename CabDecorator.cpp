@@ -2,8 +2,8 @@
 #include "CabDecorator.h"
 
 
-CabDecorator::CabDecorator(char manufactore,int taxiType,int id,char color)
-  : Vehicle(manufactore, id, color)
+CabDecorator::CabDecorator(char manufacturer,int taxiType,int id,char color)
+  : Vehicle(manufacturer,taxiType, id, color)
 /**
  * Ctor
  */
