@@ -20,8 +20,7 @@ public:
     void visitNode(Node* parent, Node *vistingNode);
     void printPath(); // Prints the shortest path
 
-
-
+    std::vector<Point> path;
 
 };
 

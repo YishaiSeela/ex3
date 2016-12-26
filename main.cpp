@@ -80,21 +80,22 @@ int main(int argc, char *argv[])
 
                 cin >> input;
                 prs2 = new Parser();
-                prs2->parse(input, 7);
+                prs2->parse(input, 8);
                 int id = atoi(prs2->inputVector.at(0).c_str());
                 int passengers = atoi(prs2->inputVector.at(5).c_str());
                 double tarif = stod(prs2->inputVector.at(6).c_str());
-
+                float StartTime = stof(prs2->inputVector.at(7).c_str());
                 startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
                 endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
-                ride = new Ride(id, startPoint, endPoint, passengers, tarif);
-                om->addRide(ride);
+
                 g1->startPt = new Point(startPoint);
                 g1->endPt = new Point(endPoint);
                 bfs = new BfsSearch(g1);
 
                 bfs->runBfs();
                 bfs->printPath();
+                ride = new Ride(id, startPoint, endPoint, passengers, tarif,StartTime, bfs->path);
+                om->addRide(ride);
                 delete prs2;
                 cin >> task;
 

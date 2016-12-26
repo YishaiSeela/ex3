@@ -2,10 +2,12 @@
 #include <stdio.h>
 #include "Ride.h"
 #include <stdlib.h>
+#include <vector>
+
 using namespace std;
 
 Ride::Ride(int idRide,Point startingPoint,Point endPoint ,int numOfPassangers,
-           double tariff )
+           double tariff ,float time, std::vector<Point> path)
 /**
 * Ctor
 */
@@ -16,6 +18,8 @@ Ride::Ride(int idRide,Point startingPoint,Point endPoint ,int numOfPassangers,
 	this->MyEndPoint=endPoint;
 	this->numOfPassengers=numOfPassangers;
 	this->tarif=tarif;
+	this->StartTime = StartTime;
+	this->path=path;
 
 }
 

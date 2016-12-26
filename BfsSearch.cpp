@@ -94,9 +94,11 @@ void BfsSearch::printPath()
     current=start;
     Node *end = gameGrid.getNode(gameGrid.endPt);
     while(current!=end){
-        cout << *(current->coordinate)<<endl;
+        //cout << *(current->coordinate)<<endl;
+        BfsSearch::path.push_back(*(current->coordinate));
         current=current->sonNode;
     }
-    cout << *(current->coordinate);
-
+    //cout << *(current->coordinate);
+    BfsSearch::path.push_back(*(current->coordinate));
 }
+
