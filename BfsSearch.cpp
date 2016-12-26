@@ -51,7 +51,7 @@ void BfsSearch::runBfs()
         //cout << "("<<tempNode->coordinate->getXCoordinate() << "," << tempNode->coordinate->getYCoordinate() << ")"<<endl;
 
         this->ptQueue.pop();
-        if(tempNode!=NULL) {
+        if(tempNode!=NULL && !tempNode->isObstacle) {
 
             // Check all the adjacent nodes
             // If left node is in grid

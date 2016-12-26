@@ -47,7 +47,8 @@ int main(int argc, char *argv[])
         prsOb = new Parser();
         prsOb->parse(input, 2);
         obstacle = Point(atoi(prsOb->inputVector.at(0).c_str()), atoi(prsOb->inputVector.at(1).c_str()));
-        obstaclePoints.push_back(obstacle);
+        //obstaclePoints.push_back(obstacle);
+        g1->setObstacle(obstacle);
         delete prsOb;
     }
     //insert task number
@@ -88,8 +89,12 @@ int main(int argc, char *argv[])
                 endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
                 ride = new Ride(id, startPoint, endPoint, passengers, tarif);
                 om->addRide(ride);
+                g1->startPt = new Point(startPoint);
+                g1->endPt = new Point(endPoint);
                 bfs = new BfsSearch(g1);
-                //bfs->runBfs();
+
+                bfs->runBfs();
+                bfs->printPath();
                 delete prs2;
                 cin >> task;
 
@@ -143,7 +148,7 @@ int main(int argc, char *argv[])
             }
             case 7: {
                 //task 7 - delete all elemnts and exit the program
-                g1->destroyGrid(); //- FIX IT!!!
+                //g1->destroyGrid(); //- FIX IT!!!
 
                 delete g1;
                 delete om;

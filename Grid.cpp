@@ -129,6 +129,7 @@ void Grid::createGrid(int gridWidth, int gridHeight)
 
                 // Initialize parent point
                 this->grid[i][j].parentNode = new Point();
+
             }
         }
 
@@ -138,6 +139,10 @@ void Grid::createGrid(int gridWidth, int gridHeight)
         cerr << "Bad allocation" << endl;
         exit(EXIT_FAILURE);
     }
+}
+
+void Grid::setObstacle(Point p) {
+    this->grid[p.getXCoordinate()][p.getYCoordinate()].setIsObstacle(true);
 }
 
 void Grid::printGrid() {
