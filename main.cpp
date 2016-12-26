@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
     int width;
     int height;
     int task;
+    float time = 0;
     int obstacles;
     Point startPoint;
     Point endPoint;
@@ -87,6 +88,8 @@ int main(int argc, char *argv[])
                 endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
                 ride = new Ride(id, startPoint, endPoint, passengers, tarif);
                 om->addRide(ride);
+                bfs = new BfsSearch(g1);
+                //bfs->runBfs();
                 delete prs2;
                 cin >> task;
 
@@ -127,12 +130,11 @@ int main(int argc, char *argv[])
                         g1->startPt = om->listOfRides[0]->getStartPoint();
                         g1->endPt = om->listOfRides[0]->getEndPoint();
                         endPoint = Point(g1->endPt->getXCoordinate(), g1->endPt->getYCoordinate());
-                        bfs = new BfsSearch(g1);
-                        bfs->runBfs();
+
                         om->listOfDrivers[i]->setLocation(endPoint);
                         om->listOfRides.erase(om->listOfRides.begin());
 
-                        delete bfs;
+                        //delete bfs;
                     }
                 }
 
@@ -150,6 +152,12 @@ int main(int argc, char *argv[])
                     //for any other input - ask for a valid input
                     cin >> task;
                 break;
+            }
+            case 9:{
+                time++;
+                cout << time;
+                cin >> task;
+
             }
         }
     }

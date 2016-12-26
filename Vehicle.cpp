@@ -7,9 +7,9 @@ Vehicle::Vehicle(char manufactore,int id,char color)
 * Ctor
 */
 {
-	this->manufacture=manufactore;
+	enum  manufacture {HONDA='H',SUBARU='S',TESLA='T',FIAT='F'};
 	this->id=id;
-	this->color=color;
+	enum color {RED='R',BLUE='B',GREEN='G',PINK='p',WHITE='W'};
 }
 
 void Vehicle::startDrive(Point point)

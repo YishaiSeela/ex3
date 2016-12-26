@@ -41,6 +41,7 @@ set(SOURCE_FILES
     StringParse.h
         test.h
 
-        Parser.cpp Parser.h RegularCab.cpp RegularCab.h)
+        Parser.cpp Parser.h RegularCab.cpp RegularCab.h
+        client.cpp Udp.cpp Udp.h server.cpp Socket.cpp Socket.h)
 
 add_executable(ex3 ${SOURCE_FILES})

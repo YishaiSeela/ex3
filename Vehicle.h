@@ -10,9 +10,9 @@ using namespace std;
 class Vehicle
 {
 
-	char manufacture;//[]={'H','S','T','F'};
+	enum  manufacture {HONDA='H',SUBARU='S',TESLA='T',FIAT='F'};
 	int id;
-	char color;//[]={'R','B','G','P','W'};
+	enum color {RED='R',BLUE='B',GREEN='G',PINK='p',WHITE='W'};
 
 
 public:
