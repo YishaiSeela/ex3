@@ -143,21 +143,24 @@ int main(int argc, char *argv[])
             }
             case 7: {
                 //task 7 - delete all elemnts and exit the program
-                //g1->destroyGrid(); //- FIX IT!!!
+                g1->destroyGrid(); //- FIX IT!!!
 
                 delete g1;
                 delete om;
                 exit(0);
-                default:
-                    //for any other input - ask for a valid input
-                    cin >> task;
-                break;
+
             }
             case 9:{
                 time++;
                 cout << time;
                 cin >> task;
+                break;
 
+            }
+            default: {
+                //for any other input - ask for a valid input
+                cin >> task;
+                break;
             }
         }
     }
