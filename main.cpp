@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
                 int id = atoi(prs2->inputVector.at(0).c_str());
                 int passengers = atoi(prs2->inputVector.at(5).c_str());
                 double tarif = stod(prs2->inputVector.at(6).c_str());
-                float StartTime = stof(prs2->inputVector.at(7).c_str());
+                float startTime = stof(prs2->inputVector.at(7).c_str());
                 startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
                 endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
 
@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
 
                 bfs->runBfs();
                 bfs->printPath();
-                ride = new Ride(id, startPoint, endPoint, passengers, tarif,StartTime, bfs->path);
+                ride = new Ride(id, startPoint, endPoint, passengers, tarif,startTime, bfs->path);
                 om->addRide(ride);
                 delete prs2;
                 cin >> task;
@@ -159,6 +159,16 @@ int main(int argc, char *argv[])
             case 9:{
                 time++;
                 cout << time;
+                for (int i = 0;i<om->listOfRides.size();i++) {
+                    if (om->listOfRides[i]->getStartTime() == time){
+                        om->listOfDrivers[0]->setAvailability(false);
+                        om->listOfDrivers[0]->setLocation(om->listOfRides[i]->getPath()[0]);
+
+                    }
+                    if (!om->listOfDrivers[0]->isAvailable()){
+
+                    }
+                }
                 cin >> task;
                 break;
 

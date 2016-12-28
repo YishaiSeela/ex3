@@ -7,7 +7,7 @@
 using namespace std;
 
 Ride::Ride(int idRide,Point startingPoint,Point endPoint ,int numOfPassangers,
-           double tariff ,float time, std::vector<Point> path)
+           double tariff ,float startTime, std::vector<Point> path)
 /**
 * Ctor
 */
@@ -18,7 +18,7 @@ Ride::Ride(int idRide,Point startingPoint,Point endPoint ,int numOfPassangers,
 	this->MyEndPoint=endPoint;
 	this->numOfPassengers=numOfPassangers;
 	this->tarif=tarif;
-	this->StartTime = StartTime;
+	this->startTime = startTime;
 	this->path=path;
 
 }
@@ -63,4 +63,12 @@ Point* Ride::getEndPoint()
 {
 	return &MyEndPoint;
 
+}
+
+float Ride::getStartTime(){
+    return startTime;
+}
+
+std::vector<Point> Ride::getPath(){
+    return path;
 }
