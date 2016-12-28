@@ -1,4 +1,4 @@
-# Install script for directory: /home/yishai/ClionProjects/ex3
+# Install script for directory: /home/yishai/ClionProjects/ex4
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

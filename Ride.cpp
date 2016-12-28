@@ -72,3 +72,11 @@ float Ride::getStartTime(){
 std::vector<Point> Ride::getPath(){
     return path;
 }
+
+void Ride::updateDistance(int type){
+	metersPassed = metersPassed + type;
+}
+
+int Ride::getDistance(){
+	return metersPassed;
+}

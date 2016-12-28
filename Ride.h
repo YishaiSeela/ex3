@@ -6,6 +6,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+//
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/tokenizer.hpp>
+#include <boost/algorithm/string/predicate.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/assign/list_of.hpp>
+#include <boost/algorithm/string.hpp>
+#include <boost/iostreams/device/back_inserter.hpp>
+#include <boost/iostreams/stream.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
 
 
 class Ride
@@ -16,10 +31,11 @@ class Ride
 	Point MyEndPoint;
 	int numOfPassengers;
 	double tarif;
-	int metersPassed;
+	int metersPassed = 0;
 	float startTime;
 	std::vector<Point> path;
 
+	friend class boost::serialization::access;
 public:
 
 	Ride(int idRide,Point startingPoint,Point endPoint ,int numOfPassangers,
@@ -31,7 +47,8 @@ public:
 	Point* getEndPoint();
     float getStartTime();
     std::vector<Point> getPath();
-
+	void updateDistance(int type);
+	int getDistance();
 
 };
 #endif

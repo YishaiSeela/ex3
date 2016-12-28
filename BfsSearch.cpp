@@ -9,7 +9,13 @@ BfsSearch::BfsSearch(Grid *grid)
  * @param grid: The grid to run the algorithm on
  */
 {
+    int i,j;
     this->gameGrid = *grid;
+    for (i = 0;i<(this->gameGrid.gridHeight);i++) {
+        for (j = 0; j<(this->gameGrid.gridWidth);j++){
+            this->gameGrid.grid[i][j].isVisited = false;
+        }
+    }
 }
 
 void BfsSearch::visitNode(Node* parent, Node *vistingNode){

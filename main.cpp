@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
     int width;
     int height;
     int task;
+    int distance;
     float time = 0;
     int obstacles;
     Point startPoint;
@@ -94,6 +95,7 @@ int main(int argc, char *argv[])
 
                 bfs->runBfs();
                 bfs->printPath();
+                delete bfs;
                 ride = new Ride(id, startPoint, endPoint, passengers, tarif,startTime, bfs->path);
                 om->addRide(ride);
                 delete prs2;
@@ -148,6 +150,7 @@ int main(int argc, char *argv[])
                 break;
             }
             case 7: {
+
                 //task 7 - delete all elemnts and exit the program
                 //g1->destroyGrid(); //- FIX IT!!!
 
@@ -158,16 +161,31 @@ int main(int argc, char *argv[])
             }
             case 9:{
                 time++;
-                cout << time;
-                for (int i = 0;i<om->listOfRides.size();i++) {
-                    if (om->listOfRides[i]->getStartTime() == time){
+
+                for (int i = 0;i<om->listOfRides.size();i++)
+                {
+                    if (!om->listOfDrivers[0]->isAvailable())
+                    {
+                        om->listOfRides[i]->updateDistance(1);
+                        distance = om->listOfRides[i]->getDistance();
+                        om->listOfDrivers[0]->setLocation(om->listOfRides[i]->getPath()[distance]);
+                        endPoint = Point(om->listOfRides[i]->getEndPoint()->getXCoordinate(),
+                                         om->listOfRides[i]->getEndPoint()->getYCoordinate());
+                        if ((om->listOfDrivers[0]->getLocation()) == (endPoint))
+                        {
+                            om->listOfDrivers[0]->setAvailability(true);
+                            om->listOfRides.erase(om->listOfRides.begin());
+                        }
+                    }
+                    if (om->listOfRides[i]->getStartTime() == time)
+                    {
+                        distance = 0;
+                        startPoint = Point(om->listOfRides[i]->getStartPoint()->getXCoordinate(),
+                                         om->listOfRides[i]->getStartPoint()->getYCoordinate());
                         om->listOfDrivers[0]->setAvailability(false);
-                        om->listOfDrivers[0]->setLocation(om->listOfRides[i]->getPath()[0]);
-
+                        om->listOfDrivers[0]->setLocation(startPoint);
                     }
-                    if (!om->listOfDrivers[0]->isAvailable()){
 
-                    }
                 }
                 cin >> task;
                 break;

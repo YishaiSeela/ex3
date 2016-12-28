@@ -2,8 +2,22 @@
 #define VEHICLE
 
 #include <stdlib.h>
-
 #include "Point.h"
+//
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/tokenizer.hpp>
+#include <boost/algorithm/string/predicate.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/assign/list_of.hpp>
+#include <boost/algorithm/string.hpp>
+#include <boost/iostreams/device/back_inserter.hpp>
+#include <boost/iostreams/stream.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
 
 using namespace std;
 
@@ -16,7 +30,7 @@ class Vehicle
     char color;
 	//enum color {RED='R',BLUE='B',GREEN='G',PINK='p',WHITE='W'};
 
-
+	friend class boost::serialization::access;
 public:
 	void startDrive(Point point);
 	Vehicle(char manufacturer,int taxiType,int id,char color);
