@@ -12,6 +12,8 @@ class OrderManager
 	//check
 	//queue queue ;
 	//list driverListOccupaid;
+	float time = 0;
+	int distance;
 public:
 	std::vector<Driver*> listOfDrivers;
 	std::vector<Ride*> listOfRides;
@@ -33,6 +35,7 @@ public:
 	void addRide(Ride *ride);
 
 	void addCab(Vehicle *vehicle);
+	void updateLOcations();
 
 	~OrderManager();
 };

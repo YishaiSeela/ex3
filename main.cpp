@@ -35,7 +35,6 @@ int main(int argc, char *argv[])
     Driver *driver;
     Ride *ride;
     Vehicle *vehicle;
-    std::vector<Point> obstaclePoints;
     //insert sizes of grid
     cin >> width >> height;
     //create grid
@@ -48,7 +47,6 @@ int main(int argc, char *argv[])
         prsOb = new Parser();
         prsOb->parse(input, 2);
         obstacle = Point(atoi(prsOb->inputVector.at(0).c_str()), atoi(prsOb->inputVector.at(1).c_str()));
-        //obstaclePoints.push_back(obstacle);
         g1->setObstacle(obstacle);
         delete prsOb;
     }
@@ -89,14 +87,18 @@ int main(int argc, char *argv[])
                 startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
                 endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
 
+                if (id ==1){
+                    id = 1;
+                }
                 g1->startPt = new Point(startPoint);
                 g1->endPt = new Point(endPoint);
                 bfs = new BfsSearch(g1);
 
                 bfs->runBfs();
                 bfs->printPath();
-                delete bfs;
                 ride = new Ride(id, startPoint, endPoint, passengers, tarif,startTime, bfs->path);
+                delete bfs;
+
                 om->addRide(ride);
                 delete prs2;
                 cin >> task;
@@ -160,33 +162,9 @@ int main(int argc, char *argv[])
 
             }
             case 9:{
-                time++;
 
-                for (int i = 0;i<om->listOfRides.size();i++)
-                {
-                    if (!om->listOfDrivers[0]->isAvailable())
-                    {
-                        om->listOfRides[i]->updateDistance(1);
-                        distance = om->listOfRides[i]->getDistance();
-                        om->listOfDrivers[0]->setLocation(om->listOfRides[i]->getPath()[distance]);
-                        endPoint = Point(om->listOfRides[i]->getEndPoint()->getXCoordinate(),
-                                         om->listOfRides[i]->getEndPoint()->getYCoordinate());
-                        if ((om->listOfDrivers[0]->getLocation()) == (endPoint))
-                        {
-                            om->listOfDrivers[0]->setAvailability(true);
-                            om->listOfRides.erase(om->listOfRides.begin());
-                        }
-                    }
-                    if (om->listOfRides[i]->getStartTime() == time)
-                    {
-                        distance = 0;
-                        startPoint = Point(om->listOfRides[i]->getStartPoint()->getXCoordinate(),
-                                         om->listOfRides[i]->getStartPoint()->getYCoordinate());
-                        om->listOfDrivers[0]->setAvailability(false);
-                        om->listOfDrivers[0]->setLocation(startPoint);
-                    }
+                om->updateLOcations();
 
-                }
                 cin >> task;
                 break;
 

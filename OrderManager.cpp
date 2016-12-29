@@ -115,3 +115,33 @@ void OrderManager::addCab(Vehicle *vehicle)
  {
     OrderManager::listOfCabs.push_back(vehicle);
 }
+
+void OrderManager::updateLOcations(){
+    time++;
+
+    for (int i = 0;i<listOfRides.size();i++)
+    {
+        if (!listOfDrivers[0]->isAvailable())
+        {
+            listOfRides[i]->updateDistance(1);
+            distance = listOfRides[i]->getDistance();
+            listOfDrivers[0]->setLocation(listOfRides[i]->getPath()[distance]);
+            Point endPoint = Point(listOfRides[i]->getEndPoint()->getXCoordinate(),
+                             listOfRides[i]->getEndPoint()->getYCoordinate());
+            if ((listOfDrivers[0]->getLocation()) == (endPoint))
+            {
+                listOfDrivers[0]->setAvailability(true);
+                listOfRides.erase(listOfRides.begin());
+            }
+        }
+        if (listOfRides[i]->getStartTime() == time)
+        {
+            distance = 0;
+            Point startPoint = Point(listOfRides[i]->getStartPoint()->getXCoordinate(),
+                               listOfRides[i]->getStartPoint()->getYCoordinate());
+            listOfDrivers[0]->setAvailability(false);
+            listOfDrivers[0]->setLocation(startPoint);
+        }
+
+    }
+}

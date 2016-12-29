@@ -1,12 +1,29 @@
 ////
 //// Created by yanaiela on 12/10/16.
 ////
-//#include "Driver.h"
+//#include <iostream>
+//#include <fstream>
+//#include <sstream>
+//#include <boost/archive/text_oarchive.hpp>
+//#include <boost/archive/text_iarchive.hpp>
+//#include <boost/tokenizer.hpp>
+//#include <boost/algorithm/string/predicate.hpp>
+//#include <boost/lexical_cast.hpp>
+//#include <boost/assign/list_of.hpp>
+//#include <boost/algorithm/string.hpp>
+//#include <boost/iostreams/device/back_inserter.hpp>
+////#include <boost/iostreams/stream.hpp>
+//#include <boost/archive/binary_oarchive.hpp>
+//#include <boost/archive/binary_iarchive.hpp>
 //#include <iostream>
 //#include "Udp.h"
 //#include "Parser.h"
+//#include "Driver.h"
+//
+//
 //#include <unistd.h>
 //#include <iostream>
+//#include <stdlib.h>
 //
 //
 //using namespace std;
@@ -15,10 +32,9 @@
 //
 //int main(int argc, char *argv[]) {
 //
-//
-//
 //    string input;
 //    Parser *prs1;
+//    string serialized;
 //    cout << argv[1] << endl;
 //    Udp udp(0, atoi(argv[1]));
 //    udp.initialize();
@@ -39,16 +55,21 @@
 //    boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
 //    boost::archive::binary_oarchive sendDriver(s);
 //    sendDriver << driver;
+//    udp.sendData(serialized);
 //    s.flush();
 //
-//    delete prs1;
+//    //save
+//    text_oarchive oa{ss};
+//    Driver *ab;
+//    Driver &rsave = *ab;
+//    oa << rsave;
 //
-//
-////    char buffer[1024];
-////    udp.sendData("hello");
-////    udp.reciveData(buffer, sizeof(buffer));
-////    cout << buffer << endl;
-//
+//    //load
+//    text_iarchive ia{ss};
+//    Driver *a;
+//    Driver &rload = *a;
+//    ia >> rload;
+//    std::cout << "pass succeed" << '\n';
 //
 //    return 0;
 //}
