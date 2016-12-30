@@ -17,7 +17,7 @@ Ride::Ride(int idRide,Point startingPoint,Point endPoint ,int numOfPassangers,
 	this->MyStartingPoint=startingPoint;
 	this->MyEndPoint=endPoint;
 	this->numOfPassengers=numOfPassangers;
-	this->tarif=tarif;
+	this->tariff=tariff;
 	this->startTime = startTime;
 	this->path=path;
 
@@ -65,18 +65,34 @@ Point* Ride::getEndPoint()
 
 }
 
-float Ride::getStartTime(){
+float Ride::getStartTime()
+/*
+ * get start time of ride
+ */
+{
     return startTime;
 }
 
-std::vector<Point> Ride::getPath(){
+std::vector<Point> Ride::getPath()
+/*
+ * get path of ride
+ */
+{
     return path;
 }
 
-void Ride::updateDistance(int type){
+void Ride::updateDistance(int type)
+/*
+ * update distance according to cab type
+ */
+{
 	metersPassed = metersPassed + type;
 }
 
-int Ride::getDistance(){
+int Ride::getDistance()
+/*
+ * return distance passed from beginning of ride
+ */
+{
 	return metersPassed;
 }

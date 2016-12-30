@@ -28,6 +28,7 @@ int main() {
 */
     Grid *g1 = new Grid();
     string input;
+    int drivers;
     OrderManager *om = new OrderManager;
     int width;
     int height;
@@ -62,13 +63,14 @@ int main() {
     while (true) {
 
         switch (task) {
-            //task 1 - insert driver
+            //task 1 - recive drivers via socket
             case 1: {
 
-                cin >> input;
+                cin >> drivers;
 
-                udp.reciveData(buffer, sizeof(buffer));
-
+                for (int i = 0; i<drivers;i++) {
+                    udp.reciveData(buffer, sizeof(buffer));
+                }
                 prs1 = new Parser();
                 prs1->parse(buffer, 5);
                 int id = atoi(prs1->inputVector.at(0).c_str());
@@ -91,7 +93,7 @@ int main() {
                 prs2->parse(input, 8);
                 int id = atoi(prs2->inputVector.at(0).c_str());
                 int passengers = atoi(prs2->inputVector.at(5).c_str());
-                double tarif = stod(prs2->inputVector.at(6).c_str());
+                double tariff = stod(prs2->inputVector.at(6).c_str());
                 float startTime = stof(prs2->inputVector.at(7).c_str());
                 startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
                 endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
@@ -101,7 +103,7 @@ int main() {
                 bfs = new BfsSearch(g1);
                 bfs->runBfs();
                 bfs->printPath();
-                ride = new Ride(id, startPoint, endPoint, passengers, tarif,startTime, bfs->path);
+                ride = new Ride(id, startPoint, endPoint, passengers, tariff,startTime, bfs->path);
                 delete bfs;
                 om->addRide(ride);
                 delete prs2;
@@ -164,8 +166,8 @@ int main() {
 
             }
             case 9:{
-
-                om->updateLOcations();
+                //task 9 - add 1 to "time" and move drivers if needed
+                om->timePassed();
 
                 cin >> task;
                 break;

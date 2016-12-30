@@ -124,9 +124,6 @@ void Grid::createGrid(int gridWidth, int gridHeight)
                 // Initialize coordinates
                 this->grid[i][j].coordinate = new Point(i, j);
 
-                // Initialize isVisited flag
-                this->grid[i][j].isVisited = false;
-
                 // Initialize parent point
                 this->grid[i][j].parentNode = new Point();
 

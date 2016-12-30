@@ -30,7 +30,7 @@ class Ride
 	Point MyStartingPoint;
 	Point MyEndPoint;
 	int numOfPassengers;
-	double tarif;
+	double tariff;
 	int metersPassed = 0;
 	float startTime;
 	std::vector<Point> path;

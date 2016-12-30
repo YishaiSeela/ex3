@@ -11,6 +11,7 @@ BfsSearch::BfsSearch(Grid *grid)
 {
     int i,j;
     this->gameGrid = *grid;
+    // Initialize isVisited flag
     for (i = 0;i<(this->gameGrid.gridHeight);i++) {
         for (j = 0; j<(this->gameGrid.gridWidth);j++){
             this->gameGrid.grid[i][j].isVisited = false;

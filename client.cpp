@@ -41,8 +41,8 @@ int main(int argc, char *argv[]) {
 
     cin >> input;
 
-    //udp.sendData(input);
-
+    udp.sendData(input);
+/*
     Parser *prs1;
     prs1 = new Parser();
     prs1->parse(input, 5);
@@ -74,7 +74,7 @@ int main(int argc, char *argv[]) {
     Driver &rload = *a;
     ia >> rload;
 
-
+*/
     std::cout << "pass succeed" << '\n';
 
     return 0;
