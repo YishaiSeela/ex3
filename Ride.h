@@ -47,7 +47,7 @@ public:
 	Point* getEndPoint();
     float getStartTime();
     std::vector<Point> getPath();
-	void updateDistance(int type);
+	void updateDistance();
 	int getDistance();
 
 };

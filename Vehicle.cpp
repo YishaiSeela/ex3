@@ -87,3 +87,19 @@ void Vehicle::stopDriving(Point point)
 {
 
 }
+
+int Vehicle::getType()
+/*
+ * get type of vehicle
+ */
+{
+    return taxiType;
+}
+
+int Vehicle::getId()
+/*
+ * get id of vehicle
+ */
+{
+    return id;
+}

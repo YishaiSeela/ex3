@@ -108,6 +108,14 @@ Driver::Driver(int id, int age, char martialStatus, int experience, int vehicle_
         return id;
     }
 
+    int Driver::getVehicleId()
+    /*
+     * return vehicle id
+     */
+    {
+        return vehicle_id;
+    }
+
     Driver::~Driver()
     /**
     * Dtor

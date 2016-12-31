@@ -46,6 +46,11 @@ public:
 
 	void stopDriving(Point point);
 
+	int getType();
+	int getId();
+
+
+
 
 };
 #endif

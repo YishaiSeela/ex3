@@ -59,7 +59,7 @@ public:
 	int getRate();
 	bool driverToPass();
 	void setAvailability(bool value);
-
+	int getVehicleId();
 	int getId();
 
 };

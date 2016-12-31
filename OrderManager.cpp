@@ -132,12 +132,29 @@ void OrderManager::timePassed()
         //if driver is occupied
         if (!listOfDrivers[0]->isAvailable())
         {
-            //move driver to next point
-            listOfRides[i]->updateDistance(1);
-            distance = listOfRides[i]->getDistance();
-            listOfDrivers[0]->setLocation(listOfRides[i]->getPath()[distance]);
+            //get type of cab;
+            int type = 0;
             Point endPoint = Point(listOfRides[i]->getEndPoint()->getXCoordinate(),
-                             listOfRides[i]->getEndPoint()->getYCoordinate());
+                                   listOfRides[i]->getEndPoint()->getYCoordinate());
+
+            for (int j=0;j<(listOfCabs.size());j++){
+                if (listOfCabs[j]->getId() == listOfDrivers[0]->getVehicleId()){
+                    type = listOfCabs[j]->getType();
+                }
+            }
+            //cout << "type" << type;
+            //listOfDrivers[0]->getVehicleId();
+            //get next point of drive according to type
+            for (int j=0;j<type;j++){
+                if ((listOfDrivers[0]->getLocation()) != (endPoint)) {
+                    listOfRides[i]->updateDistance();
+                }
+                //move driver to next point
+                distance = listOfRides[i]->getDistance();
+                listOfDrivers[0]->setLocation(listOfRides[i]->getPath()[distance]);
+            }
+
+
             //if driver reached it's destination - set him as available and remove ride
             if ((listOfDrivers[0]->getLocation()) == (endPoint))
             {

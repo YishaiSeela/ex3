@@ -81,12 +81,12 @@ std::vector<Point> Ride::getPath()
     return path;
 }
 
-void Ride::updateDistance(int type)
+void Ride::updateDistance()
 /*
  * update distance according to cab type
  */
 {
-	metersPassed = metersPassed + type;
+	metersPassed = metersPassed + 1;
 }
 
 int Ride::getDistance()
