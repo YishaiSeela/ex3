@@ -25,7 +25,6 @@ class Driver: public Person
 {
 
     Point location;
-	float yearOfExp ;
    // CabDecorator cab;
 	//Vehicle vehicleInfo; FIX!
 	bool driverToPassanger;
@@ -36,7 +35,6 @@ class Driver: public Person
 	int rate;
 
 	friend class boost::serialization::access;
-
 	template<class Archive>
 	void serialize(Archive &ar, const unsigned int version)
 	{
@@ -45,6 +43,10 @@ class Driver: public Person
 		ar & martialStatus;
 		ar & experience;
 		ar & vehicle_id;
+		ar & location;
+		ar & available;
+		ar & rate;
+
 	}
 public:
 	Driver(int id, int age, char martialStatus, int experience, int vehicle_id);

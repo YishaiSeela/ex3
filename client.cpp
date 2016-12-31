@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
     cin >> input;
 
     udp.sendData(input);
-/*
+
     Parser *prs1;
     prs1 = new Parser();
     prs1->parse(input, 5);
@@ -59,10 +59,12 @@ int main(int argc, char *argv[]) {
     boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
     boost::archive::binary_oarchive sendDriver(s);
     sendDriver << driver;
-    udp.sendData(serial_str);
+    //udp.sendData(serial_str);
     s.flush();
 
+    cout << serial_str << endl;
     //save
+    /*
     text_oarchive oa{ss};
     Driver *ab;
     Driver &rsave = *ab;
@@ -73,8 +75,8 @@ int main(int argc, char *argv[]) {
     Driver *a;
     Driver &rload = *a;
     ia >> rload;
-
 */
+
     std::cout << "pass succeed" << '\n';
 
     return 0;
