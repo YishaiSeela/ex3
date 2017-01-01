@@ -47,36 +47,15 @@ int main(int argc, char *argv[]) {
     //create driver for serilization
     driver = new Driver(id, age, status, experiance, vehicleId);
     //serialization
-
-
-
     std::string serial_str;
     boost::iostreams::back_insert_device<std::string> inserter(serial_str);
     boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
-    boost::archive::binary_oarchive oa(s);
+    boost::archive::text_oarchive oa(s);
     oa << driver;
     s.flush();
 
-    cout << serial_str << endl;
+    //cout << serial_str << endl;
     udp.sendData(serial_str);
-
-/*
-    //save
-    {
-        text_oarchive oa{ss};
-        Driver *ab;
-        Driver &rsave = *ab;
-        oa << rsave;
-    }
-
-    //load
-    {
-    text_iarchive ia{ss};
-    Driver *a;
-    Driver &rload = *a;
-    ia >> rload;
-    }
-*/
 
     std::cout << "pass succeed" << '\n';
 

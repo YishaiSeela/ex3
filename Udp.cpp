@@ -107,7 +107,7 @@ int Udp::reciveData(char* buffer, int size) {
 		return -1;
 	}
 	//print the data
-	cout<<buffer<<endl;
+	//cout<<buffer<<endl;
 	//return correct if there were no error
 	return bytes;
 }
