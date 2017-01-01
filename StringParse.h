@@ -11,6 +11,7 @@ class StringParse
 {
 public:
     void parseInput(Grid &grid, string userInput);
+    StringParse();
     ~StringParse();
 private:
     //int rideID;

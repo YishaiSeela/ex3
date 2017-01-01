@@ -17,6 +17,14 @@ Person::Person(int id, int age, char martialStatus)
 	this->martialStatus=martialStatus;
 }
 
+Person::Person()
+/**
+ * Default Ctor
+ */
+{
+
+}
+
 Person::~Person()
 /**
 * Dtor

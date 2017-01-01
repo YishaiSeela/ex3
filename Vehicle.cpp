@@ -1,3 +1,4 @@
+#include <boost/serialization/export.hpp>
 #include "Vehicle.h"
 #include "Point.h"
 
@@ -20,6 +21,11 @@ Vehicle::Vehicle(char manufacturer,int taxiType,int id,char color)
         FIAT = 'F',
     };
 }
+
+Vehicle::Vehicle()
+{
+
+};
 
 void Vehicle::startDrive(Point point)
 /**
@@ -103,3 +109,5 @@ int Vehicle::getId()
 {
     return id;
 }
+
+BOOST_CLASS_EXPORT(Vehicle);

@@ -30,7 +30,6 @@ class Driver: public Person
 	bool driverToPassanger;
 	int experience;
 	int vehicle_id;
-    char martialStatus;//[]={'S','M','D','W'};
 	bool available;
 	int rate;
 
@@ -38,9 +37,7 @@ class Driver: public Person
 	template<class Archive>
 	void serialize(Archive &ar, const unsigned int version)
 	{
-		ar & id;
-		ar & age;
-		ar & martialStatus;
+		ar & boost::serialization::base_object<Person>(*this);
 		ar & experience;
 		ar & vehicle_id;
 		ar & location;
@@ -50,6 +47,7 @@ class Driver: public Person
 	}
 public:
 	Driver(int id, int age, char martialStatus, int experience, int vehicle_id);
+	Driver();
 	~Driver();
     bool isAvailable();
 	void dropOfPass();

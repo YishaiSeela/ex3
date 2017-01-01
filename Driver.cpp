@@ -1,3 +1,18 @@
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/tokenizer.hpp>
+#include <boost/algorithm/string/predicate.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/assign/list_of.hpp>
+#include <boost/algorithm/string.hpp>
+#include <boost/iostreams/device/back_inserter.hpp>
+#include <boost/iostreams/stream.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/serialization/level.hpp>
+#include <boost/serialization/tracking.hpp>
+#include <boost/serialization/serialization.hpp>
+#include <boost/serialization/export.hpp>
 
 #include "Driver.h"
 
@@ -17,6 +32,14 @@ Driver::Driver(int id, int age, char martialStatus, int experience, int vehicle_
         location = Point(0,0);
         available = true;
         rate = 1;
+    }
+
+    Driver::Driver()
+    /**
+     * Default Ctor
+     */
+    {
+
     }
 
     bool Driver::isAvailable()
@@ -100,6 +123,7 @@ Driver::Driver(int id, int age, char martialStatus, int experience, int vehicle_
     }
 
 
+
     int Driver::getId()
     /*
     * return divers id
@@ -123,3 +147,4 @@ Driver::Driver(int id, int age, char martialStatus, int experience, int vehicle_
     {
     }
 
+BOOST_CLASS_EXPORT(Driver);

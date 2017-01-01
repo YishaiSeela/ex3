@@ -1,8 +1,6 @@
-//
-// Created by yanaiela on 12/10/16.
-//
-
-
+#include <iostream>
+#include <fstream>
+#include <sstream>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/tokenizer.hpp>
@@ -15,15 +13,10 @@
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 
-#include <iostream>
 #include "Udp.h"
 #include "Parser.h"
 #include "Driver.h"
-#include <fstream>
-#include <sstream>
 
-#include <unistd.h>
-#include <stdlib.h>
 
 
 using namespace std;
@@ -33,7 +26,7 @@ std::stringstream ss;
 int main(int argc, char *argv[]) {
 
     string input;
-
+    Driver *driver;
     Udp udp(0, atoi(argv[1]));
     udp.initialize();
 
@@ -41,7 +34,7 @@ int main(int argc, char *argv[]) {
 
     cin >> input;
 
-    udp.sendData(input);
+    //udp.sendData(input);
 
     Parser *prs1;
     prs1 = new Parser();
@@ -52,29 +45,37 @@ int main(int argc, char *argv[]) {
     int experiance = atoi(prs1->inputVector.at(3).c_str());
     int vehicleId = atoi(prs1->inputVector.at(4).c_str());
     //create driver for serilization
-    Driver *driver = new Driver(id, age, status, experiance, vehicleId);
+    driver = new Driver(id, age, status, experiance, vehicleId);
     //serialization
+
+
+
     std::string serial_str;
     boost::iostreams::back_insert_device<std::string> inserter(serial_str);
     boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
-    boost::archive::binary_oarchive sendDriver(s);
-    sendDriver << driver;
-    //udp.sendData(serial_str);
+    boost::archive::binary_oarchive oa(s);
+    oa << driver;
     s.flush();
 
     cout << serial_str << endl;
+    udp.sendData(serial_str);
+
+/*
     //save
-    /*
-    text_oarchive oa{ss};
-    Driver *ab;
-    Driver &rsave = *ab;
-    oa << rsave;
+    {
+        text_oarchive oa{ss};
+        Driver *ab;
+        Driver &rsave = *ab;
+        oa << rsave;
+    }
 
     //load
+    {
     text_iarchive ia{ss};
     Driver *a;
     Driver &rload = *a;
     ia >> rload;
+    }
 */
 
     std::cout << "pass succeed" << '\n';

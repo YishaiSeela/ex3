@@ -13,20 +13,34 @@
 #include "Ride.h"
 #include "OrderManager.h"
 
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/tokenizer.hpp>
+#include <boost/algorithm/string/predicate.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/assign/list_of.hpp>
+#include <boost/algorithm/string.hpp>
+#include <boost/iostreams/device/back_inserter.hpp>
+#include <boost/iostreams/stream.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
+
+
+std::string bufftostring(char* buffer, int length){
+    string s(buffer, length);
+    return s;
+}
+
 int main() {
 
     Udp udp(1, 1212);
     udp.initialize();
 
     char buffer[1024];
-    //udp.reciveData(buffer, sizeof(buffer));
-/*
-    char buffer[1024];
-    udp.reciveData(buffer, sizeof(buffer));
-    cout << buffer << endl;
-    udp.sendData("sup?");
-*/
+
     Grid *g1 = new Grid();
+    std::string serial_str;
+
     string input;
     int drivers;
     OrderManager *om = new OrderManager;
@@ -39,7 +53,7 @@ int main() {
     Point obstacle;
     Parser *prs1, *prs2, *prs3, *prsOb;
     BfsSearch *bfs;
-    Driver *driver;
+    Driver *driver1;
     Ride *ride;
     Vehicle *vehicle;
     //insert sizes of grid
@@ -66,23 +80,17 @@ int main() {
             //task 1 - recive drivers via socket
             case 1: {
 
-                cin >> drivers;
+                //cin >> drivers;
 
-                for (int i = 0; i<drivers;i++) {
-                    udp.reciveData(buffer, sizeof(buffer));
-                }
-                prs1 = new Parser();
-                prs1->parse(buffer, 5);
-                int id = atoi(prs1->inputVector.at(0).c_str());
-                int age = atoi(prs1->inputVector.at(1).c_str());
-                char status = prs1->inputVector.at(2)[0];
-                int experiance = atoi(prs1->inputVector.at(3).c_str());
-                int vehicleId = atoi(prs1->inputVector.at(4).c_str());
-                driver = new Driver(id, age, status, experiance, vehicleId);
-                om->addDriver(driver);
-                delete prs1;
+                boost::iostreams::basic_array_source<char> device(serial_str.c_str(), serial_str.size());
+                boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s2(device);
+                boost::archive::binary_iarchive ia(s2);
+                ia >> driver1;
 
-                cin >> task;
+                cout << driver1;
+
+//                delete gp;
+//                delete gp2;
                 break;
             }
                 //task 2 - insert ride

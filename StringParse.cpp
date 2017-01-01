@@ -6,6 +6,9 @@
 #include "StringParse.h"
 
 using namespace std;
+StringParse::StringParse()
+{
+}
 
 StringParse::~StringParse()
 {
