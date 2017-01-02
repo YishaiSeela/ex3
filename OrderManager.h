@@ -35,7 +35,7 @@ public:
 	void addRide(Ride *ride);
 
 	void addCab(Vehicle *vehicle);
-	Point timePassed();
+    void timePassed();
 
 	~OrderManager();
 };

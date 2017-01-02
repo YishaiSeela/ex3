@@ -119,7 +119,7 @@ void OrderManager::addCab(Vehicle *vehicle)
     OrderManager::listOfCabs.push_back(vehicle);
 }
 
-Point OrderManager::timePassed()
+void OrderManager::timePassed()
 /*
  * update time and move drivers
  */
@@ -153,8 +153,7 @@ Point OrderManager::timePassed()
                     type = listOfCabs[j]->getType();
                 }
             }
-            //cout << "type" << type;
-            //listOfDrivers[0]->getVehicleId();
+
             //get next point of drive according to type
             for (int j=0;j<type;j++){
                 if ((listOfDrivers[0]->getLocation()) != (endPoint)) {
@@ -175,5 +174,4 @@ Point OrderManager::timePassed()
         }
 
     }
-    return listOfDrivers[0]->getLocation();
 }

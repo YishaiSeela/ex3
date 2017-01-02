@@ -29,7 +29,6 @@ int main(int argc, char *argv[]) {
     Driver *driver;
     Vehicle *vehicle;
 
-    Point location;
     Udp udp(0, atoi(argv[1]));
     udp.initialize();
 
@@ -69,12 +68,11 @@ int main(int argc, char *argv[]) {
 
  while (true) {
     udp.reciveData(buffer, sizeof(buffer));
-    string point_str(buffer, sizeof(buffer));
-    boost::iostreams::basic_array_source<char> device(point_str.c_str(), point_str.size());
-    boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s2(device);
-    boost::archive::text_iarchive ia(s2);
-    ia >> location;
-    driver->setLocation(location);
+    string return_driver_str(buffer, sizeof(buffer));
+    boost::iostreams::basic_array_source<char> device(return_driver_str.c_str(), return_driver_str.size());
+    boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s3(device);
+    boost::archive::text_iarchive ia2(s3);
+    ia2 >> driver;
 }
     delete vehicle;
     delete driver;
