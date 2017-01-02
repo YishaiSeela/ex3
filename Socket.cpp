@@ -35,6 +35,3 @@ Socket::Socket() {
 Socket::~Socket() {
 	close(this->socketDescriptor);
 }
-
-
-

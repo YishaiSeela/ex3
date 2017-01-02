@@ -49,6 +49,8 @@ public:
 	* the data															   *
 	***********************************************************************/
 	int reciveData(char* buffer, int size);
-};
+
+	int closeData();
+	};
 
 #endif /* UDP_H_ */

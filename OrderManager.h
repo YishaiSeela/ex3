@@ -36,8 +36,10 @@ public:
 
 	void addCab(Vehicle *vehicle);
     void timePassed();
+    int findDriver(int i);
 
-	~OrderManager();
+
+    ~OrderManager();
 };
 
 #endif

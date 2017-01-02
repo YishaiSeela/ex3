@@ -66,7 +66,9 @@ int main(int argc, char *argv[]) {
     boost::archive::text_iarchive ia(s2);
     ia >> vehicle;
 
- while (true) {
+    //udp.reciveData(buffer, sizeof(buffer));
+
+    while (true) {
     udp.reciveData(buffer, sizeof(buffer));
     string return_driver_str(buffer, sizeof(buffer));
     boost::iostreams::basic_array_source<char> device(return_driver_str.c_str(), return_driver_str.size());
@@ -77,5 +79,7 @@ int main(int argc, char *argv[]) {
     delete vehicle;
     delete driver;
     delete prs1;
+    udp.closeData();
+
     return 0;
 }

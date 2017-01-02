@@ -181,9 +181,10 @@ int main() {
 
                 //task 7 - delete all elemnts and exit the program
                 //g1->destroyGrid(); //- FIX IT!!!
-
                 delete g1;
                 delete om;
+                //udp.sendData("close");
+                udp.closeData();
                 exit(0);
 
             }
