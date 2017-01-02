@@ -31,9 +31,9 @@ std::string bufftostring(char* buffer, int length){
     return s;
 }
 
-int main() {
+int main(int argc, char *argv[]) {
 
-    Udp udp(1, 1212);
+    Udp udp(1,atoi(argv[1]));
     udp.initialize();
 
     char buffer[1024];
@@ -102,7 +102,19 @@ int main() {
                         s.flush();
                         udp.sendData(vehicle_str);
                     }
+
                 }
+
+                //send ride to client
+                std::string ride_str;
+                boost::iostreams::back_insert_device<std::string> inserter(ride_str);
+                boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s1(inserter);
+                boost::archive::text_oarchive oa(s1);
+                oa << ride;
+                s1.flush();
+                udp.sendData(ride_str);
+
+
                 cin >> task;
 
                 break;
@@ -183,7 +195,7 @@ int main() {
                 //g1->destroyGrid(); //- FIX IT!!!
                 delete g1;
                 delete om;
-                //udp.sendData("close");
+                udp.sendData("close");
                 udp.closeData();
                 exit(0);
 
@@ -193,14 +205,16 @@ int main() {
                 om->timePassed();
                 //update drivers in client
 
-                std::string return_driver_str;
-                boost::iostreams::back_insert_device<std::string> inserter(return_driver_str);
-                boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
-                boost::archive::text_oarchive oa(s);
-                oa << om->listOfDrivers[0];
-                s.flush();
-                udp.sendData(return_driver_str);
+                for(int i = 0;i<om->listOfDrivers.size();i++) {
+                    std::string return_driver_str;
+                    boost::iostreams::back_insert_device<std::string> inserter(return_driver_str);
+                    boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
+                    boost::archive::text_oarchive oa(s);
+                    oa << om->listOfDrivers[i];
+                    s.flush();
+                    udp.sendData(return_driver_str);
 
+                }
                 cin >> task;
                 break;
 

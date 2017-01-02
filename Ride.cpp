@@ -7,23 +7,25 @@
 using namespace std;
 
 Ride::Ride(int idRide,Point startingPoint,Point endPoint ,int numOfPassangers,
-           double tariff ,float startTime, std::vector<Point> path)
+		   double tariff ,float startTime, std::vector<Point> path)
 /**
 * Ctor
 */
 {
 
 	this->idRide=idRide;
-	this->MyStartingPoint=startingPoint;
-	this->MyEndPoint=endPoint;
+	this->myStartingPoint=startingPoint;
+	this->myEndPoint=endPoint;
 	this->numOfPassengers=numOfPassangers;
 	this->tariff=tariff;
 	this->startTime = startTime;
 	this->path=path;
 
 }
-
-
+/**
+ * ctor difoltive
+ */
+Ride::Ride() {}
 Ride::~Ride()
 /**
 * Dtor
@@ -45,7 +47,7 @@ int Ride::getId()
 * returns driver's destinaton
 */
 {
-    return idRide;
+	return idRide;
 }
 
 Point* Ride::getStartPoint()
@@ -53,7 +55,7 @@ Point* Ride::getStartPoint()
  * get start point of ride
  */
 {
-	return &MyStartingPoint;
+	return &myStartingPoint;
 }
 
 Point* Ride::getEndPoint()
@@ -61,7 +63,7 @@ Point* Ride::getEndPoint()
  * get end point of ride
  */
 {
-	return &MyEndPoint;
+	return &myEndPoint;
 
 }
 
@@ -70,7 +72,7 @@ float Ride::getStartTime()
  * get start time of ride
  */
 {
-    return startTime;
+	return startTime;
 }
 
 std::vector<Point> Ride::getPath()
@@ -78,7 +80,7 @@ std::vector<Point> Ride::getPath()
  * get path of ride
  */
 {
-    return path;
+	return path;
 }
 
 void Ride::updateDistance()

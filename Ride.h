@@ -21,32 +21,49 @@
 #include <boost/iostreams/stream.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
+#include <boost/serialization/vector.hpp>
 
 
 class Ride
 
 {
 	int idRide;
-	Point MyStartingPoint;
-	Point MyEndPoint;
+	Point myStartingPoint;
+	Point myEndPoint;
 	int numOfPassengers;
 	double tariff;
 	int metersPassed = 0;
 	float startTime;
 	std::vector<Point> path;
 
+	//for serilaization
 	friend class boost::serialization::access;
+	template<class Archive>
+	void serialize(Archive &ar, const unsigned int version)
+	{
+		ar & idRide;
+		ar & myStartingPoint;
+		ar & myEndPoint;
+		ar & numOfPassengers;
+		ar & tariff;
+		ar & metersPassed;
+		ar & startTime;
+        ar & path;
+
+	}
 public:
 
 	Ride(int idRide,Point startingPoint,Point endPoint ,int numOfPassangers,
 		 double tariff,float startTime,std::vector<Point> path);
+	//for deserialization
+	Ride();
 	~Ride();
 	int getId();
 	void setId(int id);
 	Point* getStartPoint();
 	Point* getEndPoint();
-    float getStartTime();
-    std::vector<Point> getPath();
+	float getStartTime();
+	std::vector<Point> getPath();
 	void updateDistance();
 	int getDistance();
 

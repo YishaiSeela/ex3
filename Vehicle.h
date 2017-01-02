@@ -25,10 +25,10 @@ using namespace std;
 class Vehicle
 {
 
-	char manufacturer;// {HONDA='H',SUBARU='S',TESLA='T',FIAT='F'};
+	string manufacturer;// {HONDA='H',SUBARU='S',TESLA='T',FIAT='F'};
 	int taxiType;
     int id;
-    char color;
+	string color;
 	//enum color {RED='R',BLUE='B',GREEN='G',PINK='p',WHITE='W'};
 
 	friend class boost::serialization::access;

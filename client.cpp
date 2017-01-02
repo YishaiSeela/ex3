@@ -16,7 +16,7 @@
 #include "Udp.h"
 #include "Parser.h"
 #include "Driver.h"
-
+#include "Ride.h"
 
 
 using namespace std;
@@ -28,11 +28,12 @@ int main(int argc, char *argv[]) {
     string input;
     Driver *driver;
     Vehicle *vehicle;
-
+    Ride *ride;
     Udp udp(0, atoi(argv[1]));
     udp.initialize();
 
     char buffer[1024];
+
 
     cin >> input;
 
@@ -49,7 +50,7 @@ int main(int argc, char *argv[]) {
     //create driver for serilization
     driver = new Driver(id, age, status, experiance, vehicleId);
 
-    //serialization
+    //serialization of driver
     std::string serial_str;
     boost::iostreams::back_insert_device<std::string> inserter(serial_str);
     boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
@@ -58,7 +59,7 @@ int main(int argc, char *argv[]) {
     s.flush();
 
     udp.sendData(serial_str);
-
+    //recieve vehicle from server
     udp.reciveData(buffer, sizeof(buffer));
     string vehicle_str(buffer, sizeof(buffer));
     boost::iostreams::basic_array_source<char> device(vehicle_str.c_str(), vehicle_str.size());
@@ -66,18 +67,30 @@ int main(int argc, char *argv[]) {
     boost::archive::text_iarchive ia(s2);
     ia >> vehicle;
 
-    //udp.reciveData(buffer, sizeof(buffer));
+    //recieve ride from server
+    udp.reciveData(buffer, sizeof(buffer));
+    std::string ride_str(buffer, sizeof(buffer));
+    boost::iostreams::basic_array_source<char> device1(ride_str.c_str(), ride_str.size());
+    boost::iostreams::stream<boost::iostreams::basic_array_source<char> > sRide(device1);
+    boost::archive::text_iarchive ir(sRide);
+    ir >> ride;
 
-    while (true) {
+
     udp.reciveData(buffer, sizeof(buffer));
     string return_driver_str(buffer, sizeof(buffer));
+
+    while (true){//!return_driver_str.compare("close")) {
     boost::iostreams::basic_array_source<char> device(return_driver_str.c_str(), return_driver_str.size());
     boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s3(device);
     boost::archive::text_iarchive ia2(s3);
     ia2 >> driver;
+
+    udp.reciveData(buffer, sizeof(buffer));
+
 }
     delete vehicle;
     delete driver;
+    delete ride;
     delete prs1;
     udp.closeData();
 

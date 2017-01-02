@@ -20,6 +20,27 @@ Vehicle::Vehicle(char manufacturer,int taxiType,int id,char color)
         TESLA = 'T',
         FIAT = 'F',
     };
+
+    /*
+    switch (manufacturer){
+        case 'H':{
+            this->manufacturer='HONDA';
+            break;
+        }
+        case 'S':{
+            this->manufacturer='SUBARU';
+            break;
+        }
+        case 'T':{
+            this->manufacturer='TESLA';
+            break;
+        }
+        case 'F':{
+            this->manufacturer='FIAT';
+            break;
+        }
+
+    }*/
 }
 
 Vehicle::Vehicle()
