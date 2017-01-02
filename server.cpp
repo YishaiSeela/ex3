@@ -91,6 +91,18 @@ int main() {
                 ia >> driver1;
                 //add driver to list
                 om->addDriver(driver1);
+                //send vehicle to client
+                for (int i = 0;i<om->listOfCabs.size();i++){
+                    if (driver1->getVehicleId() == om->listOfCabs[i]->getId()){
+                        std::string vehicle_str;
+                        boost::iostreams::back_insert_device<std::string> inserter(vehicle_str);
+                        boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
+                        boost::archive::text_oarchive oa(s);
+                        oa << om->listOfCabs[i];
+                        s.flush();
+                        udp.sendData(vehicle_str);
+                    }
+                }
                 cin >> task;
 
                 break;
@@ -198,17 +210,4 @@ int main() {
             }
         }
     }
-
-/*
-//    usleep(5000);
-    Udp udp2(1, 5554);
-    udp2.initialize();
-
-    char buffer2[1024];
-    udp2.reciveData(buffer2, sizeof(buffer2));
-    cout << buffer2 << endl;
-    udp2.sendData("sup?");*/
-
-    // support more than one client?
-    return 0;
 }
