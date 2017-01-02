@@ -27,6 +27,7 @@ int main(int argc, char *argv[]) {
 
     string input;
     Driver *driver;
+    Point location;
     Udp udp(0, atoi(argv[1]));
     udp.initialize();
 
@@ -46,6 +47,8 @@ int main(int argc, char *argv[]) {
     int vehicleId = atoi(prs1->inputVector.at(4).c_str());
     //create driver for serilization
     driver = new Driver(id, age, status, experiance, vehicleId);
+
+
     //serialization
     std::string serial_str;
     boost::iostreams::back_insert_device<std::string> inserter(serial_str);
@@ -54,10 +57,17 @@ int main(int argc, char *argv[]) {
     oa << driver;
     s.flush();
 
-    //cout << serial_str << endl;
     udp.sendData(serial_str);
 
-    std::cout << "pass succeed" << '\n';
+    udp.reciveData(buffer, sizeof(buffer));
+    string point_str(buffer, sizeof(buffer));
+    boost::iostreams::basic_array_source<char> device(point_str.c_str(), point_str.size());
+    boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s2(device);
+    boost::archive::text_iarchive ia(s2);
+    ia >> location;
+    driver->setLocation(location);
 
+    delete driver;
+    delete prs1;
     return 0;
 }

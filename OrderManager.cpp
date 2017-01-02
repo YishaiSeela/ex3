@@ -119,11 +119,22 @@ void OrderManager::addCab(Vehicle *vehicle)
     OrderManager::listOfCabs.push_back(vehicle);
 }
 
-void OrderManager::timePassed()
+Point OrderManager::timePassed()
 /*
  * update time and move drivers
  */
 {
+    for (int i = 0;i<listOfRides.size();i++) {
+        //if it's the time to start the ride
+        if (listOfRides[i]->getStartTime() == time) {
+            //move driver to start point
+            distance = 0;
+            Point startPoint = Point(listOfRides[i]->getStartPoint()->getXCoordinate(),
+                                     listOfRides[i]->getStartPoint()->getYCoordinate());
+            listOfDrivers[0]->setAvailability(false);
+            listOfDrivers[0]->setLocation(startPoint);
+        }
+    }
     //update time
     time++;
 
@@ -152,8 +163,8 @@ void OrderManager::timePassed()
                 //move driver to next point
                 distance = listOfRides[i]->getDistance();
                 listOfDrivers[0]->setLocation(listOfRides[i]->getPath()[distance]);
-            }
 
+            }
 
             //if driver reached it's destination - set him as available and remove ride
             if ((listOfDrivers[0]->getLocation()) == (endPoint))
@@ -162,16 +173,7 @@ void OrderManager::timePassed()
                 listOfRides.erase(listOfRides.begin());
             }
         }
-        //if it's the time to start the ride
-        if (listOfRides[i]->getStartTime() == time)
-        {
-            //move driver to start point
-            distance = 0;
-            Point startPoint = Point(listOfRides[i]->getStartPoint()->getXCoordinate(),
-                               listOfRides[i]->getStartPoint()->getYCoordinate());
-            listOfDrivers[0]->setAvailability(false);
-            listOfDrivers[0]->setLocation(startPoint);
-        }
 
     }
+    return listOfDrivers[0]->getLocation();
 }

@@ -50,6 +50,7 @@ int main() {
     int obstacles;
     Point startPoint;
     Point endPoint;
+    Point current;
     Point obstacle;
     Parser *prs1, *prs2, *prs3, *prsOb;
     BfsSearch *bfs;
@@ -176,7 +177,15 @@ int main() {
             }
             case 9:{
                 //task 9 - add 1 to "time" and move drivers if needed
-                om->timePassed();
+                current = om->timePassed();
+                std::string point_str;
+                boost::iostreams::back_insert_device<std::string> inserter(point_str);
+                boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
+                boost::archive::text_oarchive oa(s);
+                oa << current;
+                s.flush();
+                udp.sendData(point_str);
+
 
                 cin >> task;
                 break;
