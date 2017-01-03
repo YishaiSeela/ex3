@@ -27,7 +27,8 @@ class Person {
 protected:
 	int id;
 	int age;
-	char martialStatus;//[]={'S','M','D','W'};
+	typedef enum {SINGLE,MARRIED,DIVORCED,WIDDOW} MartialStatus;
+	MartialStatus martialStatus;
 public:
 	Person(int id, int age, char martialStatus);
 	Person();

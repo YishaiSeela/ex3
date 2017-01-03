@@ -11,6 +11,13 @@ Point::Point()
 {
 }
 
+Point::~Point()
+/**
+ * Dtor
+ */
+{
+}
+
 Point::Point(int x, int y)
 /**
  * Initializes the coordinates

@@ -171,6 +171,7 @@ void OrderManager::timePassed()
             if ((listOfDrivers[driverNo]->getLocation()) == (endPoint))
             {
                 listOfDrivers[driverNo]->setAvailability(true);
+                delete listOfRides[i];
                 listOfRides.erase(listOfRides.begin());
             }
         }
