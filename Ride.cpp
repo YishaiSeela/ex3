@@ -14,16 +14,18 @@ Ride::Ride(int idRide,Point startingPoint,Point endPoint ,int numOfPassangers,
 {
 
 	this->idRide=idRide;
-	this->MyStartingPoint=startingPoint;
-	this->MyEndPoint=endPoint;
+	this->myStartingPoint=startingPoint;
+	this->myEndPoint=endPoint;
 	this->numOfPassengers=numOfPassangers;
 	this->tariff=tariff;
 	this->startTime = startTime;
 	this->path=path;
 
 }
-
-
+/**
+ * ctor difoltive
+ */
+Ride::Ride() {}
 Ride::~Ride()
 /**
 * Dtor
@@ -53,7 +55,7 @@ Point* Ride::getStartPoint()
  * get start point of ride
  */
 {
-	return &MyStartingPoint;
+	return &myStartingPoint;
 }
 
 Point* Ride::getEndPoint()
@@ -61,7 +63,7 @@ Point* Ride::getEndPoint()
  * get end point of ride
  */
 {
-	return &MyEndPoint;
+	return &myEndPoint;
 
 }
 

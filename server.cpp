@@ -33,7 +33,7 @@ std::string bufftostring(char* buffer, int length){
 
 int main() {
 
-    Udp udp(1, 1212);
+    Udp udp(true, 1212);
     udp.initialize();
 
     char buffer[1024];
@@ -42,7 +42,7 @@ int main() {
     //std::string serial_str;
 
     string input;
-    int drivers;
+    int drivers,rides;
     OrderManager *om = new OrderManager;
     int width;
     int height;
@@ -92,8 +92,8 @@ int main() {
                 //add driver to list
                 om->addDriver(driver1);
                 //send vehicle to client
-                for (int i = 0;i<om->listOfCabs.size();i++){
-                    if (driver1->getVehicleId() == om->listOfCabs[i]->getId()){
+                for (int i = 0; i < om->listOfCabs.size(); i++) {
+                    if (driver1->getVehicleId() == om->listOfCabs[i]->getId()) {
                         std::string vehicle_str;
                         boost::iostreams::back_insert_device<std::string> inserter(vehicle_str);
                         boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
@@ -101,38 +101,64 @@ int main() {
                         oa << om->listOfCabs[i];
                         s.flush();
                         udp.sendData(vehicle_str);
+                        cin >> task;
                     }
+
+
+                }
+                break;
+            }
+
+            case 2: {
+                //task 2 - insert ride
+                cin >> input;
+                cin >> rides;
+                //recieve driver from client
+                udp.reciveData(buffer, sizeof(buffer));
+                string serial_str(buffer, sizeof(buffer));
+                boost::iostreams::basic_array_source<char> device(serial_str.c_str(), serial_str.size());
+                boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s3(device);
+                boost::archive::text_iarchive ir(s3);
+                ir >> ride;
+                //add driver to list
+                om->addDriver(driver1);
+                //send vehicle to client
+                for (int i = 0; i < om->listOfRides.size(); i++) {
+                    if (ride->getId() == om->listOfRides[i]->getId()) {
+                        std::string vehicle_str;
+                        boost::iostreams::back_insert_device<std::string> inserter(vehicle_str);
+                        boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
+                        boost::archive::text_oarchive oa(s);
+                        oa << om->listOfRides[i];
+                        s.flush();
+                        udp.sendData(vehicle_str);
+                    }
+                    cin >> task;
+
+
+                    prs2 = new Parser();
+                    prs2->parse(input, 8);
+                    int id = atoi(prs2->inputVector.at(0).c_str());
+                    int passengers = atoi(prs2->inputVector.at(5).c_str());
+                    double tariff = stod(prs2->inputVector.at(6).c_str());
+                    float startTime = stof(prs2->inputVector.at(7).c_str());
+                    startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
+                    endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
+
+                    g1->startPt = new Point(startPoint);
+                    g1->endPt = new Point(endPoint);
+                    bfs = new BfsSearch(g1);
+                    bfs->runBfs();
+                    bfs->printPath();
+                    ride = new Ride(id, startPoint, endPoint, passengers, tariff, startTime, bfs->path);
+                    delete bfs;
+                    om->addRide(ride);
+                    delete prs2;
                 }
                 cin >> task;
-
-                break;
             }
-                //task 2 - insert ride
-            case 2: {
-
-                cin >> input;
-                prs2 = new Parser();
-                prs2->parse(input, 8);
-                int id = atoi(prs2->inputVector.at(0).c_str());
-                int passengers = atoi(prs2->inputVector.at(5).c_str());
-                double tariff = stod(prs2->inputVector.at(6).c_str());
-                float startTime = stof(prs2->inputVector.at(7).c_str());
-                startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
-                endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
-
-                g1->startPt = new Point(startPoint);
-                g1->endPt = new Point(endPoint);
-                bfs = new BfsSearch(g1);
-                bfs->runBfs();
-                bfs->printPath();
-                ride = new Ride(id, startPoint, endPoint, passengers, tariff,startTime, bfs->path);
-                delete bfs;
-                om->addRide(ride);
-                delete prs2;
-
-                cin >> task;
                 break;
-            }
+
                 //task 3 - insert a vehicle:
             case 3: {
                 cin >> input;
