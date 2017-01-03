@@ -9,17 +9,12 @@ using namespace std;
 class OrderManager
 {
 
-	//check
-	//queue queue ;
-	//list driverListOccupaid;
-	float time = 0;
+	float time;
 	int distance;
 public:
 	std::vector<Driver*> listOfDrivers;
 	std::vector<Ride*> listOfRides;
 	std::vector<Vehicle*> listOfCabs;
-	//list driverListUnOccupaid;
-//	list ride;
 
 	OrderManager();
 	void answerPhone(Passanger passanger);

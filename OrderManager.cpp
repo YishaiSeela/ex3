@@ -10,6 +10,8 @@ OrderManager::OrderManager()
  * ctor
  */
 {
+    time = 0;
+    distance = 0;
 }
 
 OrderManager::~OrderManager()

@@ -26,7 +26,7 @@ void BfsSearch::visitNode(Node* parent, Node *vistingNode){
         // Update distance and push to queue
         vistingNode->distance = parent->distance + 1;
         vistingNode->isVisited = true;
-        vistingNode->parentNode = (Point *) parent;
+        vistingNode->parentNode = parent;
         this->ptQueue.push(vistingNode);
     }
 }
@@ -94,7 +94,7 @@ void BfsSearch::printPath()
     // Print the coordinates until the start point is reached
     while(current!=start)
     {
-        Node *temp= (Node *) current->parentNode;
+        Node *temp= current->parentNode;
         temp->sonNode=current;
         current=temp;
     }
@@ -116,5 +116,3 @@ BfsSearch::~BfsSearch()
 {
 
 }
-
-

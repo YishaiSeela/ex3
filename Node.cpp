@@ -77,12 +77,7 @@ Node::~Node()
     {
         delete this->leftNode;
     }
-/*
-    if (this->parentNode != NULL)
-    {
-        delete this->parentNode;
-    }
-*/
+
     // Free the coordinate
     delete this->coordinate;
 

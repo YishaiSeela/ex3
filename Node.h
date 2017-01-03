@@ -13,7 +13,7 @@ public:
     Point *upNode; // Up node of the point
     Point *downNode; // Down node of the point
     Point *rightNode; // Right node of the point
-    Point *parentNode; // Parent node of the point
+    Node *parentNode; // Parent node of the point---
     Node *sonNode; // Parent node of the point
     int distance; // Distance from the end point
     bool isVisited;

@@ -7,13 +7,12 @@
 
 using namespace std;
 
-Grid::Grid()//int w, int h)
+Grid::Grid()
 /**
  * Ctor
  */
 {
-    //int width = w;
-    //int height = h;
+
 
 }
 
@@ -34,8 +33,6 @@ void Grid::destroyGrid()
  * Free all the inner allocated objects
  */
 {
-    //delete this->startPt;
-    //delete this->endPt;
 
     int i;
     // Delete all the nodes in the grid
@@ -68,6 +65,7 @@ void Grid::createGrid(int gridWidth, int gridHeight)
 {
     this->gridWidth = gridWidth;
     this->gridHeight = gridHeight;
+
     try {
 
         // Create one dimensional grid
@@ -76,58 +74,63 @@ void Grid::createGrid(int gridWidth, int gridHeight)
         int u;
         // Create 2D grid
         for (u = 0; u < this->gridHeight; u++) {
+
             this->grid[u] = new Node[this->gridWidth];
         }
 
-        int i;
+        for(int i=0;i<gridHeight;i++){
+            for(int j=0;j<gridWidth;j++){
+                // Initialize distance to max value as default
+                this->grid[i][j].distance = 0;
+
+                // Initialize coordinates
+                this->grid[i][j].coordinate = new Point(gridHeight-i-1, j);
+
+                // Initialize isVisited flag
+                this->grid[i][j].isVisited = false;
+
+            }
+        }
+
         // Initialize each node with default and relevant information
-        for (i = 0; i < this->gridHeight; i++)
+        for (int i = 0; i<gridHeight ; i++)
         {
-            int j;
-            for (j = 0; j < this->gridWidth; j++)
+            for (int j = 0; j <gridWidth; j++)
             {
 
                 // Check if neighbouring nodes exist
                 // If the node isn't on the left most colomn
-                if (j - 1 >= 0)
+                if (0<this->grid[i][j].coordinate->getYCoordinate())
                 {
-                    this->grid[i][j].leftNode = new Point( i, j - 1);
+                    this->grid[i][j].leftNode = getNode(this->grid[i][j-1].coordinate)->coordinate;
                 } else{
                     this->grid[i][j].leftNode = NULL;
                 }
 
                 // If the node isn't on the right most colomn
-                if (j + 1 < this->gridWidth)
+                if (this->grid[i][j].coordinate->getYCoordinate()<gridWidth-1)
                 {
-                    this->grid[i][j].rightNode = new Point(i, j + 1);
+                    this->grid[i][j].rightNode = getNode(this->grid[i][j+1].coordinate)->coordinate;
                 } else{
                     this->grid[i][j].rightNode = NULL;
                 }
 
-                // If the node isn't on the top most row
-                if (i - 1 >= 0)
+                // If the node isn't on the bottom most row
+                if (0<this->grid[i][j].coordinate->getXCoordinate())
                 {
-                    this->grid[i][j].upNode = new Point(i - 1, j);
+                    this->grid[i][j].downNode = getNode(this->grid[i+1][j].coordinate)->coordinate;
+                } else{
+                    this->grid[i][j].downNode = NULL;
+                }
+
+                // If the node isn't on the top most row
+                if (this->grid[i][j].coordinate->getXCoordinate()<gridHeight-1)
+                {
+                    this->grid[i][j].upNode = getNode(this->grid[i-1][j].coordinate)->coordinate;
                 } else{
                     this->grid[i][j].upNode = NULL;
                 }
 
-                // If the node isn't on the bottom most row
-                if (i + 1 < this->gridHeight)
-                {
-                    this->grid[i][j].downNode = new Point(i + 1, j);
-                } else{
-                    this->grid[i][j].downNode = NULL;
-                }
-                this->grid[i][j].sonNode = NULL;
-                // Initialize distance to max value as default
-                this->grid[i][j].distance = 0;
-
-                // Initialize coordinates
-                this->grid[i][j].coordinate = new Point(i, j);
-
-                // Initialize parent point
-                //this->grid[i][j].parentNode = new Point();
 
             }
         }

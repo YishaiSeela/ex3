@@ -12,7 +12,7 @@ Ride::Ride(int idRide,Point startingPoint,Point endPoint ,int numOfPassangers,
 * Ctor
 */
 {
-
+	metersPassed = 0;
 	this->idRide=idRide;
 	this->myStartingPoint=startingPoint;
 	this->myEndPoint=endPoint;
@@ -22,10 +22,15 @@ Ride::Ride(int idRide,Point startingPoint,Point endPoint ,int numOfPassangers,
 	this->path=path;
 
 }
+
+Ride::Ride()
 /**
- * ctor difoltive
+ * default ctor
  */
-Ride::Ride() {}
+{
+
+}
+
 Ride::~Ride()
 /**
 * Dtor
