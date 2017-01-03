@@ -3,44 +3,57 @@
 #include "Point.h"
 
 
-Vehicle::Vehicle(char manufacturer,int taxiType,int id,char color)
+Vehicle::Vehicle(char manu,int taxiType,int id,char col)
 /**
 * Ctor
 */
 {
-	this->manufacturer=manufacturer;// {HONDA='H',SUBARU='S',TESLA='T',FIAT='F'};
     this->taxiType=taxiType;
 	this->id=id;
-    this->color=color;
-	enum color : char {RED='R',BLUE='B',GREEN='G',PINK='p',WHITE='W'};
 
-    enum manufacturer : char {
-        HONDA='H',
-        SUBARU = 'S',
-        TESLA = 'T',
-        FIAT = 'F',
-    };
-
-    /*
-    switch (manufacturer){
+    switch (manu){
         case 'H':{
-            this->manufacturer='HONDA';
+            this->manufacturer=HONDA;
             break;
         }
         case 'S':{
-            this->manufacturer='SUBARU';
+            this->manufacturer=SUBARU;
             break;
         }
         case 'T':{
-            this->manufacturer='TESLA';
+            this->manufacturer=TESLA;
             break;
         }
         case 'F':{
-            this->manufacturer='FIAT';
+            this->manufacturer=FIAT;
             break;
         }
 
-    }*/
+    }
+
+    switch (col){
+        case 'R':{
+            this->color=RED;
+            break;
+        }
+        case 'B':{
+            this->color=BLUE;
+            break;
+        }
+        case 'G':{
+            this->color=GREEN;
+            break;
+        }
+        case 'P':{
+            this->color=PINK;
+            break;
+        }
+        case 'W':{
+            this->color=WHITE;
+            break;
+        }
+
+    }
 }
 
 Vehicle::Vehicle()

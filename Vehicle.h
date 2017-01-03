@@ -24,12 +24,12 @@ using namespace std;
 
 class Vehicle
 {
-
-	string manufacturer;// {HONDA='H',SUBARU='S',TESLA='T',FIAT='F'};
+    typedef enum {HONDA,SUBARU,TESLA,FIAT} Manufacturer;
+	Manufacturer manufacturer;
 	int taxiType;
     int id;
-	string color;
-	//enum color {RED='R',BLUE='B',GREEN='G',PINK='p',WHITE='W'};
+    typedef enum {RED,BLUE,GREEN,PINK,WHITE} Color;
+    Color color;
 
 	friend class boost::serialization::access;
 	template<class Archive>
@@ -42,6 +42,8 @@ class Vehicle
 
 	}
 public:
+
+    //typedef enum {RED,BLUE,GREEN,PINK,WHITE} Color;
 	void startDrive(Point point);
 	Vehicle(char manufacturer,int taxiType,int id,char color);
     Vehicle();
@@ -59,9 +61,6 @@ public:
 
 	int getType();
 	int getId();
-
-
-
 
 };
 #endif

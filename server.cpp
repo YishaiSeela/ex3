@@ -39,7 +39,6 @@ int main(int argc, char *argv[]) {
     char buffer[1024];
 
     Grid *g1 = new Grid();
-    //std::string serial_str;
 
     string input;
     int drivers;
@@ -172,30 +171,13 @@ int main(int argc, char *argv[]) {
                 break;
             }
 
-            case 6: {
-                //task 6 - move all drivers to their end point
-                int rides = om->listOfRides.size();
-                for (int i = 0; i < rides; i++) {
-                    if(i < om->listOfDrivers.size()) {
-                        g1->startPt = om->listOfRides[0]->getStartPoint();
-                        g1->endPt = om->listOfRides[0]->getEndPoint();
-                        endPoint = Point(g1->endPt->getXCoordinate(), g1->endPt->getYCoordinate());
-
-                        om->listOfDrivers[i]->setLocation(endPoint);
-                        om->listOfRides.erase(om->listOfRides.begin());
-                    }
-                }
-
-                cin >> task;
-                break;
-            }
             case 7: {
 
                 //task 7 - delete all elemnts and exit the program
-                //g1->destroyGrid(); //- FIX IT!!!
+                g1->destroyGrid();
                 delete g1;
                 delete om;
-                udp.sendData("close");
+                udp.sendData("7");
                 udp.closeData();
                 exit(0);
 
@@ -203,8 +185,8 @@ int main(int argc, char *argv[]) {
             case 9:{
                 //task 9 - add 1 to "time" and move drivers if needed
                 om->timePassed();
-                //update drivers in client
 
+                //update drivers in client
                 for(int i = 0;i<om->listOfDrivers.size();i++) {
                     std::string return_driver_str;
                     boost::iostreams::back_insert_device<std::string> inserter(return_driver_str);

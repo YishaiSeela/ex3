@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
     udp.reciveData(buffer, sizeof(buffer));
     string return_driver_str(buffer, sizeof(buffer));
 
-    while (true){//!return_driver_str.compare("close")) {
+    while (*buffer != '7'){//!return_driver_str.compare("close")) {
     boost::iostreams::basic_array_source<char> device(return_driver_str.c_str(), return_driver_str.size());
     boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s3(device);
     boost::archive::text_iarchive ia2(s3);

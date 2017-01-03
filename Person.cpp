@@ -10,12 +10,29 @@
 /**
 * Ctor
 */
-Person::Person(int id, int age, char martialStatus)
+Person::Person(int id, int age, char ms)
 {
 	this->id=id;
 	this->age=age;
-	this->martialStatus=martialStatus;
-}
+	switch (ms){
+		case 'S':{
+			this->martialStatus=SINGLE;
+			break;
+		}
+		case 'M':{
+			this->martialStatus=MARRIED;
+			break;
+		}
+		case 'D':{
+			this->martialStatus=DIVORCED;
+			break;
+		}
+		case 'W':{
+			this->martialStatus=WIDDOW;
+			break;
+		}
+
+	}}
 
 Person::Person()
 /**
