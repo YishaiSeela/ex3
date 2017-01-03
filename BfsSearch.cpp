@@ -109,3 +109,12 @@ void BfsSearch::printPath()
     BfsSearch::path.push_back(*(current->coordinate));
 }
 
+BfsSearch::~BfsSearch()
+/*
+ * Dtor
+ */
+{
+
+}
+
+

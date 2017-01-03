@@ -6,6 +6,6 @@ COMMON_SOURCES = CabDecorator.cpp CabDecorator.h Driver.cpp Driver.h EventNotifi
 	BfsSearch.cpp BfsSearch.h Grid.cpp Grid.h Node.cpp Node.h StringParse.cpp StringParse.h test.h \
 	Parser.cpp Parser.h RegularCab.cpp RegularCab.h Udp.cpp Udp.h Socket.cpp Socket.h
 server:
-	g++ -std=c++0x server.cpp $(COMMON_SOURCES) -lboost_serialization -I. -o server.out
+	g++ -std=c++0x server.cpp $(COMMON_SOURCES) -lboost_serialization -I. -g -o server.out
 client:
-	g++ -std=c++0x client.cpp $(COMMON_SOURCES) -lboost_serialization -I. -o client.out
+	g++ -std=c++0x client.cpp $(COMMON_SOURCES) -lboost_serialization -I. -g -o client.out

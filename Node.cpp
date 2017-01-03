@@ -2,9 +2,16 @@
 #include "Node.h"
 
 Node::Node()
-// Ctor with no params
+// Ctor
 {
     isObstacle = false;
+    this->leftNode = NULL; // Left node of the point
+    this->upNode = NULL; // Up node of the point
+    this->downNode = NULL; // Down node of the point
+    this->rightNode = NULL; // Right node of the point
+    this->parentNode = NULL; // Parent node of the point
+    this->coordinate = NULL;
+    this->sonNode = NULL;
 }
 
 Node::Node(Point *initPt)
@@ -14,6 +21,12 @@ Node::Node(Point *initPt)
  */
 {
     this->coordinate = initPt;
+    this->leftNode = NULL; // Left node of the point
+    this->upNode = NULL; // Up node of the point
+    this->downNode = NULL; // Down node of the point
+    this->rightNode = NULL; // Right node of the point
+    this->parentNode = NULL; // Parent node of the point
+    this->sonNode = NULL;
 }
 
 Point* Node::getCoordiante()

@@ -31,6 +31,8 @@ class Point
     }
 public:
     Point ();
+    ~Point ();
+
     Point(int x, int y); // Constructor
     int getXCoordinate(); // X coordinate getter
     int getYCoordinate(); // Y coordinate getter

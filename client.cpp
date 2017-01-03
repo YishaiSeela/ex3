@@ -83,6 +83,7 @@ int main(int argc, char *argv[]) {
     boost::iostreams::basic_array_source<char> device(return_driver_str.c_str(), return_driver_str.size());
     boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s3(device);
     boost::archive::text_iarchive ia2(s3);
+    delete driver;
     ia2 >> driver;
 
     udp.reciveData(buffer, sizeof(buffer));

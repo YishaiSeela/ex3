@@ -138,6 +138,9 @@ int main(int argc, char *argv[]) {
                 bfs->printPath();
                 ride = new Ride(id, startPoint, endPoint, passengers, tariff,startTime, bfs->path);
                 delete bfs;
+                delete g1->startPt;
+                delete g1->endPt;
+
                 om->addRide(ride);
                 delete prs2;
 

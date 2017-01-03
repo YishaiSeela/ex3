@@ -19,7 +19,7 @@ public:
     void runBfs(); // Run the algorithm
     void visitNode(Node* parent, Node *vistingNode);
     void printPath(); // Prints the shortest path
-
+    ~BfsSearch(); // Dtor
     std::vector<Point> path;
 
 };

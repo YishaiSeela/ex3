@@ -45,6 +45,8 @@ void Grid::destroyGrid()
     }
 
     delete[] this->grid;
+
+
 }
 
 bool Grid:: inBoundary(Point p) {
@@ -117,7 +119,7 @@ void Grid::createGrid(int gridWidth, int gridHeight)
                 } else{
                     this->grid[i][j].downNode = NULL;
                 }
-
+                this->grid[i][j].sonNode = NULL;
                 // Initialize distance to max value as default
                 this->grid[i][j].distance = 0;
 
@@ -125,7 +127,7 @@ void Grid::createGrid(int gridWidth, int gridHeight)
                 this->grid[i][j].coordinate = new Point(i, j);
 
                 // Initialize parent point
-                this->grid[i][j].parentNode = new Point();
+                //this->grid[i][j].parentNode = new Point();
 
             }
         }
