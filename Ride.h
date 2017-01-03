@@ -21,7 +21,6 @@
 #include <boost/iostreams/stream.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
-#include <boost/serialization/vector.hpp>
 
 
 class Ride
@@ -48,7 +47,6 @@ class Ride
 		ar & tariff;
 		ar & metersPassed;
 		ar & startTime;
-        ar & path;
 
 	}
 public:
@@ -62,8 +60,8 @@ public:
 	void setId(int id);
 	Point* getStartPoint();
 	Point* getEndPoint();
-	float getStartTime();
-	std::vector<Point> getPath();
+    float getStartTime();
+    std::vector<Point> getPath();
 	void updateDistance();
 	int getDistance();
 
