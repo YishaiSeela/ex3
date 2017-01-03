@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
     Driver *driver;
     Vehicle *vehicle;
     Ride *ride;
-    Udp udp(0, atoi(argv[1]));
+    Udp udp(0,  argv[1] ,atoi(argv[2]));
     udp.initialize();
 
     char buffer[1024];

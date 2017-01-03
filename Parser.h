@@ -7,6 +7,7 @@
 
 
 #include <list>
+#include <string>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/tokenizer.hpp>
@@ -18,6 +19,7 @@
 #include <boost/iostreams/stream.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
+using namespace std;
 
 class Parser {
     friend class boost::serialization::access;

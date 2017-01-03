@@ -33,7 +33,7 @@ std::string bufftostring(char* buffer, int length){
 
 int main(int argc, char *argv[]) {
 
-    Udp udp(1,atoi(argv[1]));
+    Udp udp(1,"127.0.0.1",atoi(argv[1]));
     udp.initialize();
 
     char buffer[1024];
