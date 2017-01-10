@@ -1,26 +1,64 @@
-* commit cd409a48c1d1d26e2f1aebf0e07d6320f10c25be
+* commit d2239647471d64e36019fdcd302c06b41ebc2182
 | Author: yishaiSeela <yishai320ds@gmail.com>
-| Date:   Tue Jan 3 16:27:18 2017 +0200
+| Date:   Wed Jan 4 19:07:50 2017 +0200
 | 
-|     ALL MEMORY FREED
-|  
-* commit 99e342da83182de69ffc270826a5d35b449f9c78
-| Author: yishaiSeela <yishai320ds@gmail.com>
-| Date:   Tue Jan 3 11:53:48 2017 +0200
-| 
-|     final updates
-|  
-* commit 4d5f6c611f4c194b50a0be081531e53f627a71a2
-| Author: yishaiSeela <yishai320ds@gmail.com>
-| Date:   Tue Jan 3 10:39:19 2017 +0200
-| 
-|     exit clirnt when 7
-|  
-* commit 42520eb4ad9c0ff7c11806a6f38286d008d5fae1
-| Author: yishaiSeela <yishai320ds@gmail.com>
-| Date:   Tue Jan 3 01:32:43 2017 +0200
-| 
-|     serialize ride
+|     updeted
+|    
+*   commit 51f2e3af9350f56586d967f7e7a110089430de59
+|\  Merge: 636ed90 9601d5d
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 3 20:37:53 2017 +0200
+| | 
+| |     all working now!
+| |     
+| *   commit 9601d5d641089a0b5515484363936b2ab21d3925
+| |\  Merge: 22cc960 cd409a4
+| | | Author: adiLapp <adidush0212@gmail.com>
+| | | Date:   Tue Jan 3 20:32:36 2017 +0200
+| | | 
+| | |     Merge remote-tracking branch 'origin/master'
+| | |     
+| | |     # Conflicts:
+| | |     #	Ride.h
+| | |     #	client.cpp
+| | |     #	makefile
+| | |     #	server.cpp
+| | |    
+| * | commit 22cc9604f8265def31d57b9b1d806a29c29bd43a
+| | | Author: adiLapp <adidush0212@gmail.com>
+| | | Date:   Tue Jan 3 20:32:01 2017 +0200
+| | | 
+| | |     test
+| | |    
+* | | commit 636ed901c4e6664a958b31ef76a0d4715aa5e27f
+| |/  Author: yishaiSeela <yishai320ds@gmail.com>
+|/|   Date:   Tue Jan 3 20:34:53 2017 +0200
+| |   
+| |       all working now!
+| |   
+* | commit cd409a48c1d1d26e2f1aebf0e07d6320f10c25be
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 3 16:27:18 2017 +0200
+| | 
+| |     ALL MEMORY FREED
+| |   
+* | commit 99e342da83182de69ffc270826a5d35b449f9c78
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 3 11:53:48 2017 +0200
+| | 
+| |     final updates
+| |   
+* | commit 4d5f6c611f4c194b50a0be081531e53f627a71a2
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 3 10:39:19 2017 +0200
+| | 
+| |     exit clirnt when 7
+| |   
+* | commit 42520eb4ad9c0ff7c11806a6f38286d008d5fae1
+|/  Author: yishaiSeela <yishai320ds@gmail.com>
+|   Date:   Tue Jan 3 01:32:43 2017 +0200
+|   
+|       serialize ride
 |  
 * commit 8cde05dda862d9783f78eeb48047a810e41c5c00
 | Author: yishaiSeela <yishai320ds@gmail.com>
