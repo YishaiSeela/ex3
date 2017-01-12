@@ -13,7 +13,7 @@
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 
-#include "Udp.h"
+#include "Tcp.h"
 #include "Parser.h"
 #include "Driver.h"
 #include "Ride.h"
@@ -29,15 +29,15 @@ int main(int argc, char *argv[]) {
     Driver *driver;
     Vehicle *vehicle;
     Ride *ride;
-    Udp udp(0,  argv[1] ,atoi(argv[2]));
-    udp.initialize();
+    Tcp tcp(0,  argv[1] ,atoi(argv[2]));
+    tcp.initialize();
 
     char buffer[1024];
 
 
     cin >> input;
 
-    //udp.sendData(input);
+    //tcp.sendData(input);
 
     Parser *prs1;
     prs1 = new Parser();
@@ -58,9 +58,10 @@ int main(int argc, char *argv[]) {
     oa << driver;
     s.flush();
 
-    udp.sendData(serial_str);
+    sleep(1);
+    tcp.sendData(serial_str);
     //recieve vehicle from server
-    udp.reciveData(buffer, sizeof(buffer));
+    tcp.reciveData(buffer, sizeof(buffer));
     string vehicle_str(buffer, sizeof(buffer));
     boost::iostreams::basic_array_source<char> device(vehicle_str.c_str(), vehicle_str.size());
     boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s2(device);
@@ -68,15 +69,14 @@ int main(int argc, char *argv[]) {
     ia >> vehicle;
 
     //recieve ride from server
-    udp.reciveData(buffer, sizeof(buffer));
+    tcp.reciveData(buffer, sizeof(buffer));
     std::string ride_str(buffer, sizeof(buffer));
     boost::iostreams::basic_array_source<char> device1(ride_str.c_str(), ride_str.size());
     boost::iostreams::stream<boost::iostreams::basic_array_source<char> > sRide(device1);
     boost::archive::text_iarchive ir(sRide);
     ir >> ride;
 
-
-    udp.reciveData(buffer, sizeof(buffer));
+    tcp.reciveData(buffer, sizeof(buffer));
     string return_driver_str(buffer, sizeof(buffer));
 
     while (*buffer != '7'){//!return_driver_str.compare("close")) {
@@ -86,14 +86,15 @@ int main(int argc, char *argv[]) {
     delete driver;
     ia2 >> driver;
 
-    udp.reciveData(buffer, sizeof(buffer));
+    tcp.reciveData(buffer, sizeof(buffer));
 
-}
+
+    }
     delete vehicle;
     delete driver;
     delete ride;
     delete prs1;
-    udp.closeData();
+    tcp.closeData();
 
     return 0;
 }

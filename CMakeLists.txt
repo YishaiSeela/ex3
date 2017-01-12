@@ -40,9 +40,9 @@ set(SOURCE_FILES
     StringParse.cpp
     StringParse.h
         test.h
-
+        Tcp.h
         Parser.cpp Parser.h RegularCab.cpp RegularCab.h
-        Udp.cpp Udp.h Socket.cpp Socket.h)
+        Tcp.cpp Tcp.h Socket.cpp Socket.h)
 
 add_executable(server server.cpp ${SOURCE_FILES})
 add_executable(client client.cpp ${SOURCE_FILES})

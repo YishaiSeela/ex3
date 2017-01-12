@@ -1,9 +1,9 @@
 #include <iostream>
-#include "Udp.h"
+#include "Tcp.h"
 #include <unistd.h>
 #include <sstream>
 #include <list>
-
+#include <pthread.h>
 #include "BfsSearch.h"
 #include "Grid.h"
 #include "StringParse.h"
@@ -26,15 +26,17 @@
 #include <boost/archive/binary_iarchive.hpp>
 
 
+
 std::string bufftostring(char* buffer, int length){
     string s(buffer, length);
     return s;
 }
 
 int main(int argc, char *argv[]) {
+    pthread_t t1;
 
-    Udp udp(1,"127.0.0.1",atoi(argv[1]));
-    udp.initialize();
+    Tcp tcp(1,"127.0.0.1",atoi(argv[1]));
+    tcp.initialize();
 
     char buffer[1024];
 
@@ -82,26 +84,29 @@ int main(int argc, char *argv[]) {
                 //input number of drivers
                 cin >> drivers;
                 //recieve driver from client
-                udp.reciveData(buffer, sizeof(buffer));
-                string serial_str(buffer, sizeof(buffer));
-                boost::iostreams::basic_array_source<char> device(serial_str.c_str(), serial_str.size());
-                boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s2(device);
-                boost::archive::text_iarchive ia(s2);
-                ia >> driver1;
-                //add driver to list
-                om->addDriver(driver1);
+                for (int i = 0;i < drivers;i++) {
+                    tcp.reciveData(buffer, sizeof(buffer));
+                    string serial_str(buffer, sizeof(buffer));
+                    boost::iostreams::basic_array_source<char> device(serial_str.c_str(), serial_str.size());
+                    boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s2(device);
+                    boost::archive::text_iarchive ia(s2);
+                    ia >> driver1;
+                    //add driver to list
+                    om->addDriver(driver1);
+
                 //send vehicle to client
-                for (int i = 0;i<om->listOfCabs.size();i++){
-                    if (driver1->getVehicleId() == om->listOfCabs[i]->getId()){
+                for (int i = 0;i<om->listOfCabs.size();i++) {
+                    if (driver1->getVehicleId() == om->listOfCabs[i]->getId()) {
                         std::string vehicle_str;
                         boost::iostreams::back_insert_device<std::string> inserter(vehicle_str);
                         boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
                         boost::archive::text_oarchive oa(s);
                         oa << om->listOfCabs[i];
                         s.flush();
-                        udp.sendData(vehicle_str);
+                        sleep(1);
+                        tcp.sendData(vehicle_str);
                     }
-
+                }
                 }
 
                 //send ride to client
@@ -111,7 +116,8 @@ int main(int argc, char *argv[]) {
                 boost::archive::text_oarchive oa(s1);
                 oa << ride;
                 s1.flush();
-                udp.sendData(ride_str);
+                sleep(1);
+                tcp.sendData(ride_str);
 
 
                 cin >> task;
@@ -133,7 +139,9 @@ int main(int argc, char *argv[]) {
 
                 g1->startPt = new Point(startPoint);
                 g1->endPt = new Point(endPoint);
+
                 bfs = new BfsSearch(g1);
+                //int pthread_create(&t1,NULL,bfs->runBfs(),arg);
                 bfs->runBfs();
                 bfs->printPath();
                 ride = new Ride(id, startPoint, endPoint, passengers, tariff,startTime, bfs->path);
@@ -180,8 +188,9 @@ int main(int argc, char *argv[]) {
                 g1->destroyGrid();
                 delete g1;
                 delete om;
-                udp.sendData("7");
-                udp.closeData();
+                sleep(1);
+                tcp.sendData("7");
+                tcp.closeData();
                 exit(0);
 
             }
@@ -197,7 +206,8 @@ int main(int argc, char *argv[]) {
                     boost::archive::text_oarchive oa(s);
                     oa << om->listOfDrivers[i];
                     s.flush();
-                    udp.sendData(return_driver_str);
+                    sleep(1);
+                    tcp.sendData(return_driver_str);
 
                 }
                 cin >> task;

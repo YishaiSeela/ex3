@@ -1,30 +1,32 @@
 /************************************************************
-* File description: UDP header file. the class inherit from	*
-* socket. methods of udp socket type						*
+* File description: Tcp header file. the class inherit from	*
+* socket. methods of tcp socket type						*
 ************************************************************/
 
-#ifndef UDP_H_
-#define UDP_H_
+#ifndef TCP_H
+#define TCP_H_
 
 #include "Socket.h"
 
 
-class Udp: public Socket {
+class Tcp: public Socket {
+private:
+	int descriptorCommunicateClient;
 public:
 	/***********************************************************************
-	* function name: Udp												   *
+	* function name: Tcp												   *
 	* The Input: Boolean, true - if server, false if client and port number*
 	* The output: none										               *
-	* The Function operation: creating new Udp						       *
+	* The Function operation: creating new Tcp						       *
 	***********************************************************************/
-	Udp(bool isServers,string ip, int port_num);
+    Tcp(bool isServers,string ip, int port_num);
 	/***********************************************************************
-	* function name: ~Udp												   *
+	* function name: ~Tcp												   *
 	* The Input: none													   *
 	* The output: none										               *
 	* The Function operation: default destructor					       *
 	***********************************************************************/
-	virtual ~Udp();
+	virtual ~Tcp();
 	/***********************************************************************
 	* function name: initialize											   *
 	* The Input: none              										   *
@@ -53,4 +55,4 @@ public:
 	int closeData();
 	};
 
-#endif /* UDP_H_ */
+#endif /* Tcp_H_ */

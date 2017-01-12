@@ -201,7 +201,11 @@ int OrderManager::findDriver(int i)
     }
     //otherwise - return first driver in the list - it will change when there will be more drivers
     if (driverNo == -1){
-        driverNo = 0;
+        for(int j = 0; j<listOfDrivers.size();j++){
+            if (listOfDrivers[j]->isAvailable()){
+                driverNo = j;
+            }
+        }
     }
     return driverNo;
 }
