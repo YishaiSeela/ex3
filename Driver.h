@@ -32,6 +32,7 @@ class Driver: public Person
 	int vehicle_id;
 	bool available;
 	int rate;
+	int rideId;
 
 	friend class boost::serialization::access;
 	template<class Archive>
@@ -43,7 +44,7 @@ class Driver: public Person
 		ar & location;
 		ar & available;
 		ar & rate;
-
+		ar & rideId;
 	}
 public:
 	Driver(int id, int age, char martialStatus, int experience, int vehicle_id);
@@ -61,6 +62,8 @@ public:
 	void setAvailability(bool value);
 	int getVehicleId();
 	int getId();
+	void setRide(int rideId);
+	int getRide();
 
 };
 #endif

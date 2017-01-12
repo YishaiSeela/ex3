@@ -1,15 +1,17 @@
 #include "OrderManager.h"
+#include "Grid.h"
 #include <list>
 #include <iostream>
 
 using namespace std;
 
 
-OrderManager::OrderManager()
+OrderManager::OrderManager(Grid *g1)
 /*
  * ctor
  */
 {
+    this->g1 = g1;
     time = 0;
     distance = 0;
 }
@@ -126,55 +128,71 @@ void OrderManager::timePassed()
  * update time and move drivers
  */
 {
-    int driverNo = 0;
+    int driverNo;
+    int driver;
+
     for (int i = 0;i<listOfRides.size();i++) {
         //if it's the time to start the ride
         if (listOfRides[i]->getStartTime() == time) {
             //move driver to start point
             distance = 0;
-            driverNo = findDriver(i);
             Point startPoint = Point(listOfRides[i]->getStartPoint()->getXCoordinate(),
                                      listOfRides[i]->getStartPoint()->getYCoordinate());
-            listOfDrivers[driverNo]->setAvailability(false);
-            listOfDrivers[driverNo]->setLocation(startPoint);
+            driverNo = eventNotifier.findDriver(startPoint,listOfDrivers,g1);
+            for (int j=0;j<(listOfDrivers.size());j++){
+                if (listOfDrivers[j]->getId() == driverNo){
+                    driver = j;
+                }
+            }
+            listOfDrivers[driver]->setAvailability(false);
+            listOfDrivers[driver]->setLocation(startPoint);
         }
     }
     //update time
     time++;
 
-    for (int i = 0;i<listOfRides.size();i++)
+    for (int i = 0;i<listOfDrivers.size();i++)
     {
         //if driver is occupied
-        if (!listOfDrivers[driverNo]->isAvailable())
+        if (!listOfDrivers[i]->isAvailable())
         {
-            //get type of cab;
+            int ride = 0;
             int type = 0;
-            Point endPoint = Point(listOfRides[i]->getEndPoint()->getXCoordinate(),
-                                   listOfRides[i]->getEndPoint()->getYCoordinate());
+            //get ride id
+            int rideId = listOfDrivers[i]->getRide();
+            //find ride
+            for (int j=0;j<(listOfRides.size());j++){
+                if (listOfRides[j]->getId() == rideId){
+                    ride = j;
+                }
+            }
+            Point endPoint = Point(listOfRides[ride]->getEndPoint()->getXCoordinate(),
+                                   listOfRides[ride]->getEndPoint()->getYCoordinate());
+            //get type of cab;
 
             for (int j=0;j<(listOfCabs.size());j++){
-                if (listOfCabs[j]->getId() == listOfDrivers[driverNo]->getVehicleId()){
+                if (listOfCabs[j]->getId() == listOfDrivers[i]->getVehicleId()){
                     type = listOfCabs[j]->getType();
                 }
             }
 
             //get next point of drive according to type
             for (int j=0;j<type;j++){
-                if ((listOfDrivers[driverNo]->getLocation()) != (endPoint)) {
-                    listOfRides[i]->updateDistance();
+                if ((listOfDrivers[i]->getLocation()) != (endPoint)) {
+                    listOfRides[ride]->updateDistance();
                 }
                 //move driver to next point
-                distance = listOfRides[i]->getDistance();
-                listOfDrivers[driverNo]->setLocation(listOfRides[i]->getPath()[distance]);
+                distance = listOfRides[ride]->getDistance();
+                listOfDrivers[i]->setLocation(listOfRides[ride]->getPath()[distance]);
 
             }
 
             //if driver reached it's destination - set him as available and remove ride
-            if ((listOfDrivers[driverNo]->getLocation()) == (endPoint))
+            if ((listOfDrivers[i]->getLocation()) == (endPoint))
             {
-                listOfDrivers[driverNo]->setAvailability(true);
-                delete listOfRides[i];
-                listOfRides.erase(listOfRides.begin());
+                listOfDrivers[i]->setAvailability(true);
+                //delete listOfRides[i];
+                //listOfRides.erase(listOfRides.begin());
             }
         }
 
@@ -190,7 +208,7 @@ int OrderManager::findDriver(int i)
 {
     Point startPoint = Point(listOfRides[i]->getStartPoint()->getXCoordinate(),
                              listOfRides[i]->getStartPoint()->getYCoordinate());
-    int driverNo = -1;
+    int driverNo = 0;
     //find a driver located in start point
     for(int j = 0; j<listOfDrivers.size();j++){
         if (listOfDrivers[j]->isAvailable()){

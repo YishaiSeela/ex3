@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
     boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s2(device);
     boost::archive::text_iarchive ia(s2);
     ia >> vehicle;
-
+/*
     //recieve ride from server
     tcp.reciveData(buffer, sizeof(buffer));
     std::string ride_str(buffer, sizeof(buffer));
@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
     boost::iostreams::stream<boost::iostreams::basic_array_source<char> > sRide(device1);
     boost::archive::text_iarchive ir(sRide);
     ir >> ride;
-
+*/
     tcp.reciveData(buffer, sizeof(buffer));
     string return_driver_str(buffer, sizeof(buffer));
 
@@ -85,14 +85,13 @@ int main(int argc, char *argv[]) {
     boost::archive::text_iarchive ia2(s3);
     delete driver;
     ia2 >> driver;
-
     tcp.reciveData(buffer, sizeof(buffer));
 
 
     }
     delete vehicle;
     delete driver;
-    delete ride;
+    //delete ride;
     delete prs1;
     tcp.closeData();
 

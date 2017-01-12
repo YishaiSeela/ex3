@@ -140,6 +140,23 @@ Driver::Driver(int id, int age, char martialStatus, int experience, int vehicle_
         return vehicle_id;
     }
 
+    void Driver::setRide(int rideId)
+    /**
+    * sets drivers destination
+    */
+    {
+        this->rideId = rideId;
+    }
+
+    int Driver::getRide()
+    /**
+    * returns driver's destinaton
+    */
+    {
+        return rideId;
+    }
+
+
     Driver::~Driver()
     /**
     * Dtor

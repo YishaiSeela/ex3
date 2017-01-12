@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
 
     string input;
     int drivers;
-    OrderManager *om = new OrderManager;
+    OrderManager *om;
     int width;
     int height;
     int task;
@@ -62,6 +62,8 @@ int main(int argc, char *argv[]) {
     cin >> width >> height;
     //create grid
     g1->createGrid(width,height);
+    //create order manager
+    om = new OrderManager(g1);
     //insert number of obstacles
     cin >> obstacles;
     //insert obstacle points
@@ -110,6 +112,7 @@ int main(int argc, char *argv[]) {
                 }
 
                 //send ride to client
+                /*
                 std::string ride_str;
                 boost::iostreams::back_insert_device<std::string> inserter(ride_str);
                 boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s1(inserter);
@@ -118,7 +121,7 @@ int main(int argc, char *argv[]) {
                 s1.flush();
                 sleep(1);
                 tcp.sendData(ride_str);
-
+*/
 
                 cin >> task;
 
@@ -187,6 +190,12 @@ int main(int argc, char *argv[]) {
                 //task 7 - delete all elemnts and exit the program
                 g1->destroyGrid();
                 delete g1;
+                for (int i = 0;i<om->listOfRides.size();i++) {
+                    delete om->listOfRides[i];
+                    om->listOfRides.erase(om->listOfRides.begin());
+
+                }
+                //delete om->listOfRides;
                 delete om;
                 sleep(1);
                 tcp.sendData("7");
