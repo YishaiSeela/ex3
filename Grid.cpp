@@ -63,8 +63,18 @@ void Grid::createGrid(int gridWidth, int gridHeight)
  * of the gridWidth and gridHeight
  */
 {
-    this->gridWidth = gridWidth;
-    this->gridHeight = gridHeight;
+    if (gridWidth > 1000){
+        this->gridWidth = 1000;
+    } else {
+        this->gridWidth = gridWidth;
+    }
+
+    if (gridHeight > 1000){
+        this->gridHeight = 1000;
+    } else {
+        this->gridHeight = gridHeight;
+    }
+
 
     try {
 

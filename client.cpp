@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
     Tcp tcp(0,  argv[1] ,atoi(argv[2]));
     tcp.initialize();
 
-    char buffer[1024];
+    char buffer[100000];
 
 
     cin >> input;

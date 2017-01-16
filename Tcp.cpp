@@ -91,6 +91,30 @@ int Tcp::initialize() {
 }
 
 /***********************************************************************
+* function name: acceptOneClient									   *
+* The Input: None                                                      *
+* The output: int number representing the descriptorCommunicateClient  *
+*    if it server or no-negative integer in client case                *
+*    or -1 when failed.                                                *
+* The Function operation: getting data from the other socket to,	   *
+* enter it to the buffer and print the data							   *
+***********************************************************************/
+int Tcp::acceptOneClient(){
+    int clientDescriptor = 0;
+    struct sockaddr_in client_sin;
+    unsigned int addr_len = sizeof(client_sin);
+    clientDescriptor = accept(this->socketDescriptor,
+                                               (struct sockaddr *) &client_sin, &addr_len);
+    if (clientDescriptor < 0) {
+        //return an error represent error at this method
+        perror("ERROR_CONNECT - in acceptOneClient()\n");
+        exit(1);
+    }
+    return  clientDescriptor;
+}
+
+
+/***********************************************************************
 * function name: sendData											   *
 * The Input: string representing the data to send		               *
 * The output: int number representing the return status		           *
@@ -133,6 +157,8 @@ int Tcp::reciveData(char* buffer, int size) {
     //return correct if there were no problem
     return read_bytes;
 }
+
+
 
 
 int Tcp::closeData() {

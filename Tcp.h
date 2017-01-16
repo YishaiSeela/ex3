@@ -51,6 +51,8 @@ public:
 	* the data															   *
 	***********************************************************************/
 	int reciveData(char* buffer, int size);
+	//this situation when we have many connection of clients and not only one.
+	int acceptOneClient();
 
 	int closeData();
 	};
