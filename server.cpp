@@ -154,7 +154,6 @@ int main(int argc, char *argv[]) {
                     }
                 }
                 cin >> task;
-
                 break;
             }
                 //task 2 - insert ride
