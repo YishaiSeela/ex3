@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <string>
-#include "Grid.h"
+#include "../Map/Grid.h"
 
 class StringParse
 // Class parses the input string

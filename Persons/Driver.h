@@ -1,8 +1,8 @@
 #ifndef DRIVER
 #define DRIVER
-#include "Vehicle.h"
-#include "CabDecorator.h"
-#include "Point.h"
+#include "../Veicle/Vehicle.h"
+#include "../Veicle/CabDecorator.h"
+#include "../Map/Point.h"
 #include "Person.h"
 #include "Passanger.h"
 //

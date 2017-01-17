@@ -2,7 +2,7 @@
 #define PASSANGER
 
 
-#include "Point.h"
+#include "../Map/Point.h"
 #include "Person.h"
 
 

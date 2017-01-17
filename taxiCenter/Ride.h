@@ -1,8 +1,8 @@
 #ifndef RIDE
 #define RIDE
-#include "Point.h"
-#include "Driver.h"
-#include "Passanger.h"
+#include "../Map/Point.h"
+#include "../Persons/Driver.h"
+#include "../Persons/Passanger.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>

@@ -1,6 +1,6 @@
 #include <boost/serialization/export.hpp>
 #include "Vehicle.h"
-#include "Point.h"
+#include "../Map/Point.h"
 
 
 Vehicle::Vehicle(char manu,int taxiType,int id,char col)

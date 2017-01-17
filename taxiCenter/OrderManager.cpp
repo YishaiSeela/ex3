@@ -1,5 +1,5 @@
 #include "OrderManager.h"
-#include "Grid.h"
+#include "../Map/Grid.h"
 #include <list>
 #include <iostream>
 
@@ -33,9 +33,10 @@ OrderManager::~OrderManager()
     }
     listOfCabs.clear();
 
+
     //delete rides
     for (int i = 0; i < (listOfRides.size()); i++) {
-        delete listOfRides[i];
+        //delete listOfRides[i];
     }
     listOfRides.clear();
 
@@ -126,11 +127,12 @@ void OrderManager::addCab(Vehicle *vehicle)
     OrderManager::listOfCabs.push_back(vehicle);
 }
 
-void OrderManager::timePassed()
+void OrderManager::timePassed(pthread_t rideThread)
 /*
  * update time and move drivers
  */
 {
+    pthread_join(rideThread,NULL);
     int driverNo;
     int driver;
 

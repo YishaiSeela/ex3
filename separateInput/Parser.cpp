@@ -4,7 +4,7 @@
 #include <string>
 //#include <array>
 #include <vector>
-#include "Grid.h"
+#include "../Map/Grid.h"
 #include "StringParse.h"
 
 using namespace std;

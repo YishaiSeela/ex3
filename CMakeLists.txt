@@ -8,51 +8,51 @@ find_package(Boost 1.58.0 COMPONENTS serialization system)
 include_directories(${Boost_INCLUDE_DIR})
 
 set(SOURCE_FILES
-        BfsSearch.cpp
-        BfsSearch.h
-        CabDecorator.cpp
-        CabDecorator.h
+        Map/BfsSearch.cpp
+        Map/BfsSearch.h
+        Veicle/CabDecorator.cpp
+        Veicle/CabDecorator.h
         #client.cpp
-        Driver.cpp
-        Driver.h
-        EventNotifier.cpp
-        EventNotifier.h
-        Grid.cpp
-        Grid.h
-        LuxuryCab.cpp
-        LuxuryCab.h
-        MatchinStrategy.cpp
-        MatchinStrategy.h
-        MatchinStrategyTest.h
-        Node.cpp
-        Node.h
-        OrderManager.cpp
-        OrderManager.h
-        Parser.cpp
-        Parser.h
-        Passanger.cpp
-        Passanger.h
-        Person.cpp
-        Person.h
-        Point.cpp
-        Point.h
-        RegularCab.cpp
-        RegularCab.h
-        Ride.cpp
-        Ride.h
+        Persons/Driver.cpp
+        Persons/Driver.h
+        taxiCenter/EventNotifier.cpp
+        taxiCenter/EventNotifier.h
+        Map/Grid.cpp
+        Map/Grid.h
+        Veicle/LuxuryCab.cpp
+        Veicle/LuxuryCab.h
+        taxiCenter/MatchinStrategy.cpp
+        taxiCenter/MatchinStrategy.h
+        taxiCenter/MatchinStrategyTest.h
+        Map/Node.cpp
+        Map/Node.h
+        taxiCenter/OrderManager.cpp
+        taxiCenter/OrderManager.h
+        separateInput/Parser.cpp
+        separateInput/Parser.h
+        Persons/Passanger.cpp
+        Persons/Passanger.h
+        Persons/Person.cpp
+        Persons/Person.h
+        Map/Point.cpp
+        Map/Point.h
+        Veicle/RegularCab.cpp
+        Veicle/RegularCab.h
+        taxiCenter/Ride.cpp
+        taxiCenter/Ride.h
         #server.cpp
-        Socket.cpp
-        Socket.h
-        StringParse.cpp
-        StringParse.h
-        Tcp.cpp
-        Tcp.h
+        communication/Socket.cpp
+        communication/Socket.h
+        separateInput/StringParse.cpp
+        separateInput/StringParse.h
+        communication/Tcp.cpp
+        communication/Tcp.h
         test.h
-        Vehicle.cpp
-        Vehicle.h)
+        Veicle/Vehicle.cpp
+        Veicle/Vehicle.h)
 
-add_executable(server server.cpp ${SOURCE_FILES})
-add_executable(client client.cpp ${SOURCE_FILES})
+add_executable(server communication/server.cpp ${SOURCE_FILES})
+add_executable(client communication/client.cpp ${SOURCE_FILES})
 
 target_link_libraries(client ${Boost_LIBRARIES})
 target_link_libraries(server ${Boost_LIBRARIES})

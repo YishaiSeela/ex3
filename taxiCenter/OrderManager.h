@@ -3,9 +3,9 @@
 #include "Ride.h"
 #include <list>
 #include <queue>
-#include "Passanger.h"
+#include "../Persons/Passanger.h"
 #include "EventNotifier.h"
-#include "Grid.h"
+#include "../Map/Grid.h"
 
 using namespace std;
 class OrderManager
@@ -35,7 +35,7 @@ public:
 	void addRide(Ride *ride);
 
 	void addCab(Vehicle *vehicle);
-    void timePassed();
+    void timePassed(pthread_t rideThread);
     //int findDriver(int i);
 
 

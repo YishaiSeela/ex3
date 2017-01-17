@@ -2,7 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include "Grid.h"
+#include "../Map/Grid.h"
 #include "StringParse.h"
 
 using namespace std;

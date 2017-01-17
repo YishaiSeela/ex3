@@ -1,7 +1,7 @@
 #ifndef MATCHINSTRATEGY
 #define MATCHINSTRATEGY
-#include "Driver.h"
-#include "Passanger.h"
+#include "../Persons/Driver.h"
+#include "../Persons/Passanger.h"
 
 class MatchinStrategy
 {

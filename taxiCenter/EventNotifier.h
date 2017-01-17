@@ -5,10 +5,10 @@
  *      Author: adidush0212
  */
 #include <iostream>
-#include "Point.h"
-#include "Driver.h"
-#include "Grid.h"
-#include "BfsSearch.h"
+#include "../Map/Point.h"
+#include "../Persons/Driver.h"
+#include "../Map/Grid.h"
+#include "../Map/BfsSearch.h"
 
 #ifndef SRC_EVENTNOTIFIER_H_
 #define SRC_EVENTNOTIFIER_H_

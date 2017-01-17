@@ -6,7 +6,7 @@
  */
 
 #include "EventNotifier.h"
-#include "Grid.h"
+#include "../Map/Grid.h"
 
 
     EventNotifier::EventNotifier()

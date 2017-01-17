@@ -4,14 +4,14 @@
 #include <sstream>
 #include <list>
 #include <pthread.h>
-#include "BfsSearch.h"
-#include "Grid.h"
-#include "StringParse.h"
+#include "../Map/BfsSearch.h"
+#include "../Map/Grid.h"
+#include "../separateInput/StringParse.h"
 #include "string"
-#include "Parser.h"
-#include "Driver.h"
-#include "Ride.h"
-#include "OrderManager.h"
+#include "../separateInput/Parser.h"
+#include "../Persons/Driver.h"
+#include "../taxiCenter/Ride.h"
+#include "../taxiCenter/OrderManager.h"
 
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
@@ -26,13 +26,42 @@
 #include <boost/archive/binary_iarchive.hpp>
 
 OrderManager *om;
+Grid* g1;
 
 //static function for thread in bfs.
-static void *pThreadBfs(){
+static void *pThreadRide(void* inp){
+    std::string &input = *static_cast<std::string*>(inp);
+    Ride* ride1;
+    Parser *prs2;
+    prs2 = new Parser();
+    BfsSearch* bfs;
+
+    Point startPoint;
+    Point endPoint;
+
+    prs2->parse(input, 8);
+    int id = atoi(prs2->inputVector.at(0).c_str());
+    int passengers = atoi(prs2->inputVector.at(5).c_str());
+    double tariff = stod(prs2->inputVector.at(6).c_str());
+    float startTime = stof(prs2->inputVector.at(7).c_str());
+    startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
+    endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
 
 
+    g1->startPt = new Point(startPoint);
+    g1->endPt = new Point(endPoint);
 
+    bfs = new BfsSearch(g1);
+    //int pthread_create(&t1,NULL,pThreadBfs(),arg);
+    bfs->runBfs();
+    bfs->printPath();
+    ride1 = new Ride(id, startPoint, endPoint, passengers, tariff,startTime, bfs->path);
+    delete bfs;
+    delete g1->startPt;
+    delete g1->endPt;
 
+    om->addRide(ride1);
+    delete prs2;
 }
 
 
@@ -40,7 +69,7 @@ static void *pThreadBfs(){
 static void *pThreadCase1(void* tcp) {//check about tcp
             //std::vector <void*> *args = (std::vector<void*>*) driverArgs;
     Tcp* tcp1 = (Tcp*) tcp;
-    char buffer[100000];
+    char buffer[65000];
     Driver *driver1;
 
             sleep(1);
@@ -97,7 +126,8 @@ int main(int argc, char *argv[]) {
     tcp.initialize();
 
 
-    Grid *g1 = new Grid();
+    g1 = new Grid();
+    pthread_t rideThread;
 
     string input;
     int drivers;
@@ -160,30 +190,13 @@ int main(int argc, char *argv[]) {
             case 2: {
 
                 cin >> input;
-                prs2 = new Parser();
-                prs2->parse(input, 8);
-                int id = atoi(prs2->inputVector.at(0).c_str());
-                int passengers = atoi(prs2->inputVector.at(5).c_str());
-                double tariff = stod(prs2->inputVector.at(6).c_str());
-                float startTime = stof(prs2->inputVector.at(7).c_str());
-                startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
-                endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
 
-                g1->startPt = new Point(startPoint);
-                g1->endPt = new Point(endPoint);
+                //recieve driver from client
 
-                bfs = new BfsSearch(g1);
-                //int pthread_create(&t1,NULL,pThreadBfs(),arg);
-                bfs->runBfs();
-                bfs->printPath();
-                ride = new Ride(id, startPoint, endPoint, passengers, tariff,startTime, bfs->path);
-                delete bfs;
-                delete g1->startPt;
-                delete g1->endPt;
-
-                om->addRide(ride);
-                delete prs2;
-
+                    numThread = pthread_create(&rideThread, NULL, pThreadRide,(void*) &input);
+                    if (numThread == -1){
+                        cout << "error";
+                    }
                 cin >> task;
                 break;
             }
@@ -236,7 +249,7 @@ int main(int argc, char *argv[]) {
             }
             case 9:{
                 //task 9 - add 1 to "time" and move drivers if needed
-                om->timePassed();
+                om->timePassed(rideThread);
 
                 //update drivers in client
                 for(int i = 0;i<om->listOfDrivers.size();i++) {

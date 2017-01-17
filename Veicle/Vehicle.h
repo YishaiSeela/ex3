@@ -2,7 +2,7 @@
 #define VEHICLE
 
 #include <stdlib.h>
-#include "Point.h"
+#include "../Map/Point.h"
 //
 #include <iostream>
 #include <fstream>
