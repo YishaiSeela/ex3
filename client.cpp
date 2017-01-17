@@ -59,9 +59,10 @@ int main(int argc, char *argv[]) {
     s.flush();
 
     sleep(1);
-    tcp.sendData(serial_str);
+    tcp.sendData(serial_str,0);
     //recieve vehicle from server
-    tcp.reciveData(buffer, sizeof(buffer));
+    sleep(1);
+    tcp.reciveData(buffer, sizeof(buffer),0);
     string vehicle_str(buffer, sizeof(buffer));
     boost::iostreams::basic_array_source<char> device(vehicle_str.c_str(), vehicle_str.size());
     boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s2(device);
@@ -76,7 +77,8 @@ int main(int argc, char *argv[]) {
     boost::archive::text_iarchive ir(sRide);
     ir >> ride;
 */
-    tcp.reciveData(buffer, sizeof(buffer));
+    sleep(1);
+    tcp.reciveData(buffer, sizeof(buffer),0);
     string return_driver_str(buffer, sizeof(buffer));
 
     while (*buffer != '7'){//!return_driver_str.compare("close")) {
@@ -85,7 +87,7 @@ int main(int argc, char *argv[]) {
     boost::archive::text_iarchive ia2(s3);
     delete driver;
     ia2 >> driver;
-    tcp.reciveData(buffer, sizeof(buffer));
+    tcp.reciveData(buffer, sizeof(buffer),0);
 
 
     }

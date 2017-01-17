@@ -42,7 +42,7 @@ public:
 	* The Function operation: sending the input data to the socket         *
 	* who connect to this socket.										   *
 	***********************************************************************/
-	int sendData(string data);
+	int sendData(string data, int clientDescriptor);
 	/***********************************************************************
 	* function name: recive	`											   *
 	* The Input: none										               *
@@ -50,8 +50,8 @@ public:
 	* The Function operation: getting data from the other socket and print *
 	* the data															   *
 	***********************************************************************/
-	int reciveData(char* buffer, int size);
-	//this situation when we have many connection of clients and not only one.
+    int reciveData(char* buffer, int size, int clientDescriptor);
+    //this situation when we have many connection of clients and not only one.
 	int acceptOneClient();
 
 	int closeData();
