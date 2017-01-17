@@ -167,13 +167,7 @@ void Grid::printGrid() {
 }
 
 Node* Grid::getNode(int x,int y){
-    for(int i=0;i<gridHeight;i++){
-        for(int j=0;j<gridWidth;j++){
-            if((grid[i][j].coordinate->getXCoordinate()==x)&&(grid[i][j].coordinate->getYCoordinate()==y)){
-                return &grid[i][j];
-            }
-        }
-    }
+    return &grid[gridHeight-1-x][y];
 }
 
 Node*Grid::getNode(Point *p){
