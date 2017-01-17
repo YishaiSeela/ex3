@@ -62,6 +62,7 @@ static void *pThreadRide(void* inp){
 
     om->addRide(ride1);
     delete prs2;
+    /**/
 }
 
 
