@@ -144,6 +144,7 @@ void OrderManager::timePassed()
                     driver = j;
                 }
             }
+            listOfDrivers[driver]->setRide(listOfRides[i]->getId());
             listOfDrivers[driver]->setAvailability(false);
             listOfDrivers[driver]->setLocation(startPoint);
         }
@@ -200,11 +201,11 @@ void OrderManager::timePassed()
 
 
 }
-
+/*
 int OrderManager::findDriver(int i)
 /*
  * find driver for trip
- */
+ *
 {
     Point startPoint = Point(listOfRides[i]->getStartPoint()->getXCoordinate(),
                              listOfRides[i]->getStartPoint()->getYCoordinate());
@@ -226,4 +227,4 @@ int OrderManager::findDriver(int i)
         }
     }
     return driverNo;
-}
+}*/

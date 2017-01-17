@@ -17,6 +17,7 @@ class OrderManager
 	Grid *g1;
 public:
 	std::vector<Driver*> listOfDrivers;
+	std::vector<int> clients;
 	std::vector<Ride*> listOfRides;
 	std::vector<Vehicle*> listOfCabs;
 
@@ -35,7 +36,7 @@ public:
 
 	void addCab(Vehicle *vehicle);
     void timePassed();
-    int findDriver(int i);
+    //int findDriver(int i);
 
 
     ~OrderManager();

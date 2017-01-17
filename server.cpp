@@ -25,6 +25,61 @@
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 
+OrderManager *om;
+
+//static function for thread in bfs.
+static void *pThreadBfs(){
+
+
+
+
+}
+
+
+//static function for thread in case 2-driver. for each driver will be client
+static void *pThreadCase1(void* tcp) {//check about tcp
+            //std::vector <void*> *args = (std::vector<void*>*) driverArgs;
+    Tcp* tcp1 = (Tcp*) tcp;
+    char buffer[100000];
+    Driver *driver1;
+
+            sleep(1);
+    tcp1->reciveData(buffer, sizeof(buffer),om->clients.back());
+    string serial_str(buffer, sizeof(buffer));
+    boost::iostreams::basic_array_source<char> device(serial_str.c_str(), serial_str.size());
+    boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s2(device);
+    boost::archive::text_iarchive ia(s2);
+    ia >> driver1;
+    //add driver to list
+    om->addDriver(driver1);
+
+    //send vehicle to client
+    for (int i = 0;i<om->listOfCabs.size();i++) {
+        if (driver1->getVehicleId() == om->listOfCabs[i]->getId()) {
+            std::string vehicle_str;
+            boost::iostreams::back_insert_device<std::string> inserter(vehicle_str);
+            boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
+            boost::archive::text_oarchive oa(s);
+            oa << om->listOfCabs[i];
+            s.flush();
+            sleep(1);
+            tcp1->sendData(vehicle_str,om->clients.back());
+        }
+    }
+}
+
+//send ride to client
+/*
+std::string ride_str;
+boost::iostreams::back_insert_device<std::string> inserter(ride_str);
+boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s1(inserter);
+boost::archive::text_oarchive oa(s1);
+oa << ride;
+s1.flush();
+sleep(1);
+tcp.sendData(ride_str);
+*/
+
 
 
 std::string bufftostring(char* buffer, int length){
@@ -32,22 +87,24 @@ std::string bufftostring(char* buffer, int length){
     return s;
 }
 
-int main(int argc, char *argv[]) {
-    pthread_t t1;
 
+int main(int argc, char *argv[]) {
+    //threa for client
+    pthread_t t1;
+    //thread for bfs
+    pthread_t t2;
     Tcp tcp(1,"127.0.0.1",atoi(argv[1]));
     tcp.initialize();
 
-    char buffer[1024];
 
     Grid *g1 = new Grid();
 
     string input;
     int drivers;
-    OrderManager *om;
     int width;
     int height;
     int task;
+    int numThread;
     int obstacles;
     Point startPoint;
     Point endPoint;
@@ -58,6 +115,7 @@ int main(int argc, char *argv[]) {
     Driver *driver1;
     Ride *ride;
     Vehicle *vehicle;
+
     //insert sizes of grid
     cin >> width >> height;
     //create grid
@@ -85,44 +143,16 @@ int main(int argc, char *argv[]) {
             case 1: {
                 //input number of drivers
                 cin >> drivers;
+                pthread_t threads[drivers];
                 //recieve driver from client
                 for (int i = 0;i < drivers;i++) {
-                    tcp.reciveData(buffer, sizeof(buffer));
-                    string serial_str(buffer, sizeof(buffer));
-                    boost::iostreams::basic_array_source<char> device(serial_str.c_str(), serial_str.size());
-                    boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s2(device);
-                    boost::archive::text_iarchive ia(s2);
-                    ia >> driver1;
-                    //add driver to list
-                    om->addDriver(driver1);
-
-                //send vehicle to client
-                for (int i = 0;i<om->listOfCabs.size();i++) {
-                    if (driver1->getVehicleId() == om->listOfCabs[i]->getId()) {
-                        std::string vehicle_str;
-                        boost::iostreams::back_insert_device<std::string> inserter(vehicle_str);
-                        boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
-                        boost::archive::text_oarchive oa(s);
-                        oa << om->listOfCabs[i];
-                        s.flush();
-                        sleep(1);
-                        tcp.sendData(vehicle_str);
+                    int aoc = tcp.acceptOneClient();
+                    om->clients.push_back(aoc);
+                    numThread = pthread_create(&threads[i], NULL, pThreadCase1,(void*) &tcp);
+                    if (numThread == -1){
+                        cout << "error";
                     }
                 }
-                }
-
-                //send ride to client
-                /*
-                std::string ride_str;
-                boost::iostreams::back_insert_device<std::string> inserter(ride_str);
-                boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s1(inserter);
-                boost::archive::text_oarchive oa(s1);
-                oa << ride;
-                s1.flush();
-                sleep(1);
-                tcp.sendData(ride_str);
-*/
-
                 cin >> task;
 
                 break;
@@ -144,7 +174,7 @@ int main(int argc, char *argv[]) {
                 g1->endPt = new Point(endPoint);
 
                 bfs = new BfsSearch(g1);
-                //int pthread_create(&t1,NULL,bfs->runBfs(),arg);
+                //int pthread_create(&t1,NULL,pThreadBfs(),arg);
                 bfs->runBfs();
                 bfs->printPath();
                 ride = new Ride(id, startPoint, endPoint, passengers, tariff,startTime, bfs->path);
@@ -196,10 +226,12 @@ int main(int argc, char *argv[]) {
 
                 }
                 //delete om->listOfRides;
-                delete om;
                 sleep(1);
-                tcp.sendData("7");
+                for(int i = 0;i<om->listOfDrivers.size();i++) {
+                    tcp.sendData("7",om->clients[i] );
+                }
                 tcp.closeData();
+                delete om;
                 exit(0);
 
             }
@@ -216,7 +248,7 @@ int main(int argc, char *argv[]) {
                     oa << om->listOfDrivers[i];
                     s.flush();
                     sleep(1);
-                    tcp.sendData(return_driver_str);
+                    tcp.sendData(return_driver_str,om->clients[i]);
 
                 }
                 cin >> task;
@@ -231,3 +263,4 @@ int main(int argc, char *argv[]) {
         }
     }
 }
+
