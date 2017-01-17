@@ -24,18 +24,21 @@ OrderManager::~OrderManager()
     //delete drivers
     for (int i = 0; i < (listOfDrivers.size()); i++) {
         delete listOfDrivers[i];
-        listOfDrivers.clear();
     }
+    listOfDrivers.clear();
+
     //delete cabs
     for (int i = 0; i < (listOfCabs.size()); i++) {
         delete listOfCabs[i];
-        listOfCabs.clear();
     }
+    listOfCabs.clear();
+
     //delete rides
     for (int i = 0; i < (listOfRides.size()); i++) {
         delete listOfRides[i];
-        listOfRides.clear();
     }
+    listOfRides.clear();
+
 }
 
 void OrderManager::answerPhone(Passanger passanger)
