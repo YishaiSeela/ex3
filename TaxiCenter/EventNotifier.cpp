@@ -38,7 +38,7 @@
                 g1->endPt = new Point(listOfDrivers[i]->getLocation());
                 bfs = new BfsSearch(g1);
                 bfs->runBfs();
-                bfs->printPath();
+                //bfs->printPath();
                 if ((bfs->path.size() < shortestPath) || (shortestPath == -1)){
                     shortestPath = bfs->path.size();
                     shortestId = listOfDrivers[i]->getId();

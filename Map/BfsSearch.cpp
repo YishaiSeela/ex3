@@ -79,13 +79,6 @@ void BfsSearch::runBfs()
 
         }
     }
-}
-
-void BfsSearch::printPath()
-/**
- * Prints the shortest path from start point to end point
- */
-{
 
     // Set the currNode to start from the end point
 

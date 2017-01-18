@@ -29,39 +29,25 @@ OrderManager *om;
 Grid* g1;
 
 //static function for thread in bfs.
-static void *pThreadRide(void* inp){
-    std::string &input = *static_cast<std::string*>(inp);
-    Ride *ride1;
-    Parser *prs2;
-    prs2 = new Parser();
+static void *pThreadBfs(void* ride){
+    Ride* ride1 = (Ride*) ride;
+
     BfsSearch* bfs;
 
-    Point startPoint;
-    Point endPoint;
-
-    prs2->parse(input, 8);
-    int id = atoi(prs2->inputVector.at(0).c_str());
-    int passengers = atoi(prs2->inputVector.at(5).c_str());
-    double tariff = stod(prs2->inputVector.at(6).c_str());
-    float startTime = stof(prs2->inputVector.at(7).c_str());
-    startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
-    endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
-
-    g1->startPt = new Point(startPoint);
-    g1->endPt = new Point(endPoint);
+    g1->startPt = new Point(ride1->getStartPoint()->getXCoordinate(),ride1->getStartPoint()->getYCoordinate());
+    g1->endPt = new Point(ride1->getEndPoint()->getXCoordinate(),ride1->getEndPoint()->getYCoordinate());
 
     bfs = new BfsSearch(g1);
-    //int pthread_create(&t1,NULL,pThreadBfs(),arg);
     bfs->runBfs();
-    bfs->printPath();
-    ride1 = new Ride(id, startPoint, endPoint, passengers, tariff,startTime, bfs->path);
+
     delete bfs;
     delete g1->startPt;
     delete g1->endPt;
 
-    om->addRide(ride1);
-    delete prs2;
+    //om->addRide(ride1);
+    //delete prs2;
     /**/
+    ride1->setPath(bfs->path);
 }
 
 
@@ -125,9 +111,8 @@ int main(int argc, char *argv[]) {
     Tcp tcp(1,"127.0.0.1",atoi(argv[1]));
     tcp.initialize();
 
-
     g1 = new Grid();
-    pthread_t rideThread;
+    pthread_t bfsThread;
 
     string input;
     int drivers;
@@ -174,7 +159,7 @@ int main(int argc, char *argv[]) {
                 //input number of drivers
                 cin >> drivers;
                 pthread_t threads[drivers];
-                //recieve driver from client
+                //receive driver from client
                 for (int i = 0; i < drivers; i++) {
                     int aoc = tcp.acceptOneClient();
                     om->clients.push_back(aoc);
@@ -192,11 +177,28 @@ int main(int argc, char *argv[]) {
 
                 cin >> input;
 
-                //recieve driver from client
-                numThread = pthread_create(&rideThread, NULL, pThreadRide, (void *) &input);
+                prs2 = new Parser();
+
+                prs2->parse(input, 8);
+                int id = atoi(prs2->inputVector.at(0).c_str());
+                int passengers = atoi(prs2->inputVector.at(5).c_str());
+                double tariff = stod(prs2->inputVector.at(6).c_str());
+                float startTime = stof(prs2->inputVector.at(7).c_str());
+                startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
+                endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
+
+                ride = new Ride(id, startPoint, endPoint, passengers, tariff,startTime);
+
+                numThread = pthread_create(&bfsThread, NULL, pThreadBfs, (void *) ride);
                 if (numThread == -1) {
                     cout << "error";
                 }
+
+                pthread_join(bfsThread,NULL);
+
+                om->addRide(ride);
+                delete prs2;
+
                 cin >> task;
                 break;
             }
@@ -233,12 +235,7 @@ int main(int argc, char *argv[]) {
                 //task 7 - delete all elemnts and exit the program
                 g1->destroyGrid();
                 delete g1;
-                //for (int i = 0;i<om->listOfRides.size();i++) {
-                    //delete om->listOfRides[i];
-                    //om->listOfRides.erase(om->listOfRides.begin());
 
-                //}
-                //delete om->listOfRides;
                 sleep(1);
                 for(int i = 0;i<om->listOfDrivers.size();i++) {
                     tcp.sendData("7",om->clients[i] );
@@ -252,7 +249,7 @@ int main(int argc, char *argv[]) {
                 //pthread_join(rideThread,NULL);
                 //task 9 - add 1 to "time" and move drivers if needed
                 om->timePassed();
-                pthread_join(rideThread,NULL);
+
 
                 //update drivers in client
                 for(int i = 0;i<om->listOfDrivers.size();i++) {

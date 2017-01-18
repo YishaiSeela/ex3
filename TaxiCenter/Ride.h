@@ -54,7 +54,7 @@ class Ride
 public:
 
 	Ride(int idRide,Point startingPoint,Point endPoint ,int numOfPassangers,
-		 double tariff,float startTime,std::vector<Point> path);
+		 double tariff,float startTime);
 	//for deserialization
 	Ride();
 	~Ride();
@@ -63,6 +63,7 @@ public:
 	Point* getStartPoint();
 	Point* getEndPoint();
 	float getStartTime();
+	void setPath(std::vector<Point> pth);
 	std::vector<Point> getPath();
 	void updateDistance();
 	int getDistance();
