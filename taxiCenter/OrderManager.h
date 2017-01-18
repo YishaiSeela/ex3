@@ -35,7 +35,7 @@ public:
 	void addRide(Ride *ride);
 
 	void addCab(Vehicle *vehicle);
-    void timePassed(pthread_t rideThread);
+    void timePassed();
     //int findDriver(int i);
 
 

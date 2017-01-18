@@ -249,8 +249,9 @@ int main(int argc, char *argv[]) {
 
             }
             case 9:{
+                //pthread_join(rideThread,NULL);
                 //task 9 - add 1 to "time" and move drivers if needed
-                om->timePassed(rideThread);
+                om->timePassed();
 
                 //update drivers in client
                 for(int i = 0;i<om->listOfDrivers.size();i++) {

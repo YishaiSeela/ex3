@@ -127,17 +127,17 @@ void OrderManager::addCab(Vehicle *vehicle)
     OrderManager::listOfCabs.push_back(vehicle);
 }
 
-void OrderManager::timePassed(pthread_t rideThread)
+void OrderManager::timePassed()
 /*
  * update time and move drivers
  */
 {
-    pthread_join(rideThread,NULL);
     int driverNo;
     int driver;
 
     for (int i = 0;i<listOfRides.size();i++) {
         //if it's the time to start the ride
+
         if (listOfRides[i]->getStartTime() == time) {
             //move driver to start point
             distance = 0;
