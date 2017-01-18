@@ -1,11 +1,11 @@
 all: server client
 
-COMMON_SOURCES = CabDecorator.cpp Driver.cpp EventNotifier.cpp \
-	MatchinStrategy.cpp LuxuryCab.cpp OrderManager.cpp \
-	Passanger.cpp Person.cpp Point.cpp Ride.cpp Vehicle.cpp \
-	BfsSearch.cpp Grid.cpp Node.cpp StringParse.cpp \
-	Parser.cpp RegularCab.cpp Tcp.cpp Socket.cpp
+COMMON_SOURCES = Vehicles/CabDecorator.cpp Persons/Driver.cpp TaxiCenter/EventNotifier.cpp \
+	TaxiCenter/MatchinStrategy.cpp Vehicles/LuxuryCab.cpp TaxiCenter/OrderManager.cpp \
+	Persons/Passanger.cpp Persons/Person.cpp Map/Point.cpp TaxiCenter/Ride.cpp Vehicles/Vehicle.cpp \
+	Map/BfsSearch.cpp Map/Grid.cpp Map/Node.cpp SeparateInput/StringParse.cpp \
+	SeparateInput/Parser.cpp Vehicles/RegularCab.cpp Communication/Tcp.cpp Communication/Socket.cpp
 server:
-	g++ -std=c++0x server.cpp $(COMMON_SOURCES) -lboost_serialization -I. -g -o server.out
+	g++ -std=c++0x Communication/server.cpp $(COMMON_SOURCES) -lboost_serialization -I. -g -o server.out
 client:
-	g++ -std=c++0x client.cpp $(COMMON_SOURCES) -lboost_serialization -I. -g -o client.out
+	g++ -std=c++0x Communication/client.cpp $(COMMON_SOURCES) -lboost_serialization -I. -g -o client.out

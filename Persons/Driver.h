@@ -1,7 +1,7 @@
 #ifndef DRIVER
 #define DRIVER
-#include "../Veicle/Vehicle.h"
-#include "../Veicle/CabDecorator.h"
+#include "../Vehicles/Vehicle.h"
+#include "../Vehicles/CabDecorator.h"
 #include "../Map/Point.h"
 #include "Person.h"
 #include "Passanger.h"

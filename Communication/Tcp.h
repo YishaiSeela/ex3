@@ -8,6 +8,8 @@
 
 #include "Socket.h"
 
+using namespace std;
+
 
 class Tcp: public Socket {
 private:

@@ -15,6 +15,7 @@
 #include <boost/iostreams/close.hpp>
 #include "Tcp.h"
 
+using namespace std;
 /***********************************************************************
 * function name: Tcp												   *
 * The Input: Boolean, true - if server, false if client	and port number*

@@ -14,9 +14,9 @@
 #include <boost/archive/binary_iarchive.hpp>
 
 #include "Tcp.h"
-#include "../separateInput/Parser.h"
+#include "../SeparateInput/Parser.h"
 #include "../Persons/Driver.h"
-#include "../taxiCenter/Ride.h"
+#include "../TaxiCenter/Ride.h"
 
 
 using namespace std;

@@ -6,12 +6,12 @@
 #include <pthread.h>
 #include "../Map/BfsSearch.h"
 #include "../Map/Grid.h"
-#include "../separateInput/StringParse.h"
+#include "../SeparateInput/StringParse.h"
 #include "string"
-#include "../separateInput/Parser.h"
+#include "../SeparateInput/Parser.h"
 #include "../Persons/Driver.h"
-#include "../taxiCenter/Ride.h"
-#include "../taxiCenter/OrderManager.h"
+#include "../TaxiCenter/Ride.h"
+#include "../TaxiCenter/OrderManager.h"
 
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
