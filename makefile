@@ -6,6 +6,6 @@ COMMON_SOURCES = Vehicles/CabDecorator.cpp Persons/Driver.cpp TaxiCenter/EventNo
 	Map/BfsSearch.cpp Map/Grid.cpp Map/Node.cpp SeparateInput/StringParse.cpp \
 	SeparateInput/Parser.cpp Vehicles/RegularCab.cpp Communication/Tcp.cpp Communication/Socket.cpp
 server:
-	g++ -std=c++0x Communication/server.cpp $(COMMON_SOURCES) -lboost_serialization -I. -g -o server.out
+	g++ -std=c++0x Communication/server.cpp $(COMMON_SOURCES) -lboost_serialization -I. -g -o server.out -pthread
 client:
-	g++ -std=c++0x Communication/client.cpp $(COMMON_SOURCES) -lboost_serialization -I. -g -o client.out
+	g++ -std=c++0x Communication/client.cpp $(COMMON_SOURCES) -lboost_serialization -I. -g -o client.out -pthread
