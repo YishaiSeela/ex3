@@ -176,11 +176,11 @@ int main(int argc, char *argv[]) {
                 cin >> drivers;
                 pthread_t threads[drivers];
                 //recieve driver from client
-                for (int i = 0; i < drivers; i++) {
+                for (int i = 0;i < drivers;i++) {
                     int aoc = tcp.acceptOneClient();
                     om->clients.push_back(aoc);
-                    numThread = pthread_create(&threads[i], NULL, pThreadCase1, (void *) &tcp);
-                    if (numThread == -1) {
+                    numThread = pthread_create(&threads[i], NULL, pThreadCase1,(void*) &tcp);
+                    if (numThread == -1){
                         cout << "error";
                     }
                 }
@@ -194,10 +194,10 @@ int main(int argc, char *argv[]) {
 
                 //recieve driver from client
 
-                numThread = pthread_create(&rideThread, NULL, pThreadRide, (void *) &input);
-                if (numThread == -1) {
-                    cout << "error";
-                }
+                    numThread = pthread_create(&rideThread, NULL, pThreadRide,(void*) &input);
+                    if (numThread == -1){
+                        cout << "error";
+                    }
                 cin >> task;
                 break;
             }
@@ -217,7 +217,6 @@ int main(int argc, char *argv[]) {
                 cin >> task;
                 break;
             }
-
             case 4: {
                 //task 4 - request for a driver location:
                 cin >> input;
