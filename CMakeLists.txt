@@ -8,6 +8,7 @@ find_package(Boost 1.58.0 COMPONENTS serialization system)
 include_directories(${Boost_INCLUDE_DIR})
 
 set(SOURCE_FILES
+<<<<<<< HEAD
         Map/BfsSearch.cpp
         Map/BfsSearch.h
         Veicle/CabDecorator.cpp
@@ -50,6 +51,50 @@ set(SOURCE_FILES
         test.h
         Veicle/Vehicle.cpp
         Veicle/Vehicle.h)
+=======
+        BfsSearch.cpp
+        BfsSearch.h
+        CabDecorator.cpp
+        CabDecorator.h
+        #client.cpp
+        Driver.cpp
+        Driver.h
+        EventNotifier.cpp
+        EventNotifier.h
+        Grid.cpp
+        Grid.h
+        LuxuryCab.cpp
+        LuxuryCab.h
+        MatchinStrategy.cpp
+        MatchinStrategy.h
+        MatchinStrategyTest.h
+        Node.cpp
+        Node.h
+        OrderManager.cpp
+        OrderManager.h
+        Parser.cpp
+        Parser.h
+        Passanger.cpp
+        Passanger.h
+        Person.cpp
+        Person.h
+        Point.cpp
+        Point.h
+        RegularCab.cpp
+        RegularCab.h
+        Ride.cpp
+        Ride.h
+        #server.cpp
+        Socket.cpp
+        Socket.h
+        StringParse.cpp
+        StringParse.h
+        Tcp.cpp
+        Tcp.h
+        test.h
+        Vehicle.cpp
+        Vehicle.h)
+>>>>>>> a317c55625c3cb867d87260fb6992b46951de479
 
 add_executable(server communication/server.cpp ${SOURCE_FILES})
 add_executable(client communication/client.cpp ${SOURCE_FILES})

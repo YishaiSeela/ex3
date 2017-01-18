@@ -30,7 +30,11 @@ Grid* g1;
 
 //static function for thread in bfs.
 static void *pThreadRide(void* inp){
+<<<<<<< HEAD:communication/server.cpp
     std::string &input = *static_cast<std::string*>(inp);
+=======
+    std::string* input = static_cast<std::string*>(inp);
+>>>>>>> a317c55625c3cb867d87260fb6992b46951de479:server.cpp
     Ride* ride1;
     Parser *prs2;
     prs2 = new Parser();
@@ -39,7 +43,11 @@ static void *pThreadRide(void* inp){
     Point startPoint;
     Point endPoint;
 
+<<<<<<< HEAD:communication/server.cpp
     prs2->parse(input, 8);
+=======
+    prs2->parse(*input, 8);
+>>>>>>> a317c55625c3cb867d87260fb6992b46951de479:server.cpp
     int id = atoi(prs2->inputVector.at(0).c_str());
     int passengers = atoi(prs2->inputVector.at(5).c_str());
     double tariff = stod(prs2->inputVector.at(6).c_str());
@@ -62,7 +70,10 @@ static void *pThreadRide(void* inp){
 
     om->addRide(ride1);
     delete prs2;
+<<<<<<< HEAD:communication/server.cpp
     /**/
+=======
+>>>>>>> a317c55625c3cb867d87260fb6992b46951de479:server.cpp
 }
 
 
@@ -70,7 +81,11 @@ static void *pThreadRide(void* inp){
 static void *pThreadCase1(void* tcp) {//check about tcp
             //std::vector <void*> *args = (std::vector<void*>*) driverArgs;
     Tcp* tcp1 = (Tcp*) tcp;
+<<<<<<< HEAD:communication/server.cpp
     char buffer[65000];
+=======
+    char buffer[100000];
+>>>>>>> a317c55625c3cb867d87260fb6992b46951de479:server.cpp
     Driver *driver1;
 
             sleep(1);
@@ -128,7 +143,10 @@ int main(int argc, char *argv[]) {
 
 
     g1 = new Grid();
+<<<<<<< HEAD:communication/server.cpp
     pthread_t rideThread;
+=======
+>>>>>>> a317c55625c3cb867d87260fb6992b46951de479:server.cpp
 
     string input;
     int drivers;
@@ -191,13 +209,46 @@ int main(int argc, char *argv[]) {
             case 2: {
 
                 cin >> input;
+<<<<<<< HEAD:communication/server.cpp
 
+=======
+                pthread_t rideThread;
+>>>>>>> a317c55625c3cb867d87260fb6992b46951de479:server.cpp
                 //recieve driver from client
 
                     numThread = pthread_create(&rideThread, NULL, pThreadRide,(void*) &input);
                     if (numThread == -1){
                         cout << "error";
                     }
+<<<<<<< HEAD:communication/server.cpp
+=======
+                }
+                /*
+                prs2 = new Parser();
+                prs2->parse(input, 8);
+                int id = atoi(prs2->inputVector.at(0).c_str());
+                int passengers = atoi(prs2->inputVector.at(5).c_str());
+                double tariff = stod(prs2->inputVector.at(6).c_str());
+                float startTime = stof(prs2->inputVector.at(7).c_str());
+                startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
+                endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
+
+                g1->startPt = new Point(startPoint);
+                g1->endPt = new Point(endPoint);
+
+                bfs = new BfsSearch(g1);
+                //int pthread_create(&t1,NULL,pThreadBfs(),arg);
+                bfs->runBfs();
+                bfs->printPath();
+                ride = new Ride(id, startPoint, endPoint, passengers, tariff,startTime, bfs->path);
+                delete bfs;
+                delete g1->startPt;
+                delete g1->endPt;
+
+                om->addRide(ride);
+                delete prs2;
+*/
+>>>>>>> a317c55625c3cb867d87260fb6992b46951de479:server.cpp
                 cin >> task;
                 break;
             }
