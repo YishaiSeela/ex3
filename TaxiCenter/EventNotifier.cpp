@@ -43,6 +43,7 @@
                     shortestPath = bfs->path.size();
                     shortestId = listOfDrivers[i]->getId();
                 }
+                delete bfs;
                 delete g1->startPt;
                 delete g1->endPt;
             }

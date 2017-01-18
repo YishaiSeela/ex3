@@ -36,7 +36,7 @@ OrderManager::~OrderManager()
 
     //delete rides
     for (int i = 0; i < (listOfRides.size()); i++) {
-        //delete listOfRides[i];
+        delete listOfRides[i];
     }
     listOfRides.clear();
 
@@ -206,30 +206,3 @@ void OrderManager::timePassed()
 
 
 }
-/*
-int OrderManager::findDriver(int i)
-/*
- * find driver for trip
- *
-{
-    Point startPoint = Point(listOfRides[i]->getStartPoint()->getXCoordinate(),
-                             listOfRides[i]->getStartPoint()->getYCoordinate());
-    int driverNo = 0;
-    //find a driver located in start point
-    for(int j = 0; j<listOfDrivers.size();j++){
-        if (listOfDrivers[j]->isAvailable()){
-            if (listOfDrivers[j]->getLocation() == startPoint){
-                driverNo = j;
-            }
-        }
-    }
-    //otherwise - return first driver in the list - it will change when there will be more drivers
-    if (driverNo == -1){
-        for(int j = 0; j<listOfDrivers.size();j++){
-            if (listOfDrivers[j]->isAvailable()){
-                driverNo = j;
-            }
-        }
-    }
-    return driverNo;
-}*/

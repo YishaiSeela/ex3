@@ -31,7 +31,7 @@ Grid* g1;
 //static function for thread in bfs.
 static void *pThreadRide(void* inp){
     std::string &input = *static_cast<std::string*>(inp);
-    Ride* ride1;
+    Ride *ride1;
     Parser *prs2;
     prs2 = new Parser();
     BfsSearch* bfs;
@@ -46,7 +46,6 @@ static void *pThreadRide(void* inp){
     float startTime = stof(prs2->inputVector.at(7).c_str());
     startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
     endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
-
 
     g1->startPt = new Point(startPoint);
     g1->endPt = new Point(endPoint);
@@ -183,6 +182,7 @@ int main(int argc, char *argv[]) {
                     if (numThread == -1) {
                         cout << "error";
                     }
+                    pthread_join(threads[i],NULL);
                 }
                 cin >> task;
                 break;
@@ -193,7 +193,6 @@ int main(int argc, char *argv[]) {
                 cin >> input;
 
                 //recieve driver from client
-
                 numThread = pthread_create(&rideThread, NULL, pThreadRide, (void *) &input);
                 if (numThread == -1) {
                     cout << "error";
@@ -234,11 +233,11 @@ int main(int argc, char *argv[]) {
                 //task 7 - delete all elemnts and exit the program
                 g1->destroyGrid();
                 delete g1;
-                for (int i = 0;i<om->listOfRides.size();i++) {
-                    delete om->listOfRides[i];
-                    om->listOfRides.erase(om->listOfRides.begin());
+                //for (int i = 0;i<om->listOfRides.size();i++) {
+                    //delete om->listOfRides[i];
+                    //om->listOfRides.erase(om->listOfRides.begin());
 
-                }
+                //}
                 //delete om->listOfRides;
                 sleep(1);
                 for(int i = 0;i<om->listOfDrivers.size();i++) {
@@ -253,6 +252,7 @@ int main(int argc, char *argv[]) {
                 //pthread_join(rideThread,NULL);
                 //task 9 - add 1 to "time" and move drivers if needed
                 om->timePassed();
+                pthread_join(rideThread,NULL);
 
                 //update drivers in client
                 for(int i = 0;i<om->listOfDrivers.size();i++) {
