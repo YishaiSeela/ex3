@@ -48,6 +48,7 @@ Tcp::~Tcp() {
 * socket descriptor. bind and accept for servers or connect for clients*
 ***********************************************************************/
 int Tcp::initialize() {
+
     //getting a socket descriptor and check if legal
     this->socketDescriptor = socket(AF_INET, SOCK_STREAM, 0); // (IPv4 , TCP, flags) --> Socket Descriptor
     if (this->socketDescriptor < 0) {

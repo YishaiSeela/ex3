@@ -32,6 +32,7 @@ Driver::Driver(int id, int age, char martialStatus, int experience, int vehicle_
         location = Point(0,0);
         available = true;
         rate = 1;
+        rideId = -1;
     }
 
     Driver::Driver()

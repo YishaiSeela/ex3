@@ -10,7 +10,7 @@
 * File description: TCP implementation.						*
 * the class inherit from socket. 							*
 * methods of tcp socket type								*
-************************************************************/
+************************************************************
 
 #include <boost/iostreams/close.hpp>
 #include "Tcp.h"
@@ -21,7 +21,7 @@
 * The output: none										               *
 * The Function operation: creating new Tcp. initialize if server and   *
 * port_num by the input												   *
-***********************************************************************/
+***********************************************************************
 Tcp::Tcp(bool isServers,string ip, int port_num) {
     this->ip_address = ip;
     this->port_number = port_num;
@@ -34,7 +34,7 @@ Tcp::Tcp(bool isServers,string ip, int port_num) {
 * The Input: none													   *
 * The output: none										               *
 * The Function operation: default destructor					       *
-***********************************************************************/
+***********************************************************************
 Tcp::~Tcp() {
     // TODO Auto-generated destructor stub
 }
@@ -45,7 +45,7 @@ Tcp::~Tcp() {
 * The output: 1 success or 0 failed error type will print              *
 * The Function operation: initialize the Socket object by getting	   *
 * socket descriptor. bind and accept for servers or connect for clients*
-***********************************************************************/
+***********************************************************************
 int Tcp::initialize() {
     //getting a socket descriptor and check if legal
     this->socketDescriptor = socket(AF_INET, SOCK_STREAM, 0); // (IPv4 , TCP, flags) --> Socket Descriptor
@@ -110,7 +110,7 @@ int Tcp::initialize() {
 *    or -1 when failed.                                                *
 * The Function operation: getting data from the other socket to,	   *
 * enter it to the buffer and print the data							   *
-***********************************************************************/
+***********************************************************************
 int Tcp::acceptOneClient(){
     int clientDescriptor = 0;
     struct sockaddr_in client_sin;
@@ -133,7 +133,7 @@ int Tcp::acceptOneClient(){
 * The output: number of bytes that gets                 	           *
 * The Function operation: sending the required data, using his length  *
 * and the socket descriptor or client descriptor.					   *
-***********************************************************************/
+***********************************************************************
 int Tcp::sendData(string data, int clientDescriptor) {
     size_t data_len = data.length();
     const char * datas = data.c_str();
@@ -160,7 +160,7 @@ int Tcp::sendData(string data, int clientDescriptor) {
 * The output: int number representing the return status	               *
 * The Function operation: getting data from the other socket to,	   *
 * enter it to the buffer and print the data							   *
-***********************************************************************/
+***********************************************************************
 int Tcp::reciveData(char* buffer, int size, int clientDescriptor) {
     ssize_t read_bytes = recv(this->isServer ? clientDescriptor : this->socketDescriptor, buffer, size, 0);
     //checking the errors
@@ -189,3 +189,4 @@ int Tcp::reciveData(char* buffer, int size, int clientDescriptor) {
 int Tcp::closeData() {
     close(socketDescriptor);
 }
+*/

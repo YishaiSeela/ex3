@@ -59,25 +59,7 @@ Node::~Node()
  * @param nodeToDelete: The node that needs to be freed
  */
 {
-/*
-    // Delete all the points in the node
-    if (this->downNode != NULL)
-    {
-        delete this->downNode;
-    }
-    if (this->upNode != NULL)
-    {
-        delete this->upNode;
-    }
-    if (this->rightNode != NULL)
-    {
-        delete this->rightNode;
-    }
-    if (this->leftNode != NULL)
-    {
-        delete this->leftNode;
-    }
-*/
+
     // Free the coordinate
     delete this->coordinate;
 
