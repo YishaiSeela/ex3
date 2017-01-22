@@ -1,3 +1,148 @@
+* commit d1f8f2c1a6b6a720523968ff82f8c94a8ce64909
+| Author: yishaiSeela <yishai320ds@gmail.com>
+| Date:   Thu Jan 19 17:17:33 2017 +0200
+| 
+|     thread for whole run
+|  
+* commit 220bcef8d2195f10ce1aad34035f7726d2517729
+| Author: yishaiSeela <yishai320ds@gmail.com>
+| Date:   Thu Jan 19 00:09:09 2017 +0200
+| 
+|     Running
+|  
+* commit ffd810183fb990bd92480c10e15525cd1313518c
+| Author: yishaiSeela <yishai320ds@gmail.com>
+| Date:   Wed Jan 18 17:10:43 2017 +0200
+| 
+|     one driver runs
+|  
+* commit 00d479b9ca3ddaf1e4239ad70dd29849ee24b1c1
+| Author: yishaiSeela <yishai320ds@gmail.com>
+| Date:   Wed Jan 18 12:30:24 2017 +0200
+| 
+|     rename files and fix makefile
+|  
+* commit faba285bb2ddf6b1ce6647f54d85cfbc52de8898
+| Author: yishaiSeela <yishai320ds@gmail.com>
+| Date:   Wed Jan 18 12:26:50 2017 +0200
+| 
+|     rename files
+|  
+* commit ce19cb721c9a1f5ba99e71378a0f9c6b549ea925
+| Author: yishaiSeela <yishai320ds@gmail.com>
+| Date:   Wed Jan 18 10:36:05 2017 +0200
+| 
+|     Conflicts fixed
+|    
+*   commit 00f67a0c61cf0fd53875ab07dcee8707380cbfe4
+|\  Merge: e0d9fe4 a317c55
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Wed Jan 18 10:24:56 2017 +0200
+| | 
+| |     JOIN
+| |   
+| * commit a317c55625c3cb867d87260fb6992b46951de479
+| | Author: YishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 17 19:56:53 2017 +0200
+| | 
+| |     Add files via upload
+| |   
+| * commit 3f99eecd7a7a44649e61979f126cec96a7e72412
+| | Author: adiLapp <adidush0212@gmail.com>
+| | Date:   Mon Jan 16 07:33:21 2017 -0800
+| | 
+| |     Add files via upload
+| |   
+| * commit 6db50ff86a385323bbb62faa85ce75f078277956
+| | Author: adiLapp <adidush0212@gmail.com>
+| | Date:   Mon Jan 16 07:31:48 2017 -0800
+| | 
+| |     Add files via upload
+| |   
+* | commit e0d9fe4b66a132f58aa49649d47953bf0f892f64
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Wed Jan 18 09:21:42 2017 +0200
+| | 
+| |     JOIN
+| |   
+* | commit 40f06c87605a01ddb74d666bf078f1b29e01592b
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Wed Jan 18 09:08:58 2017 +0200
+| | 
+| |     JOIN
+| |   
+* | commit 9e1ca83eb1fc620bcac70996d6eb76875143ccdd
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 17 22:54:39 2017 +0200
+| | 
+| |     JOIN
+| |   
+* | commit 9c5b2e8db14c3330bafaa4828091fb2fec621a24
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 17 22:53:22 2017 +0200
+| | 
+| |     join
+| |   
+* | commit b6c344f1c4764f25dc25103b3c0bc3b88bcf6438
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 17 22:45:08 2017 +0200
+| | 
+| |     JOIN
+| |   
+* | commit 7147d8225a321cb32117fdc76d7d2a96edf3d953
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 17 18:08:53 2017 +0200
+| | 
+| |     thread
+| |   
+* | commit c76149b58466d972103020709c8de5ba2d02ba1e
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 17 18:07:21 2017 +0200
+| | 
+| |     thread
+| |   
+* | commit e3c5c1c6920864f75bd0b1b06e9a405b5b279c39
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 17 16:11:36 2017 +0200
+| | 
+| |     thread is working
+| |   
+* | commit fe08874b9af23db277f687764d39786dd7b611c5
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 17 15:13:08 2017 +0200
+| | 
+| |     CO
+| |   
+* | commit f3641ab12fab2d47694539d318c0475056ec6a3f
+| | Author: yishaiSeela <yishai320ds@gmail.com>
+| | Date:   Tue Jan 17 13:45:20 2017 +0200
+| | 
+| |     CO
+| |   
+* | commit 3dabf2b455e634aaf24374bd54d399f3e213508b
+|/  Author: yishaiSeela <yishai320ds@gmail.com>
+|   Date:   Tue Jan 17 13:29:04 2017 +0200
+|   
+|       THREAD IS WORKING
+|  
+* commit 286d3d0c9a83085625d30536daee8c0adbc0c719
+| Author: yishaiSeela <yishai320ds@gmail.com>
+| Date:   Thu Jan 12 23:27:43 2017 +0200
+| 
+|     find closest driver
+|  
+* commit eaa9773347c047effbd4602b2668fcb0c01dbe3e
+| Author: yishaiSeela <yishai320ds@gmail.com>
+| Date:   Thu Jan 12 16:35:08 2017 +0200
+| 
+|     TCP
+|  
+* commit 52398ef16563cdd9581a9ab77cf01ed95a135fff
+| Author: yishaiSeela <yishai320ds@gmail.com>
+| Date:   Tue Jan 10 12:28:35 2017 +0200
+| 
+|     remove extra files
+|  
 * commit d2239647471d64e36019fdcd302c06b41ebc2182
 | Author: yishaiSeela <yishai320ds@gmail.com>
 | Date:   Wed Jan 4 19:07:50 2017 +0200

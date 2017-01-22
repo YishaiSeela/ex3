@@ -135,6 +135,7 @@ void OrderManager::timePassed()
     int driverNo;
     int driver;
 
+
     for (int i = 0;i<listOfRides.size();i++) {
         //if it's the time to start the ride
 
@@ -153,6 +154,7 @@ void OrderManager::timePassed()
             listOfDrivers[driver]->setAvailability(false);
             listOfDrivers[driver]->setLocation(startPoint);
         }
+
     }
     //update time
     time++;
@@ -197,8 +199,6 @@ void OrderManager::timePassed()
             if ((listOfDrivers[i]->getLocation()) == (endPoint))
             {
                 listOfDrivers[i]->setAvailability(true);
-                //delete listOfRides[i];
-                //listOfRides.erase(listOfRides.begin());
             }
         }
 

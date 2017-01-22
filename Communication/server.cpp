@@ -50,34 +50,39 @@ static void *pThreadBfs(void* ride){
 
 
 //static function for thread in case 1-driver. for each driver will be client
-static void *pThreadCase1(void* tcp) {
+static void *pThreadCase1(void* tcp1) {
+    Tcp* tcp = (Tcp*) tcp1;
 
-    Tcp* tcp1 = (Tcp*) tcp;
+    //Tcp* tcp1 = (Tcp*) tcp;
     char buffer[65000];
     Driver *driver1;
     Ride *ride1;
     int clientNo = (om->clients.size() - 1);
-
-    tcp1->reciveData(buffer, sizeof(buffer),om->clients.back());
+    tcp->reciveData(buffer, sizeof(buffer),om->clients.back());
     string serial_str(buffer, sizeof(buffer));
     boost::iostreams::basic_array_source<char> device(serial_str.c_str(), serial_str.size());
     boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s2(device);
     boost::archive::text_iarchive ia(s2);
+
     ia >> driver1;
+
     //add driver to list
     om->addDriver(driver1);
 
     //send vehicle to client
     for (int i = 0;i<om->listOfCabs.size();i++) {
         if (driver1->getVehicleId() == om->listOfCabs[i]->getId()) {
+
             std::string vehicle_str;
             boost::iostreams::back_insert_device<std::string> inserter(vehicle_str);
             boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s(inserter);
             boost::archive::text_oarchive oa(s);
             oa << om->listOfCabs[i];
             s.flush();
+
             sleep(1);
-            tcp1->sendData(vehicle_str,om->clients.back());
+            tcp->sendData(vehicle_str,om->clients.back());
+
         }
     }
 
@@ -90,12 +95,14 @@ static void *pThreadCase1(void* tcp) {
             oa << om->listOfDrivers[clientNo];
             s.flush();
             sleep(1);
-            tcp1->sendData(return_driver_str,om->clients[clientNo]);
-
+            tcp->sendData(return_driver_str,om->clients[clientNo]);
+            cout << clientNo << " ";
             threadFunc[clientNo] = 0;
         }
     }
+    tcp->sendData("7",om->clients[clientNo] );
 
+    tcp->closeData();
 }
 
 //send ride to client
@@ -125,6 +132,9 @@ int main(int argc, char *argv[]) {
     pthread_t t2;
     Tcp tcp(1,"127.0.0.1",atoi(argv[1]));
     tcp.initialize();
+
+    pthread_mutex_t myMutex;
+    pthread_mutex_init(&myMutex, 0);
 
     g1 = new Grid();
     pthread_t bfsThread;
@@ -184,13 +194,13 @@ int main(int argc, char *argv[]) {
                 for (int i = 0; i < drivers; i++) {
                     int aoc = tcp.acceptOneClient();
                     om->clients.push_back(aoc);
+
                     numThread = pthread_create(&threads[i], NULL, pThreadCase1, (void *) &tcp);
                     if (numThread == -1) {
                         cout << "error";
                     }
                     threadFunc[i] = 0;
                     sleep(1);
-
                     //pthread_join(threads[i],NULL);
                 }
                 cin >> task;
@@ -263,23 +273,20 @@ int main(int argc, char *argv[]) {
                 sleep(1);
                 for(int i = 0;i<om->listOfDrivers.size();i++) {
                     threadFunc[i] = 7;
-                    tcp.sendData("7",om->clients[i] );
+                    //tcp.sendData("7",om->clients[i] );
                 }
-                tcp.closeData();
+                //tcp.closeData();
                 delete om;
+                pthread_mutex_destroy(&myMutex);
                 exit(0);
 
             }
             case 9:{
-                cout << "x ";
-                
+
                 //task 9 - add 1 to "time" and move drivers if needed
                 om->timePassed();
-                cout << "y ";
-
                 //update drivers in client
                 for(int i = 0;i<om->listOfDrivers.size();i++) {
-                    cout << i << "";
                     threadFunc[i] = 9;
                 }
                 cin >> task;
