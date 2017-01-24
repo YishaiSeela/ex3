@@ -63,6 +63,7 @@ void Grid::createGrid(int gridWidth, int gridHeight)
  * of the gridWidth and gridHeight
  */
 {
+
     if (gridWidth > 1000){
         this->gridWidth = 1000;
     } else {

@@ -96,27 +96,36 @@ static void *pThreadCase1(void* tcp1) {
             s.flush();
             sleep(1);
             tcp->sendData(return_driver_str,om->clients[clientNo]);
-            cout << clientNo << " ";
+            int rideNo = om->listOfDrivers[clientNo]->getRide();
+            ride1 = new Ride(0,Point(0,0),Point(0,0),0,0,0);
+
+            //Ride ride3 = Ride(11,Point(22,33),Point(44,55),66,77,88);
+            std::string return_ride_str;
+            boost::iostreams::back_insert_device<std::string> inserter1(return_ride_str);
+            boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s1(inserter1);
+            boost::archive::text_oarchive oa1(s1);
+            if (rideNo == -1) {
+
+                oa1 << ride1;
+
+            }
+            else {
+                for (int i = 0;i<om->listOfRides.size();i++){
+                    if (om->listOfRides[i]->getId() == rideNo);
+                    oa1 << om->listOfRides[i];
+                }
+            }
+            s1.flush();
+            sleep(1);
+            tcp->sendData(return_ride_str,om->clients[clientNo]);
+
+            //cout << clientNo << " ";
+            delete ride1;
             threadFunc[clientNo] = 0;
         }
     }
-    tcp->sendData("7",om->clients[clientNo] );
 
-    tcp->closeData();
 }
-
-//send ride to client
-/*
-std::string ride_str;
-boost::iostreams::back_insert_device<std::string> inserter(ride_str);
-boost::iostreams::stream<boost::iostreams::back_insert_device<std::string> > s1(inserter);
-boost::archive::text_oarchive oa(s1);
-oa << ride;
-s1.flush();
-sleep(1);
-tcp.sendData(ride_str);
-*/
-
 
 
 std::string bufftostring(char* buffer, int length){
@@ -164,6 +173,10 @@ int main(int argc, char *argv[]) {
 
     //insert sizes of grid
     cin >> width >> height;
+    if ((width <=0) || (height <=0)){
+        cout <<"-1\n";
+        cin >> width >> height;
+    }
     //create grid
     g1->createGrid(width,height);
     //create order manager
@@ -207,7 +220,7 @@ int main(int argc, char *argv[]) {
                 break;
             }
                 //task 2 - insert ride
-            case 2: {
+             case 2: {
 
                 cin >> input;
 
@@ -217,12 +230,20 @@ int main(int argc, char *argv[]) {
                 int id = atoi(prs2->inputVector.at(0).c_str());
                 int passengers = atoi(prs2->inputVector.at(5).c_str());
                 double tariff = stod(prs2->inputVector.at(6).c_str());
+
                 float startTime = stof(prs2->inputVector.at(7).c_str());
+                if ((startTime <=0)){
+                    delete prs1;
+                    exit;
+                }
                 startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
                 endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
 
                 ride = new Ride(id, startPoint, endPoint, passengers, tariff,startTime);
-
+                if (tariff<=0 ){
+                    delete prs1;
+                    exit;
+                }
                 numThread = pthread_create(&bfsThread, NULL, pThreadBfs, (void *) ride);
                 if (numThread == -1) {
                     cout << "error";
@@ -241,12 +262,18 @@ int main(int argc, char *argv[]) {
                 cin >> input;
                 prs3 = new Parser();
                 prs3->parse(input, 4);
+
                 int id = atoi(prs3->inputVector.at(0).c_str());
                 int taxiType = atoi(prs3->inputVector.at(1).c_str());
                 char manufacturer = prs3->inputVector.at(2)[0];
                 char color = prs3->inputVector.at(3)[0];
-                vehicle = new Vehicle(manufacturer, taxiType, id, color);
-                om->addCab(vehicle);
+                if ((id < 0)||((taxiType!=1)&&(taxiType!=2)) ){
+                    cout<<"-1";
+
+                } else {
+                    vehicle = new Vehicle(manufacturer, taxiType, id, color);
+                    om->addCab(vehicle);
+                }
                 delete prs3;
 
                 cin >> task;
@@ -273,9 +300,9 @@ int main(int argc, char *argv[]) {
                 sleep(1);
                 for(int i = 0;i<om->listOfDrivers.size();i++) {
                     threadFunc[i] = 7;
-                    //tcp.sendData("7",om->clients[i] );
+                    tcp.sendData("7",om->clients[i] );
                 }
-                //tcp.closeData();
+                tcp.closeData();
                 delete om;
                 pthread_mutex_destroy(&myMutex);
                 exit(0);

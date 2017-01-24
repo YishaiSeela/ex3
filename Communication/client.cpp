@@ -47,6 +47,14 @@ int main(int argc, char *argv[]) {
     char status = prs1->inputVector.at(2)[0];
     int experiance = atoi(prs1->inputVector.at(3).c_str());
     int vehicleId = atoi(prs1->inputVector.at(4).c_str());
+    delete prs1;
+
+    if ((id < 0) || (age<0) || (experiance<0) || (vehicleId<0) ){
+        exit;
+    }
+    if ((status!= 'M')&&(status!= 'S')&&(status!= 'D')&&(status!= 'W')){
+        exit;
+    }
     //create driver for serilization
     driver = new Driver(id, age, status, experiance, vehicleId);
 
@@ -68,15 +76,7 @@ int main(int argc, char *argv[]) {
     boost::iostreams::stream<boost::iostreams::basic_array_source<char> > s2(device);
     boost::archive::text_iarchive ia(s2);
     ia >> vehicle;
-/*
-    //recieve ride from server
-    tcp.reciveData(buffer, sizeof(buffer));
-    std::string ride_str(buffer, sizeof(buffer));
-    boost::iostreams::basic_array_source<char> device1(ride_str.c_str(), ride_str.size());
-    boost::iostreams::stream<boost::iostreams::basic_array_source<char> > sRide(device1);
-    boost::archive::text_iarchive ir(sRide);
-    ir >> ride;
-*/
+
     sleep(1);
     tcp.reciveData(buffer, sizeof(buffer),0);
     string return_driver_str(buffer, sizeof(buffer));
@@ -87,14 +87,23 @@ int main(int argc, char *argv[]) {
     boost::archive::text_iarchive ia2(s3);
     delete driver;
     ia2 >> driver;
-    tcp.reciveData(buffer, sizeof(buffer),0);
+    sleep(1);
 
+    tcp.reciveData(buffer, sizeof(buffer),0);
+    std::string return_ride_str(buffer, sizeof(buffer));
+    boost::iostreams::basic_array_source<char> device1(return_ride_str.c_str(), return_ride_str.size());
+    boost::iostreams::stream<boost::iostreams::basic_array_source<char> > sRide(device1);
+    boost::archive::text_iarchive ir(sRide);
+    delete ride;
+    ir >> ride;
+    sleep(1);
+
+    tcp.reciveData(buffer, sizeof(buffer),0);
 
     }
     delete vehicle;
     delete driver;
-    //delete ride;
-    delete prs1;
+    delete ride;
     tcp.closeData();
 
     return 0;
