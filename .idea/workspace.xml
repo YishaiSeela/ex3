@@ -52,153 +52,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10b6d434-f338-4512-9cb0-5307cffd1b13" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/CMakeCache.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/CMakeLists.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Details.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Map/BfsSearch.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Map/BfsSearch.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Map/Grid.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Map/Grid.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Map/Node.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Map/Node.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Map/Point.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Map/Point.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Persons/Driver.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Persons/Driver.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Persons/Passanger.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Persons/Passanger.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Persons/Person.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Persons/Person.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Veicle/CabDecorator.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Veicle/CabDecorator.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Veicle/LuxuryCab.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Veicle/LuxuryCab.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Veicle/RegularCab.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Veicle/RegularCab.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Veicle/Vehicle.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/Veicle/Vehicle.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeCache.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/3.5.1/CMakeCCompiler.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/3.5.1/CMakeCXXCompiler.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/3.5.1/CMakeDetermineCompilerABI_C.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/3.5.1/CMakeDetermineCompilerABI_CXX.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/3.5.1/CMakeSystem.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/3.5.1/CompilerIdC/a.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/3.5.1/CompilerIdCXX/a.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/Ex3.dir/DependInfo.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/Ex3.dir/build.make" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/Ex3.dir/cmake_clean.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/Ex3.dir/depend.make" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/Ex3.dir/flags.make" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/Ex3.dir/link.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/Ex3.dir/progress.make" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/Makefile.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/Makefile2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/BfsSearch.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/CXX.includecache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/CabDecorator.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/DependInfo.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/Driver.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/EventNotifier.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/Grid.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/LuxuryCab.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/MatchinStrategy.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/Node.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/OrderManager.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/Parser.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/Passanger.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/Person.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/Point.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/RegularCab.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/Ride.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/Socket.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/StringParse.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/Tcp.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/Vehicle.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/build.make" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/client.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/cmake_clean.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/depend.internal" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/depend.make" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/flags.make" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/link.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/progress.make" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/client.dir/server.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/clion-environment.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/clion-log.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/cmake.check_cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/feature_tests.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/feature_tests.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/feature_tests.cxx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/progress.marks" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/BfsSearch.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/CXX.includecache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/CabDecorator.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/DependInfo.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/Driver.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/EventNotifier.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/Grid.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/LuxuryCab.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/MatchinStrategy.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/Node.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/OrderManager.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/Parser.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/Passanger.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/Person.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/Point.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/RegularCab.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/Ride.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/Socket.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/StringParse.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/Tcp.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/Vehicle.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/build.make" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/client.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/cmake_clean.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/depend.internal" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/depend.make" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/flags.make" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/link.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/progress.make" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/CMakeFiles/server.dir/server.cpp.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/Ex3.cbp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/client" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/cmake_install.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake-build-debug/server" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/cmake_install.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/communication/Socket.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/communication/Socket.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/communication/Tcp.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/communication/Tcp.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/communication/client.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/communication/server.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/file" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/log.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/separateInput/Parser.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/separateInput/Parser.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/separateInput/StringParse.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/separateInput/StringParse.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/taxiCenter/EventNotifier.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/taxiCenter/EventNotifier.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/taxiCenter/MatchinStrategy.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/taxiCenter/MatchinStrategy.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/taxiCenter/MatchinStrategyTest.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/taxiCenter/OrderManager.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/taxiCenter/OrderManager.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/taxiCenter/Ride.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/taxiCenter/Ride.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex4 (2)/test.h" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Communication/client.cpp" afterPath="$PROJECT_DIR$/Communication/client.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Communication/server.cpp" afterPath="$PROJECT_DIR$/Communication/server.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeparateInput/Parser.cpp" afterPath="$PROJECT_DIR$/SeparateInput/Parser.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TaxiCenter/OrderManager.cpp" afterPath="$PROJECT_DIR$/TaxiCenter/OrderManager.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Map/BfsSearch.cpp" afterPath="$PROJECT_DIR$/Map/BfsSearch.cpp" />
     </list>
     <ignored path="ex3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -218,12 +74,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="server.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Communication/server.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
-              <folding />
+            <state relative-caret-position="171">
+              <caret line="271" column="41" selection-start-line="271" selection-start-column="41" selection-end-line="271" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -251,7 +109,7 @@
       <file leaf-file-name="basic_string.h" pinned="false" current-in-tab="false">
         <entry file="file:///usr/include/c++/5/bits/basic_string.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="74625">
               <caret line="4975" column="0" selection-start-line="4975" selection-start-column="0" selection-end-line="4975" selection-end-column="0" />
               <folding />
             </state>
@@ -261,7 +119,7 @@
       <file leaf-file-name="Parser.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SeparateInput/Parser.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
+            <state relative-caret-position="765">
               <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding />
             </state>
@@ -278,11 +136,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BfsSearch.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BfsSearch.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Map/BfsSearch.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+            <state relative-caret-position="152">
+              <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -365,7 +223,6 @@
         <option value="$PROJECT_DIR$/Persons/Passanger.cpp" />
         <option value="$PROJECT_DIR$/makefile" />
         <option value="$PROJECT_DIR$/TaxiCenter/EventNotifier.cpp" />
-        <option value="$PROJECT_DIR$/Map/BfsSearch.cpp" />
         <option value="$PROJECT_DIR$/TaxiCenter/Ride.cpp" />
         <option value="$PROJECT_DIR$/Tcp.cpp" />
         <option value="$PROJECT_DIR$/Map/Node.cpp" />
@@ -377,6 +234,7 @@
         <option value="$PROJECT_DIR$/TaxiCenter/OrderManager.cpp" />
         <option value="$PROJECT_DIR$/SeparateInput/Parser.cpp" />
         <option value="$PROJECT_DIR$/Communication/client.cpp" />
+        <option value="$PROJECT_DIR$/Map/BfsSearch.cpp" />
         <option value="$PROJECT_DIR$/Communication/server.cpp" />
       </list>
     </option>
@@ -731,7 +589,8 @@
       <workItem from="1485102619354" duration="801000" />
       <workItem from="1485261808878" duration="14249000" />
       <workItem from="1485284340087" duration="1597000" />
-      <workItem from="1485356081469" duration="10357000" />
+      <workItem from="1485356081469" duration="14142000" />
+      <workItem from="1485378515189" duration="1609000" />
     </task>
     <task id="LOCAL-00001" summary="CO">
       <created>1484653521112</created>
@@ -758,7 +617,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="521325000" />
+    <option name="totallyTimeSpent" value="526719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="647" extended-state="6" />
@@ -770,7 +629,7 @@
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2859745" sideWeight="0.4848249" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34532374" sideWeight="0.22801556" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.25560537" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="366" y="325" width="967" height="346" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.25560537" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="65" y="52" width="1301" height="619" />
       <window_info id="Structure" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -840,21 +699,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Communication/server.cpp</url>
-          <line>226</line>
-          <option name="timeStamp" value="134" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Communication/server.cpp</url>
-          <line>280</line>
-          <option name="timeStamp" value="136" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Communication/server.cpp</url>
-          <line>182</line>
-          <option name="timeStamp" value="137" />
+          <line>261</line>
+          <option name="timeStamp" value="141" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="138" />
+      <option name="time" value="142" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
@@ -1130,7 +979,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="750">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1138,7 +986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1152,7 +999,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SeparateInput/Parser.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
+        <state relative-caret-position="765">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding />
         </state>
@@ -1160,7 +1007,7 @@
     </entry>
     <entry file="file:///usr/include/c++/5/bits/basic_string.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="74625">
           <caret line="4975" column="0" selection-start-line="4975" selection-start-column="0" selection-end-line="4975" selection-end-column="0" />
           <folding />
         </state>
@@ -1174,18 +1021,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SeparateInput/Parser.cpp">
+    <entry file="file://$PROJECT_DIR$/Persons/Driver.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="46" column="75" selection-start-line="46" selection-start-column="75" selection-end-line="46" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Communication/client.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
+        <state relative-caret-position="300">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1198,27 +1037,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Persons/Driver.cpp">
+    <entry file="file://$PROJECT_DIR$/Communication/client.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="204">
+          <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Communication/server.cpp">
+    <entry file="file://$PROJECT_DIR$/SeparateInput/Parser.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+        <state relative-caret-position="204">
+          <caret line="46" column="75" selection-start-line="46" selection-start-column="75" selection-end-line="46" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Map/BfsSearch.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+        <state relative-caret-position="152">
+          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Communication/server.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="271" column="41" selection-start-line="271" selection-start-column="41" selection-end-line="271" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

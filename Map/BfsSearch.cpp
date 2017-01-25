@@ -85,21 +85,24 @@ void BfsSearch::runBfs()
     Node *current = gameGrid.getNode(gameGrid.endPt);
     Node *start = gameGrid.getNode(gameGrid.startPt);
     // Print the coordinates until the start point is reached
-    while(current!=start)
-    {
-        Node *temp= current->parentNode;
-        temp->sonNode=current;
-        current=temp;
-    }
-    current=start;
-    Node *end = gameGrid.getNode(gameGrid.endPt);
-    while(current!=end){
-        //cout << *(current->coordinate)<<endl;
+    if (current->parentNode != NULL) {
+
+        while (current != start) {
+            Node *temp = current->parentNode;
+            temp->sonNode = current;
+            current = temp;
+        }
+        current = start;
+        Node *end = gameGrid.getNode(gameGrid.endPt);
+        while (current != end) {
+            //cout << *(current->coordinate)<<endl;
+            BfsSearch::path.push_back(*(current->coordinate));
+            current = current->sonNode;
+        }
+        //cout << *(current->coordinate);
         BfsSearch::path.push_back(*(current->coordinate));
-        current=current->sonNode;
     }
-    //cout << *(current->coordinate);
-    BfsSearch::path.push_back(*(current->coordinate));
+    
 }
 
 BfsSearch::~BfsSearch()

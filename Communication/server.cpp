@@ -41,11 +41,13 @@ static void *pThreadBfs(void* ride){
     bfs = new BfsSearch(g1);
     bfs->runBfs();
 
+    cout << om->listOfRides.size();
+    ride1->setPath(bfs->path);
+
     delete bfs;
     delete g1->startPt;
     delete g1->endPt;
 
-    ride1->setPath(bfs->path);
 }
 
 
@@ -255,8 +257,10 @@ int main(int argc, char *argv[]) {
                             }
 
                             pthread_join(bfsThread, NULL);
+                            if (ride->getPath().size() != 0) {
 
-                            om->addRide(ride);
+                                om->addRide(ride);
+                            }
                         }
                     }
                 }
