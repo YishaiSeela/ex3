@@ -165,15 +165,13 @@ int main(int argc, char *argv[]) {
     Point endPoint;
     Point obstacle;
 
-    Parser *prs1, *prs2, *prs3, *prsOb;
-    BfsSearch *bfs;
-    Driver *driver1;
+    Parser *prs2, *prs3, *prsOb;
     Ride *ride;
     Vehicle *vehicle;
 
     //insert sizes of grid
     cin >> width >> height;
-    if ((width <=0) || (height <=0)){
+    while ((width <=0) || (height <=0)){
         cout <<"-1\n";
         cin >> width >> height;
     }
@@ -183,6 +181,7 @@ int main(int argc, char *argv[]) {
     om = new OrderManager(g1);
     //insert number of obstacles
     cin >> obstacles;
+
     //insert obstacle points
     for (int i=0; i<obstacles; i++){
         cin >> input;
@@ -227,31 +226,40 @@ int main(int argc, char *argv[]) {
                 prs2 = new Parser();
 
                 prs2->parse(input, 8);
-                int id = atoi(prs2->inputVector.at(0).c_str());
-                int passengers = atoi(prs2->inputVector.at(5).c_str());
-                double tariff = stod(prs2->inputVector.at(6).c_str());
+                if (prs2->inputVector.at(0) == "error") {
+                    cout << "-1\n";
+                } else {
+                    int id = atoi(prs2->inputVector.at(0).c_str());
+                    int passengers = atoi(prs2->inputVector.at(5).c_str());
+                    double tariff = stod(prs2->inputVector.at(6).c_str());
 
-                float startTime = stof(prs2->inputVector.at(7).c_str());
-                if ((startTime <=0)){
-                    delete prs1;
-                    exit;
+                    float startTime = stof(prs2->inputVector.at(7).c_str());
+                    if ((startTime <= 0) || (tariff < 0) || (id < 0) || (passengers < 0)) {
+                        cout << "-1\n";
+
+                    } else {
+                        startPoint = Point(atoi(prs2->inputVector.at(1).c_str()),
+                                           atoi(prs2->inputVector.at(2).c_str()));
+                        endPoint = Point(atoi(prs2->inputVector.at(3).c_str()),
+                                         atoi((prs2->inputVector.at(4).c_str())));
+                        if ((startPoint.getXCoordinate() >= height) || (endPoint.getXCoordinate() >= height) ||
+                                (startPoint.getYCoordinate() >= width) || (endPoint.getYCoordinate() >= width)){
+                            cout << "-1\n";
+                        } else {
+
+                            ride = new Ride(id, startPoint, endPoint, passengers, tariff, startTime);
+
+                            numThread = pthread_create(&bfsThread, NULL, pThreadBfs, (void *) ride);
+                            if (numThread == -1) {
+                                cout << "error";
+                            }
+
+                            pthread_join(bfsThread, NULL);
+
+                            om->addRide(ride);
+                        }
+                    }
                 }
-                startPoint = Point(atoi(prs2->inputVector.at(1).c_str()), atoi(prs2->inputVector.at(2).c_str()));
-                endPoint = Point(atoi(prs2->inputVector.at(3).c_str()), atoi((prs2->inputVector.at(4).c_str())));
-
-                ride = new Ride(id, startPoint, endPoint, passengers, tariff,startTime);
-                if (tariff<=0 ){
-                    delete prs1;
-                    exit;
-                }
-                numThread = pthread_create(&bfsThread, NULL, pThreadBfs, (void *) ride);
-                if (numThread == -1) {
-                    cout << "error";
-                }
-
-                pthread_join(bfsThread,NULL);
-
-                om->addRide(ride);
                 delete prs2;
 
                 cin >> task;
@@ -262,17 +270,21 @@ int main(int argc, char *argv[]) {
                 cin >> input;
                 prs3 = new Parser();
                 prs3->parse(input, 4);
-
-                int id = atoi(prs3->inputVector.at(0).c_str());
-                int taxiType = atoi(prs3->inputVector.at(1).c_str());
-                char manufacturer = prs3->inputVector.at(2)[0];
-                char color = prs3->inputVector.at(3)[0];
-                if ((id < 0)||((taxiType!=1)&&(taxiType!=2)) ){
-                    cout<<"-1";
-
+                if (prs3->inputVector.at(0) == "error") {
+                    cout << "-1\n";
                 } else {
-                    vehicle = new Vehicle(manufacturer, taxiType, id, color);
-                    om->addCab(vehicle);
+
+                    int id = atoi(prs3->inputVector.at(0).c_str());
+                    int taxiType = atoi(prs3->inputVector.at(1).c_str());
+                    char manufacturer = prs3->inputVector.at(2)[0];
+                    char color = prs3->inputVector.at(3)[0];
+                    if ((id < 0) || ((taxiType != 1) && (taxiType != 2))) {
+                        cout << "-1\n";
+
+                    } else {
+                        vehicle = new Vehicle(manufacturer, taxiType, id, color);
+                        om->addCab(vehicle);
+                    }
                 }
                 delete prs3;
 
@@ -285,7 +297,11 @@ int main(int argc, char *argv[]) {
                 cin >> input;
                 int driveId = atoi(input.c_str());
                 Point location = (om->getLocation(driveId));
-                cout << "(" << location.getXCoordinate() << "," << location.getYCoordinate() << ")" << endl;
+                if ((location.getXCoordinate() == -1) || (location.getYCoordinate() == -1)) {
+                    cout << "-1\n";
+                } else {
+                    cout << "(" << location.getXCoordinate() << "," << location.getYCoordinate() << ")" << endl;
+                }
                 cin >> task;
 
                 break;
@@ -321,7 +337,8 @@ int main(int argc, char *argv[]) {
 
             }
             default: {
-                //for any other input - ask for a valid input
+                //for any other input - print '-1' and ask for a valid input
+                cout<<"-1\n";
                 cin >> task;
                 break;
             }

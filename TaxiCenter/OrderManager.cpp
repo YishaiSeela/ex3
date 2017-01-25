@@ -63,6 +63,7 @@ Point OrderManager::getLocation(int id){
  */
     Point location;
  for (int i=0;i<listOfDrivers.size();i++){
+     location = Point(-1,-1);
      if (listOfDrivers [i]->getId() == id) {
          location = listOfDrivers.at(i)->getLocation();
      }
