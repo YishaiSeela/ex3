@@ -41,6 +41,8 @@ set(SOURCE_FILES
         TaxiCenter/Ride.cpp
         TaxiCenter/Ride.h
         #server.cpp
+        ThreadPool.cpp
+        ThreadPool.h
         Communication/Socket.cpp
         Communication/Socket.h
         SeparateInput/StringParse.cpp
@@ -48,6 +50,10 @@ set(SOURCE_FILES
         Communication/Tcp.cpp
         Communication/Tcp.h
         test.h
+        MyTask.cpp
+        MyTask.h
+        Job.cpp
+        Job.h
         Vehicles/Vehicle.cpp
         Vehicles/Vehicle.h)
 
