@@ -12,6 +12,7 @@
 
 class MyTask {
 private:
+    //privte members
     pthread_t thread_id;
     pthread_mutex_t *lock;
     int task_id;
