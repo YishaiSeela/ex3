@@ -15,7 +15,7 @@ MyTask::MyTask(int task_id, int *counter, pthread_mutex_t *lock) : task_id(task_
     // TODO Auto-generated constructor stub
 
 }
-
+//comment
 void MyTask::incrementCounter() {
     for (int i = 0; i < 10000000; i++) {
         pthread_mutex_lock(lock);
