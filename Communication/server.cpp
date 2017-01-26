@@ -41,7 +41,6 @@ static void *pThreadBfs(void* ride){
     bfs = new BfsSearch(g1);
     bfs->runBfs();
 
-    cout << om->listOfRides.size();
     ride1->setPath(bfs->path);
 
     delete bfs;
@@ -135,6 +134,14 @@ std::string bufftostring(char* buffer, int length){
     return s;
 }
 
+bool validTypes(char manufacturer,char color ){
+    if ((manufacturer !=  83) && (manufacturer !=  84) && (manufacturer != 72)
+        && (manufacturer !=  70)){
+        return false;
+    } else
+        return !((color != 82) && (color != 71) && (color != 66)
+                 && (color != (80)));
+}
 
 int main(int argc, char *argv[]) {
     //threa for client
@@ -173,6 +180,8 @@ int main(int argc, char *argv[]) {
 
     //insert sizes of grid
     cin >> width >> height;
+    cin.clear();
+    cin.ignore();
     while ((width <=0) || (height <=0)){
         cout <<"-1\n";
         cin >> width >> height;
@@ -183,6 +192,28 @@ int main(int argc, char *argv[]) {
     om = new OrderManager(g1);
     //insert number of obstacles
     cin >> obstacles;
+    while (cin.fail()) {
+        cin.clear();
+        cin.ignore();
+        cout <<"-1\n";
+
+        //insert sizes of grid
+        cin >> width >> height;
+        cin.clear();
+        cin.ignore();
+        while ((width <=0) || (height <=0)){
+            cout <<"-1\n";
+            cin >> width >> height;
+        }
+        //create grid
+        g1->destroyGrid();
+        g1->createGrid(width,height);
+        //create order manager
+        *om = OrderManager(g1);
+        //insert number of obstacles
+        cin >> obstacles;
+        //Not an int.
+    }
 
     //insert obstacle points
     for (int i=0; i<obstacles; i++){
@@ -190,11 +221,21 @@ int main(int argc, char *argv[]) {
         prsOb = new Parser();
         prsOb->parse(input, 2);
         obstacle = Point(atoi(prsOb->inputVector.at(0).c_str()), atoi(prsOb->inputVector.at(1).c_str()));
+        while ((obstacle.getXCoordinate() >= height) || (obstacle.getYCoordinate() >= width)) {
+            delete prsOb;
+            prsOb = new Parser();
+            cin >> input;
+            prsOb->parse(input, 2);
+            obstacle = Point(atoi(prsOb->inputVector.at(0).c_str()), atoi(prsOb->inputVector.at(1).c_str()));
+
+        }
         g1->setObstacle(obstacle);
         delete prsOb;
     }
     //insert task number
     cin >> task;
+    cin.clear();
+    cin.ignore();
 
     while (true) {
 
@@ -218,6 +259,8 @@ int main(int argc, char *argv[]) {
                     //pthread_join(threads[i],NULL);
                 }
                 cin >> task;
+                cin.clear();
+                cin.ignore();
                 break;
             }
                 //task 2 - insert ride
@@ -257,7 +300,7 @@ int main(int argc, char *argv[]) {
                             }
 
                             pthread_join(bfsThread, NULL);
-                            if (ride->getPath().size() != 0) {
+                            if (ride->getPath().size() > 1) {
 
                                 om->addRide(ride);
                             }
@@ -267,6 +310,8 @@ int main(int argc, char *argv[]) {
                 delete prs2;
 
                 cin >> task;
+                 cin.clear();
+                 cin.ignore();
                 break;
             }
                 //task 3 - insert a vehicle:
@@ -282,7 +327,7 @@ int main(int argc, char *argv[]) {
                     int taxiType = atoi(prs3->inputVector.at(1).c_str());
                     char manufacturer = prs3->inputVector.at(2)[0];
                     char color = prs3->inputVector.at(3)[0];
-                    if ((id < 0) || ((taxiType != 1) && (taxiType != 2))) {
+                    if ((!validTypes(manufacturer,color)) || (id < 0) || ((taxiType != 1) && (taxiType != 2))) {
                         cout << "-1\n";
 
                     } else {
@@ -293,6 +338,8 @@ int main(int argc, char *argv[]) {
                 delete prs3;
 
                 cin >> task;
+                cin.clear();
+                cin.ignore();
                 break;
             }
 
@@ -307,7 +354,8 @@ int main(int argc, char *argv[]) {
                     cout << "(" << location.getXCoordinate() << "," << location.getYCoordinate() << ")" << endl;
                 }
                 cin >> task;
-
+                cin.clear();
+                cin.ignore();
                 break;
             }
 
@@ -337,16 +385,20 @@ int main(int argc, char *argv[]) {
                     threadFunc[i] = 9;
                 }
                 cin >> task;
+                cin.clear();
+                cin.ignore();
                 break;
 
             }
             default: {
                 //for any other input - print '-1' and ask for a valid input
                 cout<<"-1\n";
+
                 cin >> task;
+                cin.clear();
+                cin.ignore();
                 break;
             }
         }
     }
 }
-
